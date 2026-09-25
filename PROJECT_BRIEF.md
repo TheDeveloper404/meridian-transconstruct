@@ -43,7 +43,7 @@ Datele nu au fost verificate independent. Acest document este de lucru, nu conț
 5. Renovări și reabilitări de clădiri, inclusiv anvelopare.
 6. Lucrări specializate: finisaje și continuarea lucrărilor pe șantiere începute.
 
-Lista păstrează ordinea comercială indicată; nu reprezintă încă structura paginilor. Firma decide ce solicitări acceptă; nu stabilim pe site excluderi sau un prag minim de valoare, în lipsa unei decizii a firmei.
+Lista păstrează ordinea comercială indicată inițial. Pe site (S12), ordinea cerută de utilizator este: construcții civile, clădiri rezidențiale și nerezidențiale, renovări și reabilitări, construcții de case, **hale industriale** (serviciu adăugat de utilizator în S12). Firma decide ce solicitări acceptă; nu stabilim pe site excluderi sau un prag minim de valoare, în lipsa unei decizii a firmei.
 
 Utilizatorul a cerut omiterea discuției despre echipă proprie, subcontractare, proiectare și autorizații. Nu afirmăm că firma oferă proiectare sau obținerea autorizațiilor și nu reluăm întrebarea despre organizarea execuției.
 

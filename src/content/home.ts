@@ -5,7 +5,7 @@
 export const homeSeo = {
   title: "Firmă de construcții în Petroșani și Valea Jiului",
   description:
-    "Construcții de case la roșu, la gri și la cheie, clădiri rezidențiale și nerezidențiale, construcții civile și renovări în Petroșani, Valea Jiului și județul Hunedoara.",
+    "Construcții civile, clădiri rezidențiale și nerezidențiale, hale industriale, renovări și case la roșu sau la cheie în Petroșani, Valea Jiului și județul Hunedoara.",
 };
 
 export const hero = {
@@ -32,7 +32,7 @@ export const about = {
   locationLines: ["Meridian Transconstruct", "Valea Jiului · din 2019"],
   lead: "O construcție înseamnă o investiție importantă. Relația cu firma care o execută trebuie să înceapă cu încredere și lucruri spuse clar.",
   paragraphs: [
-    "Meridian Transconstruct este o firmă de construcții din Valea Jiului, activă din 2019. Executăm case, clădiri rezidențiale și nerezidențiale, construcții civile și lucrări de renovare pentru firme, instituții publice și persoane fizice.",
+    "Meridian Transconstruct este o firmă de construcții din Valea Jiului, activă din 2019. Executăm construcții civile, clădiri rezidențiale și nerezidențiale, hale industriale, renovări și case pentru firme, instituții publice și persoane fizice.",
     "Lucrăm în toată Valea Jiului, iar pentru proiectele potrivite și în restul județului Hunedoara.",
   ],
   vision: {

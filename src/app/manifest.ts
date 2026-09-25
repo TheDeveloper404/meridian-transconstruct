@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: company.displayName,
     short_name: "Meridian",
-    description: "Construcții, renovări și lucrări civile în Valea Jiului și județul Hunedoara.",
+    description: "Construcții civile, clădiri, hale industriale, renovări și case în Valea Jiului și județul Hunedoara.",
     lang: "ro",
     start_url: "/",
     display: "browser",

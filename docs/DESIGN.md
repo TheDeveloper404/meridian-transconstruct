@@ -30,7 +30,9 @@ Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1200 px. Butoane minimum 
 - Header: lipit sus; la scroll fundalul devine albastru închis semi-transparent (~75%) cu estompare, ca meniul alb să rămână lizibil peste secțiunile deschise (S11). Denumire provizorie în text, meniu cu cinci intrări (Acasă, Servicii, Proiecte, Despre ca ancore pe Acasă, Contact) și CTA; fără număr de telefon, conform cererii utilizatorului. Ambele numere rămân în Contact. Butonul telefonic de mobil este în partea de jos, nu în header.
 - Hero: imagine pe întreg fundalul, cu strat albastru închis pentru lizibilitate și text suprapus; un singur buton principal și un link secundar. Vizualul generat este provizoriu și marcat explicit; vezi [proveniența](assets/README.md).
 - Servicii: rânduri numerotate; fiecare serviciu are un link spre Contact (pagini dedicate de servicii — B-003).
-- Proiecte: imagine 4:3, categorie, titlu și localitate/an dacă sunt cunoscute. Fără badge-uri „premium” sau indicatori inventați.
+- Proiecte (galerie, S12): grilă „bento” pe 12 coloane (tile mare 7×2 rânduri, apoi 5, 5, 4, 4, 4), 2 coloane pe tabletă, una pe telefon; colțuri de 2 px; la hover zoom lent pe imagine, gradient mai intens, legenda urcă și apare butonul portocaliu de mărire; clic → dialog pe tot ecranul (săgeți, ←/→, Esc, focus returnat). Eticheta „Ilustrativ” pe imaginile generate. Fără badge-uri „premium” sau indicatori inventați.
+- Denumire (S12): „MERIDIAN” are exact lățimea lui „TRANSCONSTRUCT” (34/15 px desktop, 28/13 px mobil), literele distribuite pe lățime.
+- Meniu (S12): 19 px; la hover fundal portocaliu discret, text portocaliu și subliniere care crește din centru.
 - Acasă: secțiunea finală este un CTA scurt către Contact, fără repetarea telefoanelor și formularului. Pagina Contact are ambele telefoane, e-mailul și formularul (în machetă dezactivat, în aplicație funcțional).
 - Footer: date de firmă verificate și linkurile legale. Adresa completă rămâne pentru pagina de identificare legală, după validare.
 

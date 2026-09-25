@@ -4,6 +4,20 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S12 — Denumire, meniu, servicii reordonate + hale, galerie „bento”
+
+- **Scop / clasificare:** NORMAL — mai multe modificări de UI și conținut cerute de utilizator (8 puncte).
+- **Implementare:**
+  - Denumire: „MERIDIAN” are exact lățimea lui „TRANSCONSTRUCT”, cu font mărit (34 px desktop / 28 px mobil) și literele distribuite; măsurat în browser: ambele rânduri între aceleași margini (120–305 px la 1440 px lățime, 16–169 px la 390 px).
+  - Meniu: 19 px, hover cu fundal portocaliu discret, text portocaliu, subliniere din centru.
+  - Servicii: ordinea cerută (civile, clădiri, renovări, case) + serviciul nou „Hale industriale” la 05 (text de confirmat, A-007); titlul secțiunii „De la hale industriale la case la cheie.” și introducere nouă, factuale. Actualizate descrierile pentru Google, manifestul și textul despre firmă.
+  - CTA: verificat că „Cere o ofertă” și toate linkurile din servicii duc la `/contact`, iar „Vezi proiectele” la galeria `#proiecte` (erau deja așa).
+  - Galerie „Proiecte realizate”: layout „bento”, intrare la scroll (fără state React; atribut DOM), hover (zoom, gradient, legendă, buton de mărire), dialog pe tot ecranul (săgeți, ←/→, Esc, clic în afară, focus returnat, scroll blocat). Imagini ilustrative marcate „Ilustrativ”; fișierele lipsă apar ca blocuri „Fotografie în curând” (verificare la build).
+- **Imagini:** mediul de lucru nu are generator de imagini, iar sursele externe (Unsplash, Pexels, Wikimedia) sunt blocate de proxy. Hero-ul rămâne pe conceptul existent; singura imagine din galerie deocamdată este același concept (tile „Construcții civile”). Prompturile și numele fișierelor pentru hero cu blocuri și cele 5 imagini de galerie: docs/assets/README.md (B-020).
+- **Verificări:** type-check, lint, Vitest 35/35, build — PASS. În browser (playwright-core instalat doar în folderul temporar, nu în proiect): lățimi denumire, hover meniu, galerie desktop și mobil, dialog deschis/închis cu Esc și focus returnat, toate tile-urile vizibile după scroll pe mobil, fără overflow orizontal pe mobil.
+- **Documentare:** SITE_STRUCTURE, DESIGN, PROJECT_BRIEF, BACKLOG (A-007, B-005, B-020), CLAUDE.md, docs/assets/README.md.
+- **Următorul pas:** utilizatorul continuă cu secțiunea 03 (Firma); imaginile generate după prompturi.
+
 ## 2026-09-25 — S11 — Fără fâșia de sub hero; header lipit, semi-transparent la scroll
 
 - **Scop / clasificare:** SMALL — UI, la cererea utilizatorului.

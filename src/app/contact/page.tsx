@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Contact și cerere ofertă",
   description:
-    "Cere o ofertă pentru construcții, renovări sau lucrări civile în Petroșani și Valea Jiului. Telefon, e-mail și formular de contact.",
+    "Cere o ofertă pentru construcții civile, clădiri, hale industriale, renovări sau case în Petroșani și Valea Jiului. Telefon, e-mail și formular de contact.",
   path: "/contact",
 });
 

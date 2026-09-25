@@ -22,6 +22,7 @@ export const sectionAliases: Record<string, string> = {
   cladiri: "servicii",
   "constructii-civile": "servicii",
   renovari: "servicii",
+  "hale-industriale": "servicii",
 };
 
 export const footerCompanyNav: NavItem[] = [
