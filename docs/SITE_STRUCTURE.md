@@ -1,6 +1,8 @@
 # Structura site-ului — propunere pentru aprobare
 
-25 septembrie 2026. Faza 1. Propunerea nu este sitemap aprobat și nu reprezintă pagini implementate.
+25 septembrie 2026. Faza 1. Propunerea nu este sitemap aprobat.
+
+**Implementat (S06):** `/` (Acasă cu secțiunile Servicii, Proiecte, Despre, ancorate), `/contact`, pagina 404, `sitemap.xml` și `robots.txt`, conform machetei finale (A-001 în [BACKLOG](../BACKLOG.md)). Paginile dedicate de servicii, `/proiecte`, `/proiecte/[slug]` și paginile legale din tabelul de mai jos rămân propuneri (B-003, B-012).
 
 ## Navigare și pagini
 

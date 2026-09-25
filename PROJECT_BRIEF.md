@@ -1,7 +1,7 @@
 # Project brief — Meridian Transconstruct
 
-Actualizat: 25 septembrie 2026. Faza 0 și stack-ul sunt confirmate; structura și macheta Acasă sunt pregătite pentru aprobare.
-Clasificare proiect: NORMAL. Stack-ul și furnizorul OVHcloud sunt confirmate; detaliile de operare rămân pentru deploy. Implementarea nu a început.
+Actualizat: 25 septembrie 2026 (S06). Aplicația Next.js este implementată local după macheta finală; conținutul real (logo, fotografii, proiecte) și deploy-ul lipsesc.
+Clasificare proiect: NORMAL. Stack-ul și furnizorul OVHcloud sunt confirmate; detaliile de operare rămân pentru deploy.
 
 ## Scop confirmat
 
@@ -92,7 +92,7 @@ Utilizatorul a cerut omiterea discuției despre echipă proprie, subcontractare,
 
 ## Următorul pas
 
-Aprobarea propunerii din [SITE_STRUCTURE](docs/SITE_STRUCTURE.md) și a direcției din [DESIGN](docs/DESIGN.md), ilustrată prin macheta Acasă. Urmează scaffold-ul și layout-ul după închiderea acestei faze. Serverul OVHcloud se configurează la deploy și nu blochează dezvoltarea locală.
+Ratificarea deciziilor provizorii A-001…A-006 din [BACKLOG](BACKLOG.md); primirea logo-ului, a fotografiilor și a inventarului de proiecte; apoi alegerea furnizorului SMTP și a serviciului OVHcloud pentru deploy.
 
 ## Cerințe tehnice confirmate
 

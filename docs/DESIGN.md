@@ -1,6 +1,6 @@
 # Direcție vizuală — propunere
 
-25 septembrie 2026. Macheta începe cu [home-preview.html](home-preview.html) și are pagini individuale pentru [Servicii](servicii.html), [Proiecte](proiecte.html), [Despre](despre.html) și [Contact](contact.html). CSS-ul comun este preview.css. Nu este aplicația Next.js; formularul de pe Contact este explicit inactiv.
+25 septembrie 2026. Macheta finală are două pagini: [home-preview.html](home-preview.html) (Acasă, cu Servicii, Proiecte și Despre ca secțiuni ancorate) și [contact.html](contact.html); CSS-ul comun este preview.css. Paginile separate Servicii/Proiecte/Despre din versiunea S04 au fost eliminate din machetă. Aplicația Next.js (`src/`) implementează această variantă — vezi A-001 în [BACKLOG](../BACKLOG.md).
 
 ## Concept
 
@@ -19,9 +19,11 @@ Aspect sobru, clar și vizual: fundaluri albastru închis și alb cald, accent p
 | Contur pe deschis | `#D8DCE3` |
 | Semantic | Eroare `#A62828`; succes `#21643C`; avertizare `#795400`; informare `#285C88`, pe alb |
 
-O familie sans-serif: fonturile sistemului în machetă; recomandare de producție Inter găzduit local, de verificat la implementare. Maximum trei greutăți (400, 500, 700). Scară: 14/16/20/28/40/64 px; titlul mare se adaptează până la 40 px pe mobil. Text curent 16 px, line-height 1.6; titluri 1.1–1.2.
+În aplicație, token-urile sunt definite în `src/app/globals.css` (`@theme`, Tailwind CSS 4).
 
-Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1200 px. Butoane minimum 48 px înălțime; colțuri de 4 px și fără amestec de capsule/carduri rotunde. Focus vizibil cu contur dublu sau culoare contrastantă cu suprafața.
+O familie sans-serif: fonturile sistemului în machetă; în aplicație Inter găzduit local prin `next/font` (A-003). Maximum trei greutăți (400, 500, 700). Scară: 14/16/20/28/40/64 px; titlul mare se adaptează până la 40 px pe mobil. Text curent 16 px, line-height 1.6; titluri 1.1–1.2.
+
+Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1200 px. Butoane minimum 48 px înălțime (52 px în machetă), în formă de capsulă conform machetei finale; câmpurile de formular au colțuri de 14 px. Fără carduri rotunjite. Focus vizibil cu contur dublu sau culoare contrastantă cu suprafața.
 
 ## Componente
 

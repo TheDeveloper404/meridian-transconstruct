@@ -11,7 +11,7 @@ Aceste reguli completează instrucțiunile globale de engineering. Nu înlocuies
 ## În timpul lucrului
 
 - Lucrează pe faze; rezumă deciziile și propune următorul pas. Respectă redirecționările explicite ale utilizatorului.
-- Nu porni scaffold-ul înainte de aprobarea arhitecturii și închiderea fazelor necesare.
+- Scaffold-ul există (S06). Schimbările structurale noi (rute, dependențe, integrări) se propun înainte de implementare.
 - Păstrează conținutul separat de componente; adaptează Clean Architecture la dimensiunea site-ului. Nu adăuga straturi fără responsabilitate reală.
 - Formularul va separa UI/handler, regulile de contact și transportul e-mail. Validarea și protecțiile se aplică pe server.
 - Nu inventa lucrări, recenzii, certificări, rezultate sau date ale firmei. Folosește placeholder-e explicite în lucru; elimină-le înainte de lansare.
@@ -25,4 +25,4 @@ Aceste reguli completează instrucțiunile globale de engineering. Nu înlocuies
 - Actualizează documentele afectate: brief pentru produs, arhitectură pentru soluția tehnică, README pentru utilizare, backlog pentru acțiuni și idei.
 - Nu dubla descrierile ample: folosește linkuri către documentul de referință.
 - Înregistrează exact ce teste/verificări au rulat și ce s-a omis, cu motiv. Pentru documentație simplă sunt suficiente verificarea coerenței și a legăturilor locale.
-- Închide taskul cu verdictul proporțional și un mesaj de commit sugerat. Utilizatorul face commit/push; nu executa aceste acțiuni din proprie inițiativă.
+- Închide taskul cu verdictul proporțional. Se lucrează direct pe `main`; utilizatorul a autorizat agentul să facă commit și push (2026-09-25), după ce type-check, lint, testele și build-ul trec local.

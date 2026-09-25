@@ -4,6 +4,29 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S06 — Scaffold Next.js, pagini și formular de contact
+
+- **Scop / clasificare:** NORMAL (aplicație nouă pe mai multe straturi); formularul de contact tratat cu rigoare de securitate, fiind endpoint public care trimite e-mail. Utilizatorul a cerut explicit preluarea lucrului și continuarea implementării și a autorizat agentul să facă commit/push direct pe `main`.
+- **Infrastructură repo:** `.gitignore` nu mai exclude documentația de lucru (urcată de utilizator); CI GitHub Actions (gitleaks, `npm ci`, audit high, type-check, lint, Vitest, build) și Dependabot lunar cu cooldown 30 de zile. Fluxul `dev` → PR → `main` înlocuit, la cererea utilizatorului, cu lucru direct pe `main`.
+- **Implementare:** Next.js 16.3.6 App Router, React 19.3, TypeScript 6, Tailwind CSS 4, Nodemailer 10. Pagini: Acasă (hero, fapte, patru servicii, portofoliu, despre, CTA), Contact (telefoane, e-mail, formular), 404, `sitemap.xml`, `robots.txt`. Conținutul este în `src/content/`, separat de componente. Formular: handler HTTP → serviciu → adaptor SMTP; validare comună server/client; honeypot; limitare în memorie; contract în ARCHITECTURE. Headere de securitate de bază în `next.config.ts`.
+- **Decizii:** structura urmează macheta finală din repo (două pagini), nu DESIGN/SITE_STRUCTURE din S04; portofoliu cu stare goală în loc de carduri placeholder; font Inter local; indexare oprită până la lansare. Toate sunt înregistrate ca `ASSUMED — needs ratification` (A-001…A-006 în BACKLOG). `output: "standalone"` a fost încercat și scos: `next start` nu îl suportă, iar modul de rulare pe OVHcloud se decide la deploy (B-002).
+- **Verificări executate:** `tsc --noEmit` (inclusiv pe checkout curat, fără `next-env.d.ts`), ESLint, `npm audit --audit-level=high` (0 vulnerabilități), `next build` — toate PASS. Vitest: 35/35 PASS (validare, limitare, configurație, serviciu, handler HTTP cu transport fals). Playwright: 21/21 PASS pe build de producție — ambele pagini la 320/375/768/1024/1440 px (fără overflow, un H1, `lang="ro"`, fără telefon în header, buton telefonic pe mobil, fără erori JS sau cereri externe), navigare cu stare activă și închiderea meniului mobil, stări formular (erori pe câmpuri și focus, succes, eroare cu datele păstrate) cu API interceptat, 503 real fără SMTP, 404, robots, contrast AA al paletei.
+- **Defect găsit și corectat în review:** după „Despre” → „Acasă” (sau clic pe logo), URL-ul devenea `/`, dar meniul rămânea marcat pe „Despre”, pentru că navigarea Next (`pushState`) nu emite `hashchange`. Reprodus manual în browser înainte de fix; corectat prin Navigation API (`currententrychange`) cu ramură de rezervă după clic; acoperit de două teste E2E (cu și fără Navigation API).
+- **SMTP real, manual:** server SMTP local de test (aiosmtpd, cu autentificare) + `next start` configurat din mediu: cerere trimisă și primită cu expeditorul și destinatarul din configurație, Reply-To = vizitatorul, subiect/diacritice codate corect; a treia cerere cu limita 2 → 429 cu `Retry-After`. Parolă SMTP greșită → 500 fără detalii interne; logul conține doar codul erorii (`ETIMEDOUT` raportat de Nodemailer pe acel server de test), fără e-mail, mesaj sau parolă. Headerele de securitate verificate pe răspuns. Nu s-a trimis niciun e-mail către adrese reale.
+- **Vizual:** capturi desktop 1440 px și mobil 375 px (Acasă, Contact, meniu mobil, erori formular) comparate cu `docs/previews/`; fără diferențe de structură față de machetă, în afara stării goale a portofoliului (A-002).
+- **Mediu:** npm 10.9 eșuează la instalarea vitest / `@playwright/test` (`edgesOut`, bug npm pe peer dependencies); lockfile generat cu npm 11.20. Chromium din container (1194) diferă de cel cerut de Playwright 1.63; E2E rulat cu `PLAYWRIGHT_CHROMIUM_EXECUTABLE`.
+- **Omis, cu motiv:** E2E nu rulează în CI (B-017); fără test pe telefon fizic; fără Lighthouse/măsurători de performanță (conținutul și imaginile reale lipsesc); CSP/HSTS la deploy (B-015).
+- **Documentare:** actualizat README (comenzi, structură, variabile de mediu), ARCHITECTURE (stare, versiuni, contract API), BACKLOG (B-003, B-007, B-014–B-017, A-001…A-006), PROJECT_BRIEF, AGENTS (regula Git), DESIGN și SITE_STRUCTURE (aliniere la macheta finală).
+- **Următorul pas:** ratificarea A-001…A-006; logo, fotografii și inventarul de proiecte; furnizor SMTP și serviciul OVHcloud pentru deploy.
+
+## 2026-09-25 — S05 — Machetă redusă la două pagini (consemnat retrospectiv)
+
+Consemnat în S06 pe baza fișierelor urcate; detaliile sesiunii nu sunt cunoscute și nu sunt reconstituite.
+
+- Macheta din repo are doar `home-preview.html` și `contact.html`; `docs/qa/check-preview.cjs` verifică explicit că `servicii.html`, `proiecte.html` și `despre.html` nu mai există și că Servicii / Proiecte / Despre sunt secțiuni ancorate pe Acasă.
+- Tot scriptul verifică: butoane în formă de capsulă, linkuri de meniu de minimum 18 px cu stări hover/focus, CTA centrat, patru coloane în footer, respectarea `prefers-reduced-motion`. Capturile din `docs/previews/` corespund acestei variante.
+- DESIGN, SITE_STRUCTURE și intrarea S04 descriau încă varianta cu cinci pagini; au fost aliniate în S06.
+
 ## 2026-09-25 — S04 — Revizie vizuală și pagini individuale
 
 - **Scop / clasificare:** NORMAL — actualizarea machetei și a navigării după feedback, fără backend sau scaffold Next.js.

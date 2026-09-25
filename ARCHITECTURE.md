@@ -1,7 +1,7 @@
 # Arhitectură tehnică
 
 Actualizat: 25 septembrie 2026.
-**Stare: STACK CONFIRMAT — Next.js + React + TypeScript + Tailwind CSS, formular SMTP și găzduire OVHcloud. Nu este implementat. Detaliile formularului și configurația de operare rămân deschise.**
+**Stare: IMPLEMENTAT LOCAL — Next.js 16 (App Router) + React 19 + TypeScript 6 + Tailwind CSS 4, formular prin SMTP (Nodemailer 10). Găzduirea OVHcloud, furnizorul SMTP și configurația de operare rămân pentru deploy.**
 
 ## Context și constrângeri confirmate
 
@@ -20,7 +20,7 @@ Site de prezentare, doar în română, cu aproximativ 20 de proiecte declarate �
 | Hosting | OVHcloud; server compatibil Node.js, HTTPS, reverse proxy | Furnizor confirmat; serviciul concret, dimensionarea și configurarea se stabilesc la deploy. |
 | Persistență | Fără DB și fără repository de solicitări | Cererile ajung în căsuța de e-mail; inboxul are propriile reguli de acces și retenție. |
 
-Versiunile exacte și package manager-ul se stabilesc la scaffold, verificând compatibilitatea și versiunile stabile suportate. Nu instalăm dependențe în această fază.
+Versiuni la scaffold (2026-09-25): Next.js 16.3.6, React 19.3.0, Nodemailer 10.0.10, Tailwind CSS 4.3, TypeScript 6 (TypeScript 7 nu este încă suportat de typescript-eslint), ESLint 9, Vitest 4, Playwright 1.63. Package manager: npm; lockfile generat cu npm 11. Font: Inter prin `next/font`, găzduit local la build.
 
 ## Alternative evaluate
 
@@ -40,12 +40,37 @@ Next.js este ales pentru compatibilitatea cu experiența dezvoltatorului și int
 - Serviciul aplică regulile de validare și limitele cererii și utilizează adaptorul de transport.
 - Adaptorul SMTP izolează dependența Nodemailer și configurația furnizorului.
 - Nu adăugăm strat repository, ORM, container DI sau API separat fără o cerință concretă.
-- Câmpurile, endpoint-ul și contractul de erori nu sunt încă stabilite. Se documentează înainte de implementarea formularului.
+- Implementare: `src/server/contact/http.ts` (strat HTTP) → `contact-service.ts` (reguli) → `smtp-transport.ts` (adaptor). Validarea este o funcție pură în `src/lib/contact/validation.ts`, folosită pe server și, pentru feedback imediat, în formular.
+
+### Contractul `POST /api/contact`
+
+Cerere: `Content-Type: application/json`, maximum 16 KiB. Corp: `{ name, email, phone?, message, website? }` — `website` este honeypot-ul.
+
+| Câmp | Reguli |
+|---|---|
+| `name` | Obligatoriu, maximum 120 de caractere, pe un rând (caracterele de control, inclusiv CR/LF, sunt eliminate). |
+| `email` | Obligatoriu, format `nume@domeniu.tld`, maximum 254; folosit doar ca Reply-To. |
+| `phone` | Opțional; cifre, spații, `+ ( ) . -`, 6–15 cifre, maximum 30 de caractere. |
+| `message` | Obligatoriu, 10–5000 de caractere; rândurile noi se păstrează. |
+
+| Răspuns | Când |
+|---|---|
+| `200 { ok: true }` | Trimis — sau honeypot completat (răspuns identic, fără trimitere). |
+| `400 VALIDATION_ERROR` | JSON invalid sau câmpuri invalide; `details.fields` conține mesajele pe câmpuri. |
+| `413 PAYLOAD_TOO_LARGE` | Corp peste 16 KiB. |
+| `415 UNSUPPORTED_MEDIA_TYPE` | Alt tip de conținut decât JSON (blochează și formularele HTML trimise de pe alte site-uri). |
+| `429 RATE_LIMITED` + `Retry-After` | Peste limita per client (implicit 5 cereri / 60 minute). |
+| `503 SERVICE_UNAVAILABLE` | SMTP sau destinatarul nu sunt configurați. |
+| `500 INTERNAL_ERROR` | Transportul SMTP a eșuat; fără detalii interne în răspuns. |
+
+Format unic de eroare: `{ "error": { "code", "message", "details?" } }`. Mesajele de eroare 429/503/500 includ alternativa telefonică. Răspunsurile au `Cache-Control: no-store`.
+
+Limitarea este în memoria procesului (un singur proces Node), cu cheia din `X-Real-IP` sau ultimul element din `X-Forwarded-For`, doar cu `TRUST_PROXY=true`. Fără proxy de încredere, toate cererile împart o limită globală. La mai multe instanțe, limitarea trebuie mutată într-un magazin partajat.
 
 ## Securitatea formularului — cerințe pentru implementare
 
 - Validare server-side, limite pentru lungimea câmpurilor și dimensiunea cererii.
-- Anti-spam și limitarea trimiterilor, proiectate pentru topologia reală de hosting; mecanismul exact rămâne de ales.
+- Anti-spam: honeypot + limitare per client în memorie (vezi contractul de mai jos). Se reevaluează după alegerea topologiei de hosting.
 - Destinatarul și expeditorul sunt configurații server-side, nu valori controlate de vizitator. E-mailul vizitatorului se validează și se folosește ca Reply-To.
 - Secretele SMTP rămân în configurația mediului; fără credențiale în cod, browser sau loguri.
 - Mesaje de eroare utile, fără stack trace sau detalii de infrastructură expuse. Fără logarea implicită a conținutului cererilor.
@@ -66,7 +91,7 @@ Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul aute
 
 ## Medii, backup și operare
 
-- Local: dezvoltare și teste; nu există încă scripturi de pornire.
+- Local: `npm run dev`, teste `npm test` / `npm run e2e`; comenzile sunt în [README.md](README.md).
 - Preview/staging: de stabilit împreună cu hostingul; accesul/indexarea se configurează separat de producție.
 - Producție: domeniul dorit este `meridian-transconstruct.ro`, pe OVHcloud. Utilizatorul a cerut alegerea și configurarea serverului după finalizarea site-ului local. Achiziția domeniului, serviciul OVHcloud concret, DNS, SSL și alegerea www/non-www rămân pentru deploy; nu presupunem că sunt configurate.
 - Backup propus: copie remote a codului/conținutului, arhivă a originalelor foto și configurație de deploy păstrată securizat, separat de Git.
@@ -76,7 +101,9 @@ Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul aute
 
 Teste unit pentru validarea formularului și regulile serviciului; integrare pentru fluxul de trimitere și erori; e2e pentru navigare și contact; verificare pe mobil. Lint, type-check și build după implementare, plus verificarea metadata și a linkurilor. Alegerea instrumentelor se face odată cu scaffold-ul.
 
-La data documentului nu există cod de aplicație sau teste executabile. Revizuirea propunerii respectă separarea responsabilităților, fără straturi suplimentare nejustificate: **CLEAN-ARCHITECTURE: PASS pentru propunere; implementarea nu a fost evaluată.**
+Implementat (2026-09-25): Vitest pentru validare, limitare, configurație, serviciu și handler HTTP (integrare cu transport fals); Playwright pentru pagini la 320–1440 px, navigare, formular (răspunsuri interceptate), 404, robots și contrast. Trimiterea SMTP reală a fost verificată manual cu un server SMTP local de test. E2E nu rulează în CI.
+
+Headere de securitate aplicate din `next.config.ts`: `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`; `X-Powered-By` dezactivat. CSP și HSTS rămân pentru configurarea serverului (BACKLOG B-015).
 
 ## Decizii deschise și surse
 
