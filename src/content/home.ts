@@ -1,5 +1,11 @@
 // Textele paginii Acasă, preluate din macheta aprobată (docs/home-preview.html).
 
+import { formatYears, fullYearsSince } from "@/lib/experience";
+import { company } from "./company";
+
+/** Ani împliniți de la înființare, calculați la build (26 iulie 2019 → 7 ani în septembrie 2026). */
+const experience = formatYears(fullYearsSince(company.foundedDate));
+
 // Titlul și descrierea pentru Google și tab-ul browserului. „Petroșani” e permis DOAR aici
 // (decizia utilizatorului, S09), nu în textele vizibile de mai jos.
 export const homeSeo = {
@@ -29,12 +35,31 @@ export const hero = {
 export const about = {
   kicker: "03 / Despre firmă",
   titleLines: ["Construim de la structură", "până la ultimul finisaj."],
-  // Rescris în S12b la cererea utilizatorului; doar fapte din PROJECT_BRIEF (fără cifre sau
-  // promisiuni noi). „Viziunea noastră” și principiile de mai jos sunt păstrate neschimbate.
-  lead: "Meridian Transconstruct este o firmă de construcții activă din 2019, care execută lucrări pentru firme, instituții publice și persoane fizice.",
-  paragraphs: [
-    "Preluăm proiecte noi și șantiere deja începute. Când o lucrare e în curs, pornim de la ce s-a executat până atunci și stabilim clar ce rămâne de făcut, înainte de ofertă.",
-    "Executăm în cărămidă, BCA, beton, lemn sau pe structură metalică, după soluția din proiect. Etapele, nivelul de predare și termenele se stabilesc prin contract, iar contractul rămâne reperul întregii colaborări.",
+  // Rescris în S14 la cererea utilizatorului (experiență, „lucrul bine făcut”, „ce ne recomandă”);
+  // doar fapte din PROJECT_BRIEF. „Viziunea noastră” și principiile de mai jos sunt neschimbate.
+  lead: `Din ${company.foundedYear}, Meridian Transconstruct execută construcții pentru firme, instituții publice și persoane fizice. În ${experience} de experiență am urmărit un singur standard: lucrul bine făcut.`,
+  recommendsTitle: "Ce ne recomandă",
+  recommends: [
+    {
+      icon: "experience",
+      title: `${experience} de experiență`,
+      text: `Activăm în construcții din ${company.foundedYear}: construcții civile, clădiri, hale, renovări și case.`,
+    },
+    {
+      icon: "quality",
+      title: "Lucrul bine făcut",
+      text: "Execuția atentă, de la structură până la ultimul finisaj. Lucrările predate sunt cea mai bună carte de vizită.",
+    },
+    {
+      icon: "site",
+      title: "Șantiere noi sau începute",
+      text: "Preluăm și lucrări în curs: evaluăm ce s-a executat și stabilim clar ce rămâne de făcut.",
+    },
+    {
+      icon: "materials",
+      title: "Soluția din proiect",
+      text: "Executăm în cărămidă, BCA, beton, lemn sau pe structură metalică, după proiect.",
+    },
   ],
   vision: {
     title: "Viziunea noastră",

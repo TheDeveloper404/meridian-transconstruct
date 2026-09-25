@@ -4,6 +4,16 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S14 — Tranziții „zid de cărămidă”, „Despre firmă” cu experiență, footer corectat
+
+- **Scop / clasificare:** SMALL/NORMAL — UI și conținut, la cererea utilizatorului.
+- **Implementare:**
+  - Tranziții: oblicele cu dungă portocalie (S13), respinse, înlocuite cu un zid de cărămidă „în lucru” (cerut: „ceva legat de construcții”). Prima variantă avea rosturi orizontale care formau linii pe toată lățimea — refăcut fără rosturi orizontale, doar cărămizi în trepte, cele de sus sprijinite.
+  - „Despre firmă”: introducere cu anii de experiență și „lucrul bine făcut”; bloc „Ce ne recomandă” cu 4 puncte și iconițe. Anii se calculează la build din data înființării (`src/lib/experience.ts`: ani împliniți + acordul „ani / de ani”), ca textul să nu rămână vechi.
+  - Footer: denumirea și fraza de prezentare revin una sub alta; pe un rând rămân doar datele de contact.
+- **Verificări:** type-check, lint, Vitest 38/38 (3 teste noi pentru experiență), build — PASS. Capturi desktop și mobil pentru hero, tranziția spre galerie, „Despre firmă” și footer; fără overflow orizontal.
+- **Documentare:** DESIGN, SITE_STRUCTURE, CLAUDE.md, BACKLOG (A-008).
+
 ## 2026-09-25 — S13 — Tranziții oblice, „Despre firmă” rescrisă, footer și Contact noi
 
 - **Scop / clasificare:** NORMAL — UI și conținut, cerute de utilizator.

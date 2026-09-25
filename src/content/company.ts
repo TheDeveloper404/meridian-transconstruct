@@ -9,6 +9,8 @@ export const company = {
   legalName: "MERIDIAN TRANSCONSTRUCT S.R.L.",
   displayName: "Meridian Transconstruct",
   foundedYear: 2019,
+  /** Data înființării (PROJECT_BRIEF); baza pentru „ani de experiență”. */
+  foundedDate: "2019-07-26",
   cui: "41449237",
   tradeRegister: "J2019001203204",
   locality: "Petroșani",

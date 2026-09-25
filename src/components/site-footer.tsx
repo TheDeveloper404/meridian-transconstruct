@@ -9,7 +9,8 @@ import { footerTagline } from "@/content/home";
 import { anpcBadges, legalLinks } from "@/content/legal";
 import { Brand } from "./brand";
 
-// Footer (S12b): doar datele de contact, pe un rând, cu iconițe; regiunea apare o singură dată.
+// Footer: denumirea și fraza de prezentare una sub alta; doar datele de contact pe un rând, cu
+// iconițe (cerința utilizatorului, S14); regiunea apare o singură dată.
 // Fundal închis; tranziția oblică de deasupra o randează fiecare pagină (depinde de secțiunea
 // anterioară), vezi SectionEdge.
 
@@ -33,9 +34,9 @@ export function SiteFooter() {
   return (
     <footer className="dark bg-ink-deep pt-10 pb-8 md:pt-12">
       <div className="wrap">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div>
           <Brand />
-          <p className="max-w-105 text-sm text-inverse md:text-right">{footerTagline}</p>
+          <p className="mt-4 max-w-105 text-sm text-inverse">{footerTagline}</p>
         </div>
 
         <h2 className="sr-only">Contact</h2>
