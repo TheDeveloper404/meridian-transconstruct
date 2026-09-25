@@ -7,7 +7,7 @@ Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consem
 ## 2026-09-25 — S08 — Eliminarea testelor E2E
 
 - **Scop / clasificare:** SMALL — la cererea utilizatorului, site-ul nu are teste E2E.
-- **Activități:** șterse `e2e/` și `playwright.config.ts`; eliminate dependența `@playwright/test` și scriptul `npm run e2e`; curățate `.gitignore`, `eslint.config.mjs` și comentariul din `vitest.config.mts`. Actualizate README, CLAUDE.md (regulă explicită: fără E2E), ARCHITECTURE; B-017 mutat la închise ca anulat. `docs/qa/check-preview.cjs` (verificarea machetei HTML, adăugată anterior de utilizator) a rămas neatins.
+- **Activități:** șterse `e2e/` și `playwright.config.ts`; eliminate dependența `@playwright/test` și scriptul `npm run e2e`; curățate `.gitignore`, `eslint.config.mjs` și comentariul din `vitest.config.mts`. Actualizate README, CLAUDE.md (regulă explicită: fără E2E), ARCHITECTURE; B-017 mutat la închise ca anulat. Eliminat și `docs/qa/check-preview.cjs` (verificarea Playwright a machetei HTML); capturile de referință din `docs/previews/` rămân.
 - **Verificări:** type-check, lint, Vitest 35/35, `npm audit --audit-level=high` (0 vulnerabilități) și build — toate PASS.
 - **Notă:** intrarea S06 descrie testele E2E rulate atunci; rămâne ca istoric.
 

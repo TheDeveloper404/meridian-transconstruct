@@ -75,7 +75,7 @@ Fișierele din `docs/` pot fi deschise direct în browser sau servite local:
 python -m http.server 4173 --bind 127.0.0.1 --directory docs
 ```
 
-Deschide `http://127.0.0.1:4173/home-preview.html`. Verificarea machetei: `node docs/qa/check-preview.cjs` (necesită Playwright și Chromium). Proveniența imaginii hero: [docs/assets/README.md](docs/assets/README.md).
+Deschide `http://127.0.0.1:4173/home-preview.html`. Proveniența imaginii hero: [docs/assets/README.md](docs/assets/README.md).
 
 ## Limitele proiectului
 
