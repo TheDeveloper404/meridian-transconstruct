@@ -83,7 +83,7 @@ export function ContactForm() {
     [hint, errors[field] ? `${field}-error` : undefined].filter(Boolean).join(" ") || undefined;
 
   return (
-    <div className="w-full max-w-140 bg-surface p-6 md:p-8">
+    <div className="w-full rounded-sm bg-surface p-6 md:p-10">
       <h2 className="mb-4 text-[28px]">{contactForm.title}</h2>
       <p id="form-privacy" className="note mb-6">
         {contactForm.privacy}

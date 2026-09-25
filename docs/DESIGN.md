@@ -34,7 +34,12 @@ Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1200 px. Butoane minimum 
 - Denumire (S12): „MERIDIAN” are exact lățimea lui „TRANSCONSTRUCT” (34/15 px desktop, 28/13 px mobil), literele distribuite pe lățime.
 - Meniu (S12): 19 px; la hover fundal portocaliu discret, text portocaliu și subliniere care crește din centru.
 - Acasă: secțiunea finală este un CTA scurt către Contact, fără repetarea telefoanelor și formularului. Pagina Contact are ambele telefoane, e-mailul și formularul (în machetă dezactivat, în aplicație funcțional).
-- Footer: date de firmă verificate și linkurile legale. Adresa completă rămâne pentru pagina de identificare legală, după validare.
+- Footer (S13): fundal închis; denumirea și o frază scurtă, apoi datele de contact pe un rând, cu iconițe Lucide (e-mail, telefoane, zonă, date firmă — regiunea o singură dată); pe ultimul rând copyright, Politica de confidențialitate, Termeni și condiții și butoanele ANPC (SAL, SOL). Adresa completă rămâne pentru pagina de identificare legală, după validare.
+- Contact (S13): formularul e elementul principal; datele de contact stau într-un panou închis alături (lipit la scroll pe desktop), cu iconițe și telefoane mari. Pe telefon formularul vine primul.
+
+## Tranziții între secțiuni (S13)
+
+Fără linii orizontale între secțiuni sau între elementele unei liste (cerința utilizatorului). Trecerea dintre secțiuni este o margine oblică în culoarea secțiunii următoare, cu o fâșie portocalie subțire pe diagonală (`SectionEdge`); panta alternează de la o tranziție la alta. Serviciile sunt separate prin spațiu și numere mari conturate în portocaliu. Footer-ul este albastru foarte închis (`ink-deep`), ca fiecare pagină să se încheie cu aceeași tranziție.
 
 ## Responsive și stări
 

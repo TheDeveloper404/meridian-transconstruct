@@ -27,13 +27,14 @@ export const hero = {
 };
 
 export const about = {
-  kicker: "03 / Firma",
-  titleLines: ["Construim cu gândul", "la ce rămâne."],
-  locationLines: ["Meridian Transconstruct", "Valea Jiului · din 2019"],
-  lead: "O construcție înseamnă o investiție importantă. Relația cu firma care o execută trebuie să înceapă cu încredere și lucruri spuse clar.",
+  kicker: "03 / Despre firmă",
+  titleLines: ["Construim de la structură", "până la ultimul finisaj."],
+  // Rescris în S12b la cererea utilizatorului; doar fapte din PROJECT_BRIEF (fără cifre sau
+  // promisiuni noi). „Viziunea noastră” și principiile de mai jos sunt păstrate neschimbate.
+  lead: "Meridian Transconstruct este o firmă de construcții activă din 2019, care execută lucrări pentru firme, instituții publice și persoane fizice.",
   paragraphs: [
-    "Meridian Transconstruct este o firmă de construcții din Valea Jiului, activă din 2019. Executăm construcții civile, clădiri rezidențiale și nerezidențiale, hale industriale, renovări și case pentru firme, instituții publice și persoane fizice.",
-    "Lucrăm în toată Valea Jiului, iar pentru proiectele potrivite și în restul județului Hunedoara.",
+    "Preluăm proiecte noi și șantiere deja începute. Când o lucrare e în curs, pornim de la ce s-a executat până atunci și stabilim clar ce rămâne de făcut, înainte de ofertă.",
+    "Executăm în cărămidă, BCA, beton, lemn sau pe structură metalică, după soluția din proiect. Etapele, nivelul de predare și termenele se stabilesc prin contract, iar contractul rămâne reperul întregii colaborări.",
   ],
   vision: {
     title: "Viziunea noastră",
@@ -63,4 +64,4 @@ export const contactTeaser = {
 };
 
 export const footerTagline =
-  "Firmă de construcții din Valea Jiului. Execuție pentru clădiri noi și lucrări care dau o nouă viață celor existente.";
+  "Firmă de construcții. Execuție pentru clădiri noi și lucrări care dau o nouă viață celor existente.";

@@ -8,7 +8,7 @@ type PageHeadingProps = {
 // Antet pentru paginile interioare, cu întoarcere spre Acasă (breadcrumb simplu).
 export function PageHeading({ title, lead }: PageHeadingProps) {
   return (
-    <section className="dark pt-6 pb-12 md:pt-8 md:pb-16">
+    <section className="dark pt-6 pb-8 md:pt-8 md:pb-10">
       <div className="wrap">
         <nav aria-label="Breadcrumb">
           <Link href="/" className="text-link mb-6 text-inverse">

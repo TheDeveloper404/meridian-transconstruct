@@ -33,9 +33,9 @@ Ruta necunoscută are pagină 404 cu link spre Acasă și Contact. Fără pagini
 3. ~~**Context factual**~~ — fâșia „Din 2019 / Valea Jiului / Lucrări cu contract” a fost eliminată la cererea utilizatorului (S11).
 4. **Servicii:** titlul „De la hale industriale la case la cheie.”; cinci categorii în ordinea cerută de utilizator (S12) — Construcții civile, Clădiri rezidențiale și nerezidențiale, Renovări și reabilitări, Construcții de case, Hale industriale — fiecare cu explicație, puncte cheie și link spre Contact (paginile dedicate — B-003).
 5. **Proiecte realizate (galerie, S12):** așezare „bento” (o imagine mare + cinci mai mici, repetat la fiecare 6), intrare la scroll, zoom și legendă la hover, vizualizare pe tot ecranul cu săgeți/tastatură/Esc. Până la fotografiile reale: imagini ilustrative generate, marcate „Ilustrativ”, fără titluri sau localități; fișierele lipsă apar ca blocuri „Fotografie în curând”. Fără nicio imagine, stare goală cu link spre Contact.
-6. **Despre:** prezentare, viziune și trei principii de lucru, direct pe Acasă. Nu afirmăm existența unor certificări sau a unei echipe interne neverificate.
+6. **Despre firmă (rescrisă în S13):** titlul „Construim de la structură până la ultimul finisaj.”, o prezentare din fapte confirmate (din 2019; firme, instituții, persoane fizice; proiecte noi și șantiere începute; sisteme constructive; contract), apoi „Viziunea noastră” și cele trei principii, păstrate neschimbate. Nu afirmăm existența unor certificări sau a unei echipe interne neverificate.
 7. **CTA către Contact:** invitație scurtă la discutarea lucrării și buton către pagina Contact. Blocul mare numerotat 04, cu date de contact, a fost eliminat de pe Acasă.
-8. **Footer:** nume legal, CUI, Registrul Comerțului, contact; paginile date firmă/confidențialitate/cookies sunt marcate ca în pregătire (A-004, B-012).
+8. **Footer (S13):** doar contact, pe un rând cu iconițe (e-mail, telefoane, regiune, denumire legală + CUI + nr. registru), plus Politica de confidențialitate, Termeni și condiții (pagini existente, text în pregătire, `noindex`) și butoanele ANPC SAL/SOL (B-021).
 
 ## Structura unei pagini de serviciu (propunere, B-003)
 

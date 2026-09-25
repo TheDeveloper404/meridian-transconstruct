@@ -3,22 +3,17 @@ import { Lines } from "./section-head";
 
 export function AboutSection() {
   return (
-    <section id="despre" aria-labelledby="about-title" className="py-12 md:py-16">
+    <section id="despre" aria-labelledby="about-title" className="py-12 md:py-20">
       <div className="wrap">
         <div className="grid gap-8 md:grid-cols-2 md:gap-16">
-          <div>
+          <div className="md:sticky md:top-32 md:self-start">
             <p className="kicker">{about.kicker}</p>
-            <h2 id="about-title" className="mb-4">
+            <h2 id="about-title">
               <Lines lines={about.titleLines} />
             </h2>
-            <p className="mt-8 font-medium text-muted">
-              {about.locationLines[0]}
-              <br />
-              {about.locationLines[1]}
-            </p>
           </div>
           <div>
-            <p className="mb-4 text-[28px] leading-[1.3] text-ink">{about.lead}</p>
+            <p className="mb-6 text-[26px] leading-[1.3] text-ink md:text-[28px]">{about.lead}</p>
             {about.paragraphs.map((paragraph) => (
               <p key={paragraph.slice(0, 32)} className="mb-4 text-muted">
                 {paragraph}
@@ -31,7 +26,7 @@ export function AboutSection() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-8 border-t border-line pt-8 md:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-3">
           {about.principles.map((principle, index) => (
             <article key={principle.title}>
               <span className="mb-4 block text-sm text-muted">{String(index + 1).padStart(2, "0")}</span>

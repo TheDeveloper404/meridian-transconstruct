@@ -10,6 +10,8 @@ Site de prezentare în română pentru o firmă de construcții din Petroșani: 
 
 ## Unde stă fiecare lucru
 
+- **Fără linii orizontale** între secțiuni sau elemente (cerința utilizatorului). Tranzițiile se fac cu `SectionEdge` (`src/components/section-edge.tsx`); fiecare pagină își randează ultima tranziție spre footer (`to="deep"`), pentru că depinde de culoarea secțiunii anterioare.
+
 - `src/content/` — **toate textele și datele firmei**. Componentele nu conțin copy comercial hardcodat.
 - `src/components/` — prezentare. Client components (`"use client"`) doar unde e nevoie de interacțiune: `navigation.tsx`, `contact-form.tsx`.
 - `src/lib/contact/validation.ts` — validare pură, importată și de server, și de formular. Nimic din `src/server/` nu se importă în componente client (ar trage Nodemailer în bundle).

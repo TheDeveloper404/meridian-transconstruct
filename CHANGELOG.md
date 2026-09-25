@@ -4,6 +4,19 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S13 — Tranziții oblice, „Despre firmă” rescrisă, footer și Contact noi
+
+- **Scop / clasificare:** NORMAL — UI și conținut, cerute de utilizator.
+- **Implementare:**
+  - Tranziții: `SectionEdge` — margine oblică în culoarea secțiunii următoare + fâșie portocalie, pantă alternantă; eliminate liniile orizontale (între servicii, deasupra principiilor, în footer). Numerele serviciilor devin mari, conturate în portocaliu.
+  - „Despre firmă”: titlu și text noi, doar din fapte confirmate; eliminat rândul cu localitatea; „Viziunea noastră” și cele trei principii păstrate.
+  - Footer închis: doar contact, pe un rând, cu iconițe `lucide-react` (dependență nouă, aceeași ca în celelalte proiecte ale utilizatorului); regiunea o singură dată; Politica de confidențialitate, Termeni și condiții, butoane ANPC SAL/SOL (imagine oficială dacă există fișierul, altfel text). Corectat „S.R.L..”.
+  - Contact: formularul principal; panou închis cu telefoane mari, e-mail și zonă, lipit la scroll pe desktop; pe telefon formularul primul.
+  - Pagini `/confidentialitate` și `/termeni-si-conditii` cu mesaj „în pregătire”, `noindex`, fără text juridic nevalidat.
+- **Verificări:** type-check, lint, Vitest 35/35, build — PASS. Capturi complete desktop și mobil (Acasă, Contact, Confidențialitate), fără overflow orizontal. Galeria verificată cu scroll real de mouse (toate tile-urile apar); o primă verificare cu `scrollTo` repetat + `scroll-behavior: smooth` dădea fals „ascuns” — problemă de test, nu de site.
+- **De știut:** utilizatorul a cerut „ANCPI”; iconițele descrise sunt ale ANPC (SAL/SOL) — implementate pe acestea. Obligativitatea și starea platformei SOL sunt de verificat (B-021).
+- **Documentare:** DESIGN, SITE_STRUCTURE, BACKLOG (B-012, B-021, A-008), CLAUDE.md.
+
 ## 2026-09-25 — S12 — Denumire, meniu, servicii reordonate + hale, galerie „bento”
 
 - **Scop / clasificare:** NORMAL — mai multe modificări de UI și conținut cerute de utilizator (8 puncte).

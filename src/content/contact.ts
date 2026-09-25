@@ -3,9 +3,9 @@
 export const contactPage = {
   title: "Contact și cerere ofertă",
   lead: "Ai un proiect în plan? Ia legătura cu noi pentru a discuta lucrările necesare.",
-  kicker: "Contact direct",
-  heading: "Să discutăm lucrarea.",
-  hint: "Spune-ne tipul lucrării, localitatea și stadiul actual.",
+  panelKicker: "Contact direct",
+  panelHeading: "Preferi să vorbim la telefon?",
+  panelText: "Sună-ne sau scrie-ne direct. Pentru ofertă, spune-ne tipul lucrării, localitatea și stadiul actual.",
 };
 
 export const contactForm = {

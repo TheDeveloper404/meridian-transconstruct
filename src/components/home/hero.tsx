@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { hero } from "@/content/home";
+import { SectionEdge } from "../section-edge";
 
 export function Hero() {
   return (
@@ -21,7 +22,7 @@ export function Hero() {
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgb(8_22_47/0.97),rgb(8_22_47/0.84)_65%,rgb(8_22_47/0.42))] md:bg-[linear-gradient(90deg,rgb(8_22_47/0.94)_0%,rgb(8_22_47/0.85)_43%,rgb(8_22_47/0.2)_78%),linear-gradient(0deg,rgb(8_22_47/0.5),transparent_50%)]"
       />
-      <div className="wrap pt-12 pb-6 md:pt-16 md:pb-8">
+      <div className="wrap pt-12 pb-14 md:pt-16 md:pb-24">
         <p className="eyebrow">{hero.eyebrow}</p>
         <h1 id="hero-title" className="mb-6 max-w-162.5">
           {hero.titleLead}
@@ -50,6 +51,7 @@ export function Hero() {
           </p>
         )}
       </div>
+      <SectionEdge to="paper" className="absolute inset-x-0 bottom-0" />
     </section>
   );
 }
