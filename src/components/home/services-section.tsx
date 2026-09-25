@@ -18,7 +18,7 @@ export function ServicesSection() {
             <article
               key={service.id}
               id={service.id}
-              className="grid scroll-mt-6 grid-cols-[24px_1fr] gap-3 border-b border-line py-8 md:grid-cols-[48px_0.85fr_1.3fr] md:gap-6 md:py-10"
+              className="grid grid-cols-[24px_1fr] gap-3 border-b border-line py-8 md:grid-cols-[48px_0.85fr_1.3fr] md:gap-6 md:py-10"
             >
               <span className="text-sm text-muted">{String(index + 1).padStart(2, "0")}</span>
               <div>

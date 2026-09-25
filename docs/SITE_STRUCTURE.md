@@ -28,9 +28,9 @@ Ruta necunoscută are pagină 404 cu link spre Acasă și Contact. Fără pagini
 
 ## Acasă — ordinea secțiunilor (implementată)
 
-1. **Header:** denumire/logo, meniu și CTA; fără număr de telefon, conform cererii utilizatorului.
+1. **Header:** denumire/logo, meniu și CTA; fără număr de telefon, conform cererii utilizatorului. Lipit sus; la scroll devine semi-transparent (S11).
 2. **Hero:** eticheta „Valea Jiului · Județul Hunedoara”, H1 „O construcție bună începe cu o înțelegere clară.” (ales de utilizator, S09); text despre clădiri rezidențiale/nerezidențiale și zona de lucru (regiunea); CTA principal „Cere o ofertă”, link secundar „Vezi proiectele”. Imagine pe întreg fundalul, cu text suprapus și strat albastru pentru contrast. Macheta folosește un concept generat, marcat explicit; fotografia reală rămâne de primit.
-3. **Context factual:** „Din 2019”, „Valea Jiului”, „Lucrări cu contract”. Fără număr de clienți, procente sau promisiuni inventate.
+3. ~~**Context factual**~~ — fâșia „Din 2019 / Valea Jiului / Lucrări cu contract” a fost eliminată la cererea utilizatorului (S11).
 4. **Servicii:** patru categorii cu explicație, puncte cheie și link spre Contact (paginile dedicate — B-003).
 5. **Proiecte selectate:** maximum trei lucrări reale, fotografii dominante, tip lucrare și localitate; fără proiecte publicabile, stare goală cu link spre Contact (A-002). Numărul total nu se afirmă public înaintea inventarului verificat.
 6. **Despre:** prezentare, viziune și trei principii de lucru, direct pe Acasă. Nu afirmăm existența unor certificări sau a unei echipe interne neverificate.

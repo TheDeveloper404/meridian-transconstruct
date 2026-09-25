@@ -26,12 +26,6 @@ export const hero = {
   },
 };
 
-export const facts = [
-  { title: "Din 2019", text: "Meridian Transconstruct" },
-  { title: "Valea Jiului", text: "Și în județul Hunedoara, în funcție de proiect" },
-  { title: "Lucrări cu contract", text: "Scop și termene stabilite" },
-];
-
 export const about = {
   kicker: "03 / Firma",
   titleLines: ["Construim cu gândul", "la ce rămâne."],

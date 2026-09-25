@@ -27,7 +27,7 @@ Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1200 px. Butoane minimum 
 
 ## Componente
 
-- Header: denumire provizorie în text, meniu cu cinci intrări (Acasă, Servicii, Proiecte, Despre ca ancore pe Acasă, Contact) și CTA; fără număr de telefon, conform cererii utilizatorului. Ambele numere rămân în Contact. Butonul telefonic de mobil este în partea de jos, nu în header.
+- Header: lipit sus; la scroll fundalul devine albastru închis semi-transparent (~75%) cu estompare, ca meniul alb să rămână lizibil peste secțiunile deschise (S11). Denumire provizorie în text, meniu cu cinci intrări (Acasă, Servicii, Proiecte, Despre ca ancore pe Acasă, Contact) și CTA; fără număr de telefon, conform cererii utilizatorului. Ambele numere rămân în Contact. Butonul telefonic de mobil este în partea de jos, nu în header.
 - Hero: imagine pe întreg fundalul, cu strat albastru închis pentru lizibilitate și text suprapus; un singur buton principal și un link secundar. Vizualul generat este provizoriu și marcat explicit; vezi [proveniența](assets/README.md).
 - Servicii: rânduri numerotate; fiecare serviciu are un link spre Contact (pagini dedicate de servicii — B-003).
 - Proiecte: imagine 4:3, categorie, titlu și localitate/an dacă sunt cunoscute. Fără badge-uri „premium” sau indicatori inventați.

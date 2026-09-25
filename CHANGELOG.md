@@ -4,6 +4,13 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S11 — Fără fâșia de sub hero; header lipit, semi-transparent la scroll
+
+- **Scop / clasificare:** SMALL — UI, la cererea utilizatorului.
+- **Implementare:** eliminată fâșia „Din 2019 / Valea Jiului / Lucrări cu contract” de sub hero (componenta și datele `facts`). Header lipit sus (`HeaderShell`, componentă client): după 8 px de scroll fundalul trece la albastru închis ~75% cu `backdrop-blur`; nu complet transparent, ca textul alb al meniului să rămână lizibil peste secțiunile deschise. `scroll-padding-top` mărit la 112 px ca ancorele să nu ajungă sub header.
+- **Verificări:** type-check, lint, Vitest 35/35, build — PASS. Capturi Chromium headless: starea inițială (1440 px) și starea după scroll (1440 și 500 px) — header lizibil, conținutul trece estompat pe sub el.
+- **Documentare:** SITE_STRUCTURE (ordinea secțiunilor), DESIGN (header).
+
 ## 2026-09-25 — S10 — Indexare, metadate pentru tab-uri și date structurate
 
 - **Scop / clasificare:** SMALL — metadate și fișiere de indexare; fără schimbări de logică a formularului. Cerut de utilizator: sitemap, robots, ce mai trebuie pentru indexare și metadatele pentru tab-urile din browser.

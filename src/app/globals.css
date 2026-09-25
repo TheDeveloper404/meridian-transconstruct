@@ -22,7 +22,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 24px;
+    /* Înălțimea header-ului lipit (~100 px) + spațiu, ca ancorele să nu ajungă sub el. */
+    scroll-padding-top: 112px;
   }
 
   body {
