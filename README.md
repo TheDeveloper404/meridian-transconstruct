@@ -45,7 +45,9 @@ Deschide `http://127.0.0.1:4173/home-preview.html`. Serverul este exclusiv local
 
 După aprobarea arhitecturii și scaffold, acest document va include versiunile runtime, instalarea, comenzile reale de dezvoltare, testare și build și configurația necesară. Instrucțiunile de deploy și actualizare a portofoliului se adaugă când există proceduri verificabile.
 
-Codul urmează fluxul `dev` → PR → `main`; `main` reprezintă producția. Utilizatorul face commit și push. Nu se presupune că branch-urile sau infrastructura sunt deja configurate.
+Se lucrează direct pe `main`, fără branch `dev`; `main` reprezintă producția. Commit-urile și push-ul pot fi făcute și de agent, cu acordul utilizatorului. Infrastructura de găzduire nu se presupune configurată.
+
+CI (`.github/workflows/ci.yml`) rulează la fiecare push și PR pe `main`: secret scan cu gitleaks pe tot istoricul, apoi, după ce există `package.json`: `npm ci`, `npm audit --audit-level=high`, type-check, lint, teste și build. Dependabot (`.github/dependabot.yml`) propune lunar actualizări de dependențe și de GitHub Actions, cu cooldown de 30 de zile; merge-ul rămâne manual.
 
 ## Întreținerea documentației
 

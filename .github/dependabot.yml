@@ -1,0 +1,24 @@
+# Dependabot: PR-uri automate pentru dependențe vulnerabile/învechite.
+# Security updates se deschid imediat ce apare un advisory (nu respectă cooldown-ul).
+# Version updates — lunar, grupate + cooldown 30 zile (o versiune trebuie să fie publicată
+# de minim 30 de zile înainte să fie propusă). Merge-ul rămâne manual, după CI verde.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
+    open-pull-requests-limit: 5
+    cooldown:
+      default-days: 30
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
+    cooldown:
+      default-days: 30

@@ -1,6 +1,30 @@
-/AGENTS.md
-/ARCHITECTURE.md
-/BACKLOG.md
-/CHANGELOG.md
-/docs
-/PROJECT_BRIEF.md
+# Dependențe
+node_modules/
+
+# Next.js / build
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Teste
+coverage/
+playwright-report/
+test-results/
+
+# Mediu — niciodată în git; șablonul este .env.example
+.env
+.env.*
+!.env.example
+
+# Sisteme / editoare
+.DS_Store
+Thumbs.db
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Unelte locale de agent
+.claude/settings.local.json
