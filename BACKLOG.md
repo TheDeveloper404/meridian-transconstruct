@@ -1,6 +1,32 @@
 # Backlog
 
-Actualizat: 25 septembrie 2026 (S06). Acest document urmărește lucrul rămas și ideile suplimentare. Înregistrarea unei idei nu reprezintă aprobarea implementării ei. Prioritățile de mai jos sunt de planificare, nu severități de securitate.
+Actualizat: 25 septembrie 2026 (S16, închiderea zilei). Acest document urmărește lucrul rămas și ideile suplimentare. Înregistrarea unei idei nu reprezintă aprobarea implementării ei. Prioritățile de mai jos sunt de planificare, nu severități de securitate.
+
+## De unde reluăm
+
+Starea la închiderea zilei: site-ul complet pe `main` (ultimul commit din S15), CI verde. Ordinea propusă pentru reluare:
+
+**1. Pornire locală (utilizator)**
+- `git pull origin main`, apoi `npm ci` (s-au adăugat dependențe) și `npm run dev` → http://localhost:3000. Node 22+; pentru instalări noi de pachete, npm 11 (vezi README).
+- Opțional, pentru formular: `.env.local` după `.env.example` (fără SMTP, formularul răspunde „indisponibil” — comportament normal).
+
+**2. Revizie și decizii (utilizator)**
+- Feedback vizual pe varianta curentă: zidul de cărămidă dintre secțiuni, galeria „bento”, „Despre firmă” + „Ce ne recomandă”, footer, pagina Contact.
+- Ratificarea deciziilor provizorii A-001…A-008 (tabelul de mai jos) și a textului „Hale industriale” (A-007).
+
+**3. Materiale de primit**
+- Imaginile generate după prompturi: hero „șantier cu blocuri” + 5 imagini de galerie (B-020, docs/assets/README.md).
+- Pictogramele ANPC ca fișiere locale (B-021).
+- Logo (B-004, B-018), apoi fotografiile și inventarul proiectelor reale (B-005).
+- Telefonul principal (B-008), e-mailul pe domeniul firmei (B-009).
+
+**4. Următoarele implementări (după materiale / decizii)**
+- Pagini dedicate pentru cele 5 servicii și `/proiecte/[slug]` — cel mai mare câștig SEO rămas (B-003).
+- Textele legale finale (B-012) și decizia ANPC SAL/SOL (B-021).
+- Iconițe din logo, imagine Open Graph (B-018), date structurate cu adresa verificată (B-019).
+
+**5. Deploy și lansare**
+- Server OVHcloud (B-002), domeniu/DNS/HTTPS (B-010), furnizor SMTP + test real de primire (B-007), CSP/HSTS (B-015), limitare formular (B-016), indexare + Search Console + Google Business Profile (B-011), verificările de lansare (B-013), ghidul de întreținere (B-014).
 
 ## Decizii și pași în scopul proiectului
 

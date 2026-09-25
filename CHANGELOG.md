@@ -4,6 +4,14 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S16 — Închiderea zilei: documentație și punct de reluare
+
+- **Scop / clasificare:** SMALL — doar documentație, la cererea utilizatorului („închidem aici”).
+- **Activități:** secțiunea „De unde reluăm” în BACKLOG (pornire locală, revizie și decizii, materiale de primit, implementări următoare, deploy); README (stadiu), PROJECT_BRIEF (următorul pas), ARCHITECTURE (dependența `lucide-react`), SITE_STRUCTURE (cinci servicii, rândul „Hale industriale” în propunerea de pagini).
+- **Rezumatul zilei (S01–S15):** documentația Codex adusă în repo; CI + Dependabot; aplicația Next.js (Acasă, Contact, formular SMTP securizat și testat); fără E2E (decizia utilizatorului); SEO tehnic, indexare controlată, favicon/iconițe; iterații de UI cerute de utilizator (hero fără localități, header lipit, servicii reordonate + hale, galerie „bento”, „Despre firmă” rescrisă, footer și Contact noi, tranziții „zid de cărămidă”, ANPC).
+- **Verificări:** fără cod modificat; linkuri Markdown locale verificate. Ultima verificare de cod (S15): type-check, lint, Vitest 38/38, build — PASS; CI verde.
+- **Următorul pas:** utilizatorul aduce modificările local (`git pull origin main` + `npm ci`) și continuă de la „De unde reluăm” din BACKLOG.
+
 ## 2026-09-25 — S15 — Pictograme ANPC și favicon.ico
 
 - **Scop / clasificare:** SMALL.

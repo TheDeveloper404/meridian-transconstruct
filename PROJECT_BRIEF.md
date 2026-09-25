@@ -92,7 +92,7 @@ Utilizatorul a cerut omiterea discuției despre echipă proprie, subcontractare,
 
 ## Următorul pas
 
-Ratificarea deciziilor provizorii A-001…A-006 din [BACKLOG](BACKLOG.md); primirea logo-ului, a fotografiilor și a inventarului de proiecte; apoi alegerea furnizorului SMTP și a serviciului OVHcloud pentru deploy.
+Vezi „De unde reluăm” în [BACKLOG](BACKLOG.md): revizia vizuală locală, ratificarea deciziilor A-001…A-008, imaginile generate și materialele reale (logo, fotografii, proiecte), apoi paginile dedicate de servicii/proiecte și deploy-ul pe OVHcloud.
 
 ## Cerințe tehnice confirmate
 

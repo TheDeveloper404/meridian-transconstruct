@@ -11,10 +11,11 @@ Meniu principal: Acasă, Servicii, Proiecte, Despre, Contact; CTA „Cere o ofer
 | URL propus | Rol și conținut | Titlu SEO de lucru |
 |---|---|---|
 | `/` | Oferta pe scurt, servicii, lucrări selectate, firma și contactul. | Firmă de construcții în Petroșani — Meridian Transconstruct |
-| `/servicii` | Privire de ansamblu, acces la cele patru pagini dedicate. | Servicii de construcții în Hunedoara — Meridian Transconstruct |
+| `/servicii` | Privire de ansamblu, acces la cele cinci pagini dedicate. | Servicii de construcții în Hunedoara — Meridian Transconstruct |
 | `/servicii/constructii-case` | La roșu, la gri, la cheie; sisteme constructive declarate; lucrări relevante. | Construcții case în Petroșani și Valea Jiului — Meridian Transconstruct |
 | `/servicii/cladiri-rezidentiale-nerezidentiale` | Lucrări pentru firme, instituții și beneficiari privați; anexe, garaje, spații utilitare. | Construcții rezidențiale și nerezidențiale în Hunedoara |
 | `/servicii/constructii-civile` | Categoria „Construcții civile”, cerută în locul serviciului „Structură și zidărie”; conținut delimitat față de celelalte categorii. | Construcții civile în Petroșani — Meridian Transconstruct |
+| `/servicii/hale-industriale` | Hale de producție și depozitare (serviciu adăugat în S12; text de confirmat, A-007). | Hale industriale în Valea Jiului și Hunedoara — Meridian Transconstruct |
 | `/servicii/renovari-reabilitari` | Renovări, reabilitare, anvelopare și finisaje confirmate. | Renovări și reabilitări în Hunedoara — Meridian Transconstruct |
 | `/proiecte` | Grilă cu proiectele documentate și aprobate, pregătită pentru aproximativ 20 de lucrări. | Proiecte de construcții — Meridian Transconstruct |
 | `/proiecte/[slug]` | Fișă și galerie pentru o lucrare reală. | [Lucrare] în [Localitate] — Meridian Transconstruct |

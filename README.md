@@ -4,9 +4,9 @@ Site de prezentare în limba română pentru MERIDIAN TRANSCONSTRUCT S.R.L., Pet
 
 ## Stadiu
 
-Aplicația Next.js este implementată local după macheta finală: **Acasă** (hero, servicii, portofoliu, despre, CTA) și **Contact** (telefoane, e-mail, formular funcțional prin SMTP), plus 404, `sitemap.xml`, `robots.txt`, manifest, iconițe provizorii, metadate pentru tab/Google/distribuire și date structurate. Nu este publicată: hostingul OVHcloud, domeniul și furnizorul SMTP se configurează la deploy.
+Aplicația Next.js este implementată: **Acasă** (hero, 5 servicii, galerie de proiecte, despre firmă, CTA) și **Contact** (formular funcțional prin SMTP + panou cu datele de contact), plus 404, pagini legale în pregătire, `sitemap.xml`, `robots.txt`, manifest, favicon și iconițe provizorii, metadate pentru tab/Google/distribuire și date structurate. Nu este publicată: hostingul OVHcloud, domeniul și furnizorul SMTP se configurează la deploy.
 
-Înainte de lansare lipsesc încă: logo-ul, fotografiile reale (hero și portofoliu), paginile legale și furnizorul SMTP. Lista completă este în [BACKLOG.md](BACKLOG.md).
+Înainte de lansare lipsesc încă: logo-ul, imaginile (hero și galerie — deocamdată ilustrative/de rezervă), fotografiile reale ale proiectelor, textele legale și furnizorul SMTP. **De unde reluăm:** secțiunea omonimă din [BACKLOG.md](BACKLOG.md).
 
 ## Documentație
 
