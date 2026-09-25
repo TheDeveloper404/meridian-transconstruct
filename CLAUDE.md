@@ -42,21 +42,18 @@ Rulează și raportează exact ce a trecut:
 npm run typecheck && npm run lint && npm test && npm run build
 ```
 
-La schimbări de UI, navigare sau formular rulează și `npm run e2e`. Adaugă sau actualizează testele pentru orice regulă nouă a formularului (unit în `src/**/*.test.ts`, E2E în `e2e/`). Se lucrează direct pe `main`; commit/push sunt autorizate după ce verificările trec (vezi AGENTS.md). CI-ul (`.github/workflows/ci.yml`) nu rulează E2E.
+**Fără teste E2E** — decizia utilizatorului pentru acest site; nu adăuga Playwright/E2E. Orice regulă nouă a formularului vine cu teste Vitest în `src/**/*.test.ts`. Schimbările de UI se verifică manual în browser doar când utilizatorul cere. Se lucrează direct pe `main`; commit/push sunt autorizate după ce verificările trec (vezi AGENTS.md).
 
 ## Documentație librării
 
-Verifică API-ul în documentația curentă (context7) înainte de a scrie sau depana cod cu Next.js, Tailwind 4, Nodemailer sau Playwright. Versiunile se schimbă des, iar mai multe API-uri s-au schimbat recent (vezi capcanele).
+Verifică API-ul în documentația curentă (context7) înainte de a scrie sau depana cod cu Next.js, Tailwind 4, Nodemailer sau Vitest. Versiunile se schimbă des, iar mai multe API-uri s-au schimbat recent (vezi capcanele).
 
 ## Capcane tehnice cunoscute
 
-- **npm 10 — `Cannot read properties of null (reading 'edgesOut')`** la instalarea vitest / `@playwright/test` (bug pe peer dependencies). Folosește `npx npm@11 install ...`; `npm ci` nu e afectat.
+- **npm 10 — `Cannot read properties of null (reading 'edgesOut')`** la instalarea vitest (bug pe peer dependencies). Folosește `npx npm@11 install ...`; `npm ci` nu e afectat.
 - **TypeScript 7 nu e suportat de typescript-eslint** — rămânem pe TS 6 până se aliniază ecosistemul.
 - **Nodemailer 10 are tipuri proprii** — nu instala `@types/nodemailer`.
 - **`next/image`: `priority` e depreciat în Next 16** — folosește `preload` pentru imaginea LCP.
 - **`next start` nu funcționează cu `output: "standalone"`** — modul de rulare se alege la deploy (B-002); nu-l reactiva fără să schimbi și scripturile.
 - **Navigarea Next (`pushState`) nu emite `hashchange`** — starea activă din meniu ascultă și `navigation.currententrychange` (cu rezervă după clic). Orice logică nouă bazată pe `location.hash` trebuie să țină cont de asta.
 - **ESLint `@next/next/no-html-link-for-pages`** respinge `<a href="/#...">` literal în JSX; pe Acasă folosește `#sectiune`, iar pentru ancore spre Acasă din alte pagini folosește datele din `src/content/navigation.ts`.
-- **Playwright:** `getByRole` nu vede elemente cu `display:none` (ex. butonul „Sună” pe desktop) — folosește `locator`. Next injectează un `role="alert"` pentru anunțarea rutelor — restrânge căutarea la `form`. CSS-ul de build scurtează hex-urile (`#fff`).
-- **Chromium preinstalat în altă versiune** decât cea cerută de Playwright (containere cloud): `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/cale/chrome npm run e2e`.
-- **Testul E2E „503 fără SMTP”** pică dacă `.env.local` are SMTP configurat — e intenționat.

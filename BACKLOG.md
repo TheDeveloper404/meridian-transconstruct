@@ -21,7 +21,6 @@ Actualizat: 25 septembrie 2026 (S06). Acest document urmărește lucrul rămas �
 | B-014 | Ghid de actualizare, backup și întreținere | Actualizarea conținutului este descrisă pe scurt în README; backup-ul și restore-ul rămân de redactat și verificat înainte de predare. |
 | B-015 | CSP și HSTS | Headerele de bază sunt în `next.config.ts`. CSP (cu nonce pentru scripturile Next sau politică echivalentă) și HSTS se configurează împreună cu nginx/HTTPS la deploy și se verifică pe producție. |
 | B-016 | Limitare formular la mai multe instanțe | Limitarea este în memoria unui singur proces. Dacă deploy-ul folosește mai multe instanțe sau restarturi frecvente, se mută într-un magazin partajat. Necesită `TRUST_PROXY=true` în spatele nginx. |
-| B-017 | E2E în CI | Testele Playwright rulează local (`npm run e2e`). Se pot adăuga în CI după stabilizarea conținutului, cu Chromium instalat de Playwright. |
 
 ## Idei opționale — neaprobate
 
@@ -48,6 +47,7 @@ Decizii implementate la scaffold (2026-09-25 — S06) fără aprobare explicită
 
 | ID | Element | Închidere |
 |---|---|---|
+| B-017 | E2E în CI | Anulat în S08: utilizatorul a decis că site-ul nu are teste E2E; testele Playwright au fost eliminate. |
 | B-001 | Confirmarea stack-ului | Next.js + React + TypeScript + Tailwind CSS și formular SMTP confirmate; vezi sesiunea 2026-09-25 — S02 din [CHANGELOG.md](CHANGELOG.md). |
 
 ## Cum se actualizează

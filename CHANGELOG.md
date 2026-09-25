@@ -4,6 +4,13 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S08 — Eliminarea testelor E2E
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului, site-ul nu are teste E2E.
+- **Activități:** șterse `e2e/` și `playwright.config.ts`; eliminate dependența `@playwright/test` și scriptul `npm run e2e`; curățate `.gitignore`, `eslint.config.mjs` și comentariul din `vitest.config.mts`. Actualizate README, CLAUDE.md (regulă explicită: fără E2E), ARCHITECTURE; B-017 mutat la închise ca anulat. `docs/qa/check-preview.cjs` (verificarea machetei HTML, adăugată anterior de utilizator) a rămas neatins.
+- **Verificări:** type-check, lint, Vitest 35/35, `npm audit --audit-level=high` (0 vulnerabilități) și build — toate PASS.
+- **Notă:** intrarea S06 descrie testele E2E rulate atunci; rămâne ca istoric.
+
 ## 2026-09-25 — S07 — CLAUDE.md și actualizarea documentației
 
 - **Scop / clasificare:** SMALL — documentație, fără modificări de cod.

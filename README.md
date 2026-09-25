@@ -40,11 +40,10 @@ npm run dev            # server de dezvoltare, http://localhost:3000
 | `npm run typecheck` | Verificare TypeScript (`tsc --noEmit`). |
 | `npm run lint` | ESLint (reguli Next.js + TypeScript). |
 | `npm test` | Teste unit și de integrare (Vitest): validare, limitare, serviciu și handler de contact. |
-| `npm run e2e` | Teste E2E (Playwright) pe build-ul de producție local, pe portul 3100. |
 
 > **npm 10:** instalarea unor pachete noi poate eșua cu `Cannot read properties of null (reading 'edgesOut')`, un bug npm legat de peer dependencies. Cu npm 11 funcționează: `npx npm@11 install <pachet>`. `npm ci` pe lockfile-ul existent nu este afectat.
 
-E2E într-un mediu cu Chromium preinstalat în altă versiune decât cea cerută de Playwright: `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/cale/chrome npm run e2e`. Testul „API-ul real răspunde 503” presupune că SMTP nu este configurat în `.env.local`.
+Proiectul nu are teste E2E (decizia utilizatorului); testele automate sunt cele Vitest.
 
 ### Structura codului
 
@@ -55,7 +54,6 @@ src/
   content/             textele și datele firmei — se editează aici, nu în componente
   lib/contact/         validarea cererii (comună server + formular)
   server/contact/      config din mediu, serviciu de contact, limitare, adaptor SMTP, strat HTTP
-e2e/                   teste Playwright
 public/images/         imagini servite de site
 ```
 
@@ -91,7 +89,7 @@ Deschide `http://127.0.0.1:4173/home-preview.html`. Verificarea machetei: `node 
 
 Se lucrează direct pe `main`, fără branch `dev`; `main` reprezintă producția. Commit-urile și push-ul pot fi făcute și de agent, cu acordul utilizatorului.
 
-CI (`.github/workflows/ci.yml`) rulează la fiecare push și PR pe `main`: secret scan cu gitleaks pe tot istoricul, `npm ci`, `npm audit --audit-level=high`, type-check, lint, teste Vitest și build. E2E nu rulează în CI; se rulează local cu `npm run e2e`. Dependabot (`.github/dependabot.yml`) propune lunar actualizări de dependențe și de GitHub Actions, cu cooldown de 30 de zile; merge-ul rămâne manual.
+CI (`.github/workflows/ci.yml`) rulează la fiecare push și PR pe `main`: secret scan cu gitleaks pe tot istoricul, `npm ci`, `npm audit --audit-level=high`, type-check, lint, teste Vitest și build. Dependabot (`.github/dependabot.yml`) propune lunar actualizări de dependențe și de GitHub Actions, cu cooldown de 30 de zile; merge-ul rămâne manual.
 
 Deploy-ul pe OVHcloud nu este configurat; procedura se documentează când există.
 

@@ -10,8 +10,6 @@ next-env.d.ts
 
 # Teste
 coverage/
-playwright-report/
-test-results/
 
 # Mediu — niciodată în git; șablonul este .env.example
 .env

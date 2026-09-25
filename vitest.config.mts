@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
 
 // Teste unit/integrare în Node: reguli de contact, serviciu și handler HTTP, cu transport SMTP fals.
-// E2E (Playwright) rulează separat, din e2e/.
+// Proiectul nu are teste E2E (decizie a utilizatorului).
 export default defineConfig({
   resolve: {
     alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) },

@@ -12,7 +12,5 @@ export default defineConfig([
     "next-env.d.ts",
     // Macheta HTML și scriptul ei de QA sunt documentație, nu cod de aplicație.
     "docs/**",
-    "playwright-report/**",
-    "test-results/**",
   ]),
 ]);

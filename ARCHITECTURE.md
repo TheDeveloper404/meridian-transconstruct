@@ -20,7 +20,7 @@ Site de prezentare, doar în română, cu aproximativ 20 de proiecte declarate �
 | Hosting | OVHcloud; server compatibil Node.js, HTTPS, reverse proxy | Furnizor confirmat; serviciul concret, dimensionarea și configurarea se stabilesc la deploy. |
 | Persistență | Fără DB și fără repository de solicitări | Cererile ajung în căsuța de e-mail; inboxul are propriile reguli de acces și retenție. |
 
-Versiuni la scaffold (2026-09-25): Next.js 16.3.6, React 19.3.0, Nodemailer 10.0.10, Tailwind CSS 4.3, TypeScript 6 (TypeScript 7 nu este încă suportat de typescript-eslint), ESLint 9, Vitest 4, Playwright 1.63. Package manager: npm; lockfile generat cu npm 11. Font: Inter prin `next/font`, găzduit local la build.
+Versiuni la scaffold (2026-09-25): Next.js 16.3.6, React 19.3.0, Nodemailer 10.0.10, Tailwind CSS 4.3, TypeScript 6 (TypeScript 7 nu este încă suportat de typescript-eslint), ESLint 9, Vitest 4. Package manager: npm; lockfile generat cu npm 11. Font: Inter prin `next/font`, găzduit local la build.
 
 ## Alternative evaluate
 
@@ -93,7 +93,7 @@ Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul aute
 
 ## Medii, backup și operare
 
-- Local: `npm run dev`, teste `npm test` / `npm run e2e`; comenzile sunt în [README.md](README.md).
+- Local: `npm run dev`, teste `npm test`; comenzile sunt în [README.md](README.md).
 - Preview/staging: de stabilit împreună cu hostingul; accesul/indexarea se configurează separat de producție.
 - Producție: domeniul dorit este `meridian-transconstruct.ro`, pe OVHcloud. Utilizatorul a cerut alegerea și configurarea serverului după finalizarea site-ului local. Achiziția domeniului, serviciul OVHcloud concret, DNS, SSL și alegerea www/non-www rămân pentru deploy; nu presupunem că sunt configurate.
 - Backup propus: copie remote a codului/conținutului, arhivă a originalelor foto și configurație de deploy păstrată securizat, separat de Git.
@@ -101,9 +101,9 @@ Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul aute
 
 ## Verificare
 
-Poarta locală înainte de commit: `npm run typecheck && npm run lint && npm test && npm run build`; la schimbări de UI și `npm run e2e`. CI rulează aceleași verificări, fără E2E.
+Poarta locală înainte de commit: `npm run typecheck && npm run lint && npm test && npm run build`; CI rulează aceleași verificări. Proiectul nu are teste E2E (decizie a utilizatorului).
 
-Acoperire actuală: Vitest pentru validare, limitare, configurație, serviciu și handler HTTP (integrare cu transport fals); Playwright pentru pagini la 320–1440 px, navigare, formular (răspunsuri interceptate), 404, robots și contrast. Trimiterea SMTP reală a fost verificată manual cu un server SMTP local de test. Neacoperite încă: Lighthouse/performanță pe conținut real, telefon fizic, primire în inboxul real (B-013, B-007).
+Acoperire actuală: Vitest pentru validare, limitare, configurație, serviciu și handler HTTP (integrare cu transport fals). Trimiterea SMTP reală a fost verificată manual cu un server SMTP local de test. Neacoperite încă: Lighthouse/performanță pe conținut real, telefon fizic, primire în inboxul real (B-013, B-007).
 
 Headere de securitate aplicate din `next.config.ts`: `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`; `X-Powered-By` dezactivat. CSP și HSTS rămân pentru configurarea serverului (BACKLOG B-015).
 
