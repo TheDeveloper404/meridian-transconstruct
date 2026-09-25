@@ -7,16 +7,16 @@ Actualizat: 25 septembrie 2026.
 
 Site de prezentare, doar în română, cu aproximativ 20 de proiecte declarate și conținut administrat în cod. Dezvoltatorul lucrează cu Node.js, React și TypeScript. Formularul trimite pe e-mail; nu există cerințe de CMS, conturi, bază de date sau panou. Cerințele de produs sunt în [PROJECT_BRIEF.md](PROJECT_BRIEF.md).
 
-## Direcție tehnică și detalii de implementare propuse
+## Soluția tehnică
 
-| Zonă | Propunere | Motiv / consecință |
+| Zonă | Decizie (implementată) | Motiv / consecință |
 |---|---|---|
 | Aplicație | Next.js App Router + React + TypeScript | Ecosistem familiar, pagini prerandate și handler de formular în același proiect. |
 | Randare | Pagini de prezentare generate la build | Conținut HTML disponibil direct; actualizarea conținutului cere rebuild și deploy. |
 | UI | Tailwind CSS, componente proprii | Identitate vizuală coerentă și adaptare la mobil. |
 | Conținut | Fișiere TypeScript separate de UI | Datele proiectelor se editează fără duplicarea componentelor. |
-| Media | Fotografii pregătite pentru web și next/image | Imagini responsive; originalele se arhivează separat. |
-| Contact | Handler → serviciu de contact → adaptor SMTP cu Nodemailer | Separarea validării/regulilor de transport; fără backend Express separat. |
+| Media | Fotografii în `public/images/`, servite prin `next/image` (AVIF/WebP) | Imagini responsive; originalele se arhivează separat, în afara Git. |
+| Contact | Route handler → serviciu de contact → adaptor SMTP cu Nodemailer | Separarea validării/regulilor de transport; fără backend Express separat. |
 | Hosting | OVHcloud; server compatibil Node.js, HTTPS, reverse proxy | Furnizor confirmat; serviciul concret, dimensionarea și configurarea se stabilesc la deploy. |
 | Persistență | Fără DB și fără repository de solicitări | Cererile ajung în căsuța de e-mail; inboxul are propriile reguli de acces și retenție. |
 
@@ -26,7 +26,7 @@ Versiuni la scaffold (2026-09-25): Next.js 16.3.6, React 19.3.0, Nodemailer 10.0
 
 - **Astro:** potrivit pentru un site de conținut, dar introduce convenții suplimentare față de experiența React a dezvoltatorului.
 - **React randat exclusiv în browser:** nu oferă un avantaj pentru aceste pagini față de prerandare.
-- **Export complet static:** posibil cu o altă soluție de formular; nu este configurația propusă, care include procesare pe server.
+- **Export complet static:** posibil cu o altă soluție de formular; nu este configurația aleasă, care include procesare pe server.
 
 Next.js este ales pentru compatibilitatea cu experiența dezvoltatorului și integrarea necesară, nu pentru un presupus avantaj automat în clasamentul Google.
 
@@ -67,10 +67,12 @@ Format unic de eroare: `{ "error": { "code", "message", "details?" } }`. Mesajel
 
 Limitarea este în memoria procesului (un singur proces Node), cu cheia din `X-Real-IP` sau ultimul element din `X-Forwarded-For`, doar cu `TRUST_PROXY=true`. Fără proxy de încredere, toate cererile împart o limită globală. La mai multe instanțe, limitarea trebuie mutată într-un magazin partajat.
 
-## Securitatea formularului — cerințe pentru implementare
+## Securitatea formularului
+
+Cerințele de mai jos sunt implementate și acoperite de teste, cu excepția ultimului punct, care rămâne pentru lansare (B-007).
 
 - Validare server-side, limite pentru lungimea câmpurilor și dimensiunea cererii.
-- Anti-spam: honeypot + limitare per client în memorie (vezi contractul de mai jos). Se reevaluează după alegerea topologiei de hosting.
+- Anti-spam: honeypot + limitare per client în memorie (vezi contractul de mai sus). Se reevaluează după alegerea topologiei de hosting.
 - Destinatarul și expeditorul sunt configurații server-side, nu valori controlate de vizitator. E-mailul vizitatorului se validează și se folosește ca Reply-To.
 - Secretele SMTP rămân în configurația mediului; fără credențiale în cod, browser sau loguri.
 - Mesaje de eroare utile, fără stack trace sau detalii de infrastructură expuse. Fără logarea implicită a conținutului cererilor.
@@ -81,8 +83,8 @@ Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul aute
 
 ## SEO, accesibilitate și performanță
 
-- HTML semantic prerandat, titluri/descrieri specifice, canonical, sitemap, robots, Open Graph și pagină 404.
-- Date structurate doar din informații reale și aprobate pentru publicare; fără recenzii sau evaluări inventate.
+- HTML semantic prerandat, titluri/descrieri specifice, canonical, sitemap, robots, Open Graph și pagină 404 — implementate; lipsește imaginea Open Graph (după primirea logo-ului/fotografiilor).
+- Date structurate doar din informații reale și aprobate pentru publicare; fără recenzii sau evaluări inventate. Neimplementate încă: se adaugă după verificarea datelor firmei (B-006, B-011).
 - Pagini utile pentru servicii și proiecte reale, cu context local; fără duplicarea paginilor doar prin schimbarea localității.
 - Imagini dimensionate corespunzător, galerie cu încărcare amânată unde este potrivit și imagine principală tratată prioritar.
 - Navigare cu tastatura, focus vizibil, contrast, etichete de formular și comportament accesibil al galeriei.
@@ -97,11 +99,11 @@ Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul aute
 - Backup propus: copie remote a codului/conținutului, arhivă a originalelor foto și configurație de deploy păstrată securizat, separat de Git.
 - Deploy reversibil: păstrarea versiunii anterioare și documentarea revenirii după alegerea hostingului. Procedura de restore se verifică înainte de a fi declarată funcțională.
 
-## Verificare planificată
+## Verificare
 
-Teste unit pentru validarea formularului și regulile serviciului; integrare pentru fluxul de trimitere și erori; e2e pentru navigare și contact; verificare pe mobil. Lint, type-check și build după implementare, plus verificarea metadata și a linkurilor. Alegerea instrumentelor se face odată cu scaffold-ul.
+Poarta locală înainte de commit: `npm run typecheck && npm run lint && npm test && npm run build`; la schimbări de UI și `npm run e2e`. CI rulează aceleași verificări, fără E2E.
 
-Implementat (2026-09-25): Vitest pentru validare, limitare, configurație, serviciu și handler HTTP (integrare cu transport fals); Playwright pentru pagini la 320–1440 px, navigare, formular (răspunsuri interceptate), 404, robots și contrast. Trimiterea SMTP reală a fost verificată manual cu un server SMTP local de test. E2E nu rulează în CI.
+Acoperire actuală: Vitest pentru validare, limitare, configurație, serviciu și handler HTTP (integrare cu transport fals); Playwright pentru pagini la 320–1440 px, navigare, formular (răspunsuri interceptate), 404, robots și contrast. Trimiterea SMTP reală a fost verificată manual cu un server SMTP local de test. Neacoperite încă: Lighthouse/performanță pe conținut real, telefon fizic, primire în inboxul real (B-013, B-007).
 
 Headere de securitate aplicate din `next.config.ts`: `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`; `X-Powered-By` dezactivat. CSP și HSTS rămân pentru configurarea serverului (BACKLOG B-015).
 

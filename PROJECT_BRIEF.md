@@ -60,7 +60,7 @@ Utilizatorul a cerut omiterea discuției despre echipă proprie, subcontractare,
 ## Contact
 
 - Canale dorite: telefon și e-mail.
-- Formular confirmat pe pagina de contact: trimitere directă prin e-mail către adresa temporară de mai jos, fără panou sau istoric în aplicație. Câmpurile rămân de stabilit.
+- Formular confirmat pe pagina de contact: trimitere directă prin e-mail către adresa temporară de mai jos, fără panou sau istoric în aplicație. Câmpuri implementate: nume/firmă, e-mail, telefon (opțional), despre lucrare — vezi [ARCHITECTURE.md](ARCHITECTURE.md).
 - Telefoane publice confirmate: 0723 400 646 și 0726 379 408. Prioritatea lor în interfață nu este încă stabilită.
 - E-mail temporar confirmat: marta70fil@yahoo.com. Va fi înlocuit cu adresa firmei când aceasta este disponibilă.
 - Persoana care răspunde solicitărilor nu a fost precizată; nu confundăm responsabilul editorial cu persoana de contact comercial.
@@ -113,4 +113,4 @@ Stack-ul Next.js + React + TypeScript + Tailwind CSS și formular SMTP este conf
 - [README.md](README.md): indexul documentației și stadiul proiectului.
 - [AGENTS.md](AGENTS.md): regulile locale de lucru și actualizare a documentației.
 
-Direcție corectată de utilizator: albastru închis, alb cald și portocaliu, hero cu imagine pe fundal, fără telefon în header. Serviciul „Structură și zidărie” este înlocuit în prezentare de „Construcții civile”; secțiunea despre firmă rămâne. Servicii, Proiecte, Despre și Contact sunt pagini individuale. Acasă are doar un CTA spre Contact. Hero-ul folosește un concept generat și etichetat, de înlocuit cu o fotografie reală; portofoliul păstrează placeholder-e explicite. Analytics și măsurarea solicitărilor nu sunt aprobate implicit.
+Direcție corectată de utilizator: albastru închis, alb cald și portocaliu, hero cu imagine pe fundal, fără telefon în header. Serviciul „Structură și zidărie” este înlocuit în prezentare de „Construcții civile”; secțiunea despre firmă rămâne. Macheta finală (și aplicația) are Acasă cu Servicii, Proiecte și Despre ca secțiuni ancorate, plus pagina Contact (A-001 în [BACKLOG.md](BACKLOG.md)); o variantă anterioară cu pagini individuale a fost înlocuită. Acasă are doar un CTA spre Contact. Hero-ul folosește un concept generat și etichetat, de înlocuit cu o fotografie reală; până la primirea proiectelor reale, portofoliul afișează o stare goală (A-002). Analytics și măsurarea solicitărilor nu sunt aprobate implicit.

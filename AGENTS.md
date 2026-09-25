@@ -1,6 +1,6 @@
 # Reguli locale — Meridian Transconstruct
 
-Aceste reguli completează instrucțiunile globale de engineering. Nu înlocuiesc regulile de securitate, clasificare, testare, review sau Git.
+Aceste reguli completează instrucțiunile globale de engineering. Nu înlocuiesc regulile de securitate, clasificare, testare, review sau Git. Convențiile tehnice și capcanele cunoscute ale codului sunt în [CLAUDE.md](CLAUDE.md).
 
 ## La începutul sesiunii
 
@@ -13,7 +13,7 @@ Aceste reguli completează instrucțiunile globale de engineering. Nu înlocuies
 - Lucrează pe faze; rezumă deciziile și propune următorul pas. Respectă redirecționările explicite ale utilizatorului.
 - Scaffold-ul există (S06). Schimbările structurale noi (rute, dependențe, integrări) se propun înainte de implementare.
 - Păstrează conținutul separat de componente; adaptează Clean Architecture la dimensiunea site-ului. Nu adăuga straturi fără responsabilitate reală.
-- Formularul va separa UI/handler, regulile de contact și transportul e-mail. Validarea și protecțiile se aplică pe server.
+- Formularul separă UI/handler, regulile de contact și transportul e-mail (`src/server/contact/`). Validarea și protecțiile se aplică pe server; orice regulă nouă vine cu teste.
 - Nu inventa lucrări, recenzii, certificări, rezultate sau date ale firmei. Folosește placeholder-e explicite în lucru; elimină-le înainte de lansare.
 - Ideile suplimentare intră în backlog; înregistrarea lor nu autorizează implementarea.
 - Deciziile structurale luate provizoriu fără design real se notează în backlog cu `ASSUMED — needs ratification`, motiv și impact. O propunere încă neadoptată nu este o decizie asumată.

@@ -17,6 +17,7 @@ Aplicația Next.js este implementată local după macheta finală: **Acasă** (h
 | [CHANGELOG.md](CHANGELOG.md) | Istoric pe sesiuni: activități, decizii, verificări și lucruri rămase deschise. |
 | [BACKLOG.md](BACKLOG.md) | Pași rămași, dependențe și idei neaprobate. |
 | [AGENTS.md](AGENTS.md) | Reguli locale pentru continuitatea lucrului și actualizarea documentației. |
+| [CLAUDE.md](CLAUDE.md) | Convenții tehnice, poarta de verificare și capcane cunoscute pentru lucrul cu Claude Code. |
 | [docs/SITE_STRUCTURE.md](docs/SITE_STRUCTURE.md) | Sitemap, secțiuni, servicii, proiecte, formular și cerințe legale de bază. |
 | [docs/DESIGN.md](docs/DESIGN.md) | Direcție vizuală, token-uri, responsive și comportamente. |
 | [docs/home-preview.html](docs/home-preview.html) | Macheta HTML de referință, distinctă de aplicație. |

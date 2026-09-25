@@ -1,0 +1,62 @@
+# Meridian Transconstruct — instrucțiuni pentru Claude
+
+Completează regulile globale de engineering (clasificare SMALL/NORMAL/CRITICAL, quality gates, securitate) cu specificul acestui proiect. Globalul câștigă pe proces și securitate.
+
+**Regulile de sesiune sunt în [AGENTS.md](AGENTS.md)** (comune tuturor agenților): ce citești la început, cum lucrezi, ce actualizezi la final. Nu le dubla aici. Acest fișier ține doar convențiile tehnice și capcanele cunoscute.
+
+## Context
+
+Site de prezentare în română pentru o firmă de construcții din Petroșani: Acasă (secțiuni ancorate) + Contact cu formular trimis prin SMTP. Fără CMS, DB, conturi sau panou. Produs și date firmă: [PROJECT_BRIEF.md](PROJECT_BRIEF.md). Soluție tehnică și contractul `POST /api/contact`: [ARCHITECTURE.md](ARCHITECTURE.md). Comenzi și variabile de mediu: [README.md](README.md). Lucru rămas și decizii provizorii (A-00x): [BACKLOG.md](BACKLOG.md).
+
+## Unde stă fiecare lucru
+
+- `src/content/` — **toate textele și datele firmei**. Componentele nu conțin copy comercial hardcodat.
+- `src/components/` — prezentare. Client components (`"use client"`) doar unde e nevoie de interacțiune: `navigation.tsx`, `contact-form.tsx`.
+- `src/lib/contact/validation.ts` — validare pură, importată și de server, și de formular. Nimic din `src/server/` nu se importă în componente client (ar trage Nodemailer în bundle).
+- `src/server/contact/` — `http.ts` (HTTP) → `contact-service.ts` (reguli) → `smtp-transport.ts` (singurul loc cu Nodemailer); `config.ts` citește mediul. `src/app/api/contact/route.ts` rămâne un apel de o linie.
+- Token-uri vizuale: `src/app/globals.css` (`@theme`, Tailwind 4). Culori noi doar prin paletă (docs/DESIGN.md), nu hex-uri locale.
+
+Nu adăuga straturi (repository, DI, ORM, API separat) fără o cerință concretă.
+
+## Reguli de conținut
+
+- Nu inventa lucrări, recenzii, certificări, cifre, termene de răspuns sau date ale firmei. Lipsa unei informații → stare goală sau placeholder marcat, plus întrebare către utilizator.
+- Proiectele se publică doar reale, cu acord (`src/content/projects.ts`). Adresa completă a sediului nu se publică până la verificare (B-012).
+- Imaginea hero e un concept generat; eticheta rămâne cât timp `hero.image.isConcept` e `true`.
+- Decizie structurală/vizuală luată fără aprobare → rând `ASSUMED — needs ratification` în BACKLOG. La ajustări vizuale nu adăuga elemente noi „ca să arate complet”; propune și întreabă.
+
+## Securitate (formularul e singura suprafață server)
+
+- Validarea și limitele se aplică pe server; clientul doar oglindește pentru feedback.
+- Destinatarul/expeditorul vin exclusiv din mediu. E-mailul vizitatorului e doar Reply-To. Corpul e text simplu.
+- Nu loga conținutul cererilor, adrese sau credențiale — doar coduri de eroare.
+- Răspunsuri de eroare în formatul `{ error: { code, message, details? } }`, fără detalii interne.
+- Header-ele de proxy sunt de încredere doar cu `TRUST_PROXY=true`; din `X-Forwarded-For` se ia ultimul element.
+- Secrete doar în `.env.local` / mediul serverului; `.env.example` fără valori reale.
+
+## Înainte de commit
+
+Rulează și raportează exact ce a trecut:
+
+```bash
+npm run typecheck && npm run lint && npm test && npm run build
+```
+
+La schimbări de UI, navigare sau formular rulează și `npm run e2e`. Adaugă sau actualizează testele pentru orice regulă nouă a formularului (unit în `src/**/*.test.ts`, E2E în `e2e/`). Se lucrează direct pe `main`; commit/push sunt autorizate după ce verificările trec (vezi AGENTS.md). CI-ul (`.github/workflows/ci.yml`) nu rulează E2E.
+
+## Documentație librării
+
+Verifică API-ul în documentația curentă (context7) înainte de a scrie sau depana cod cu Next.js, Tailwind 4, Nodemailer sau Playwright. Versiunile se schimbă des, iar mai multe API-uri s-au schimbat recent (vezi capcanele).
+
+## Capcane tehnice cunoscute
+
+- **npm 10 — `Cannot read properties of null (reading 'edgesOut')`** la instalarea vitest / `@playwright/test` (bug pe peer dependencies). Folosește `npx npm@11 install ...`; `npm ci` nu e afectat.
+- **TypeScript 7 nu e suportat de typescript-eslint** — rămânem pe TS 6 până se aliniază ecosistemul.
+- **Nodemailer 10 are tipuri proprii** — nu instala `@types/nodemailer`.
+- **`next/image`: `priority` e depreciat în Next 16** — folosește `preload` pentru imaginea LCP.
+- **`next start` nu funcționează cu `output: "standalone"`** — modul de rulare se alege la deploy (B-002); nu-l reactiva fără să schimbi și scripturile.
+- **Navigarea Next (`pushState`) nu emite `hashchange`** — starea activă din meniu ascultă și `navigation.currententrychange` (cu rezervă după clic). Orice logică nouă bazată pe `location.hash` trebuie să țină cont de asta.
+- **ESLint `@next/next/no-html-link-for-pages`** respinge `<a href="/#...">` literal în JSX; pe Acasă folosește `#sectiune`, iar pentru ancore spre Acasă din alte pagini folosește datele din `src/content/navigation.ts`.
+- **Playwright:** `getByRole` nu vede elemente cu `display:none` (ex. butonul „Sună” pe desktop) — folosește `locator`. Next injectează un `role="alert"` pentru anunțarea rutelor — restrânge căutarea la `form`. CSS-ul de build scurtează hex-urile (`#fff`).
+- **Chromium preinstalat în altă versiune** decât cea cerută de Playwright (containere cloud): `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/cale/chrome npm run e2e`.
+- **Testul E2E „503 fără SMTP”** pică dacă `.env.local` are SMTP configurat — e intenționat.

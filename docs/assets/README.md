@@ -1,6 +1,6 @@
 # Vizual provizoriu pentru hero
 
-Imagine generată prin instrumentul integrat `image_gen` la 25 septembrie 2026. Este un concept pentru validarea designului, nu o fotografie a unei lucrări Meridian Transconstruct și nu se folosește în portofoliu. Marcajul este vizibil în machetă; fotografia firmei rămâne material de primit.
+Imagine generată prin instrumentul integrat `image_gen` la 25 septembrie 2026. Este un concept pentru validarea designului, nu o fotografie a unei lucrări Meridian Transconstruct și nu se folosește în portofoliu. Marcajul este vizibil în machetă și în aplicație (`public/images/hero-concept.webp`, eticheta controlată de `hero.image.isConcept` în `src/content/home.ts`); fotografia firmei rămâne material de primit.
 
 - Original: [hero-concept.png](hero-concept.png).
 - Versiune pentru browser: [hero-concept.webp](hero-concept.webp), 1672 × 941 px, 158.414 bytes. Conversie WebP cu Sharp, calitate 82, fără schimbarea compoziției.

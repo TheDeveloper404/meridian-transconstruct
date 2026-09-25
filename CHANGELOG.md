@@ -4,6 +4,14 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S07 — CLAUDE.md și actualizarea documentației
+
+- **Scop / clasificare:** SMALL — documentație, fără modificări de cod.
+- **Activități:** creat [CLAUDE.md](CLAUDE.md) cu convențiile tehnice specifice (unde stă fiecare lucru, reguli de conținut și securitate, poarta de verificare înainte de commit, capcane cunoscute din S06); regulile de sesiune rămân în AGENTS.md, cu trimitere reciprocă. Indexat în README.
+- **Actualizări de stare:** ARCHITECTURE (tabel „propus” → soluția implementată, secțiunea de securitate și verificare, ce lipsește din SEO: imagine Open Graph, date structurate); PROJECT_BRIEF (câmpurile formularului, structura cu două pagini, starea goală a portofoliului); DESIGN și SITE_STRUCTURE (meniu cu ancore, servicii cu link spre Contact, faptul „Lucrări cu contract”, formular implementat, secțiuni marcate implementat/propunere); AGENTS (formularul separă deja straturile); docs/assets/README (imaginea folosită și în aplicație).
+- **Verificări:** 51 de linkuri Markdown locale — toate valide; verificare automată a afirmațiilor din documente față de cod (limitele și codurile HTTP ale contractului, honeypot, cheia de proxy, scripturile npm, versiunile, portul E2E, cele 12 variabile din `.env.example` folosite în cod, 24 de căi de fișiere menționate) — toate PASS. Fără teste de cod: nu s-a modificat cod.
+- **Următorul pas:** neschimbat față de S06.
+
 ## 2026-09-25 — S06 — Scaffold Next.js, pagini și formular de contact
 
 - **Scop / clasificare:** NORMAL (aplicație nouă pe mai multe straturi); formularul de contact tratat cu rigoare de securitate, fiind endpoint public care trimite e-mail. Utilizatorul a cerut explicit preluarea lucrului și continuarea implementării și a autorizat agentul să facă commit/push direct pe `main`.
