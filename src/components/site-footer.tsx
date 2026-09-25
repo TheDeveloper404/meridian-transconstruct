@@ -17,7 +17,9 @@ export function SiteFooter() {
           <div>
             <Brand className="mb-6" />
             <p className="mt-4 max-w-72 text-sm text-muted">{footerTagline}</p>
-            <p className="mt-4 text-sm text-muted">Petroșani · Valea Jiului · Hunedoara</p>
+            <p className="mt-4 text-sm text-muted">
+              {company.region} · Județul {company.county}
+            </p>
           </div>
 
           <nav aria-label="Servicii în footer">
@@ -55,7 +57,7 @@ export function SiteFooter() {
               </a>
             ))}
             <p className="mt-4 text-sm text-muted">
-              {company.locality}, {company.county}
+              {company.region}, județul {company.county}
             </p>
             <p className="mt-4 text-sm text-muted">
               CUI {company.cui}

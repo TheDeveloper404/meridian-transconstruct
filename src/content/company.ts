@@ -1,5 +1,9 @@
-// Datele firmei afișate pe site. Sursa: PROJECT_BRIEF.md (furnizate de utilizator, neverificate
-// independent). Adresa completă a sediului NU se publică până la verificarea din faza legală (B-012).
+// Datele firmei. Sursa: PROJECT_BRIEF.md (furnizate de utilizator, neverificate independent).
+// Adresa completă a sediului NU se publică până la verificarea din faza legală (B-012).
+//
+// Decizie utilizator (S09): pe pagini nu apar nume de localități — doar `region` și `county`.
+// `locality` și `serviceArea` se folosesc doar în titlul/descrierea pentru Google și, ulterior,
+// în adresa legală obligatorie; nu le afișa în texte sau componente.
 
 export const company = {
   legalName: "MERIDIAN TRANSCONSTRUCT S.R.L.",
@@ -8,6 +12,7 @@ export const company = {
   cui: "41449237",
   tradeRegister: "J2019001203204",
   locality: "Petroșani",
+  region: "Valea Jiului",
   county: "Hunedoara",
   serviceArea: ["Petroșani", "Vulcan", "Lupeni", "Petrila", "Uricani", "Aninoasa"],
   // Ordinea telefoanelor urmează macheta; telefonul principal rămâne de confirmat (B-008).

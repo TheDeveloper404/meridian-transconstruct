@@ -7,7 +7,7 @@ Actualizat: 25 septembrie 2026 (S06). Acest document urmărește lucrul rămas �
 | ID | Element | Stare / condiție de închidere |
 |---|---|---|
 | B-002 | Configurație OVHcloud și buget de operare | Furnizor confirmat; alegerea serviciului Node.js, dimensionarea și configurarea sunt amânate explicit până la faza de deploy. Nu blochează dezvoltarea locală. |
-| B-003 | Sitemap, gruparea serviciilor și structura proiectelor | Aplicația urmează macheta finală: Acasă cu secțiuni ancorate + Contact (vezi A-001). Rămân de decis paginile dedicate de servicii și `/proiecte/[slug]` din [SITE_STRUCTURE](docs/SITE_STRUCTURE.md), utile pentru SEO local; se adaugă când există conținut real pentru ele. |
+| B-003 | Sitemap, gruparea serviciilor și structura proiectelor | Aplicația urmează macheta finală: Acasă cu secțiuni ancorate + Contact (vezi A-001). **Prioritate SEO:** o pagină dedicată pentru fiecare dintre cele 4 servicii și `/proiecte/[slug]` pentru fiecare lucrare reală — acum site-ul are doar 2 URL-uri, deci poate apărea pentru puține căutări. Necesită conținut real per serviciu/proiect și aprobarea structurii. |
 | B-004 | Logo existent și direcție vizuală | [Direcție vizuală](docs/DESIGN.md) revizuită: albastru închis și hero cu imagine, conform feedbackului. Logo-ul și fotografia reală sunt încă necesare. |
 | B-005 | Inventar și materiale pentru aproximativ 20 de proiecte | Așteaptă fotografii, localitate, an, lucrări executate și acorduri. Blochează publicarea fișelor incomplete. |
 | B-006 | Texte finale și date publicabile ale firmei | Redactare pe baza datelor reale, aprobare de utilizator și verificare înainte de publicare. |
@@ -15,12 +15,14 @@ Actualizat: 25 septembrie 2026 (S06). Acest document urmărește lucrul rămas �
 | B-008 | Contact principal și responsabil comercial | Telefon eliminat din header la cererea utilizatorului; 0723 400 646 rămâne pe butonul de mobil, ambele numere în Contact. Responsabilul comercial rămâne de precizat. |
 | B-009 | E-mail pe domeniul firmei | Înlocuirea adresei temporare când noua adresă este disponibilă; actualizare și testare a destinației formularului. |
 | B-010 | Domeniu, DNS, HTTPS, staging și revenire la versiunea anterioară | De configurat după alegerea hostingului; fără achiziții/publicare autorizate implicit. |
-| B-011 | SEO local, Search Console și Google Business Profile | De clarificat existența profilului; configurare/indexare în faza de lansare. |
+| B-011 | SEO local, Search Console și Google Business Profile | **Cea mai mare pârghie pentru căutările locale.** De clarificat existența profilului. În profil se setează zonele de serviciu (localitățile din Valea Jiului), compensând decizia de a nu le afișa pe site (S09); tot acolo se strâng recenziile. Search Console + trimiterea sitemap-ului la lansare. |
 | B-012 | Cerințe legale și cookies | Sursele și cerințele de bază sunt în SITE_STRUCTURE; textele finale, datele firmei și inventarul tehnologiilor trebuie verificate înainte de lansare. |
 | B-013 | Verificări de lansare | Conținut real, contacte, formular, linkuri, metadata, accesibilitate, mobil și performanță; dovezi consemnate în changelog. |
 | B-014 | Ghid de actualizare, backup și întreținere | Actualizarea conținutului este descrisă pe scurt în README; backup-ul și restore-ul rămân de redactat și verificat înainte de predare. |
 | B-015 | CSP și HSTS | Headerele de bază sunt în `next.config.ts`. CSP (cu nonce pentru scripturile Next sau politică echivalentă) și HSTS se configurează împreună cu nginx/HTTPS la deploy și se verifică pe producție. |
 | B-016 | Limitare formular la mai multe instanțe | Limitarea este în memoria unui singur proces. Dacă deploy-ul folosește mai multe instanțe sau restarturi frecvente, se mută într-un magazin partajat. Necesită `TRUST_PROXY=true` în spatele nginx. |
+| B-018 | Favicon și imagine Open Graph | Lipsesc; se generează din logo (B-004). Imaginea OG apare la distribuirea linkului (WhatsApp, Facebook). |
+| B-019 | Date structurate pentru firmă | JSON-LD de tip firmă de construcții (nume, telefon, URL, adresă) doar din date verificate (B-006); zona de serviciu doar dacă e consecventă cu conținutul vizibil. |
 
 ## Idei opționale — neaprobate
 

@@ -35,7 +35,7 @@ export default function ContactPage() {
               </a>
             </div>
             <p className="mb-4">
-              {company.locality}, județul {company.county}
+              {company.region}, județul {company.county}
             </p>
             <p className="text-muted">{contactPage.hint}</p>
           </div>

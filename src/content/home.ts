@@ -1,10 +1,10 @@
 // Textele paginii Acasă, preluate din macheta aprobată (docs/home-preview.html).
 
 export const hero = {
-  eyebrow: "Petroșani · Valea Jiului · Hunedoara",
-  titleLead: "Construcții în Petroșani.",
-  titleAccentLines: ["De la structură", "la cheie."],
-  lead: "Execuție de clădiri rezidențiale și nerezidențiale, pentru firme, instituții și persoane fizice.",
+  eyebrow: "Valea Jiului · Județul Hunedoara",
+  titleLead: "O construcție bună",
+  titleAccentLines: ["începe cu o", "înțelegere clară."],
+  lead: "Execuție de clădiri rezidențiale și nerezidențiale în Valea Jiului și în județul Hunedoara, pentru firme, instituții și persoane fizice.",
   primaryCta: "Cere o ofertă",
   secondaryCta: "Vezi proiectele",
   image: {
@@ -20,18 +20,18 @@ export const hero = {
 
 export const facts = [
   { title: "Din 2019", text: "Meridian Transconstruct" },
-  { title: "Petroșani · Valea Jiului", text: "În județ, în funcție de proiect" },
+  { title: "Valea Jiului", text: "Și în județul Hunedoara, în funcție de proiect" },
   { title: "Lucrări cu contract", text: "Scop și termene stabilite" },
 ];
 
 export const about = {
   kicker: "03 / Firma",
   titleLines: ["Construim cu gândul", "la ce rămâne."],
-  locationLines: ["Meridian Transconstruct", "Petroșani · din 2019"],
+  locationLines: ["Meridian Transconstruct", "Valea Jiului · din 2019"],
   lead: "O construcție înseamnă o investiție importantă. Relația cu firma care o execută trebuie să înceapă cu încredere și lucruri spuse clar.",
   paragraphs: [
-    "Meridian Transconstruct este o firmă de construcții din Petroșani, activă din 2019. Executăm case, clădiri rezidențiale și nerezidențiale, construcții civile și lucrări de renovare pentru firme, instituții publice și persoane fizice.",
-    "Zona noastră de lucru cuprinde Petroșani și Valea Jiului — Vulcan, Lupeni, Petrila, Uricani și Aninoasa. Pentru proiectele potrivite, lucrăm și în restul județului Hunedoara.",
+    "Meridian Transconstruct este o firmă de construcții din Valea Jiului, activă din 2019. Executăm case, clădiri rezidențiale și nerezidențiale, construcții civile și lucrări de renovare pentru firme, instituții publice și persoane fizice.",
+    "Lucrăm în toată Valea Jiului, iar pentru proiectele potrivite și în restul județului Hunedoara.",
   ],
   vision: {
     title: "Viziunea noastră",
@@ -61,4 +61,4 @@ export const contactTeaser = {
 };
 
 export const footerTagline =
-  "Firmă de construcții din Petroșani. Execuție pentru clădiri noi și lucrări care dau o nouă viață celor existente.";
+  "Firmă de construcții din Valea Jiului. Execuție pentru clădiri noi și lucrări care dau o nouă viață celor existente.";

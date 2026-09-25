@@ -4,6 +4,15 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S09 — Hero nou, fără localități pe pagini; analiză SEO
+
+- **Scop / clasificare:** SMALL — conținut; fără schimbări de logică.
+- **Decizii ale utilizatorului:** titlul hero „O construcție bună / începe cu o înțelegere clară.” (ales dintre variante; cele generice au fost respinse); pe pagini nu apar nume de localități, doar „Valea Jiului” și „județul Hunedoara”; „Petroșani” rămâne permis în titlul și descrierea pentru Google.
+- **Implementare:** `src/content/home.ts` (eticheta și titlul hero, textul de sub titlu cu regiunea, faptul „Valea Jiului”, secțiunea despre firmă fără lista de localități, textul din footer), `company.region` nou, folosit în footer și pe Contact în locul localității. Metadatele (titlu, descriere) păstrează „Petroșani”.
+- **Verificări:** type-check, lint, Vitest 35/35, build — PASS. HTML-ul generat pentru `/`, `/contact` și 404: zero apariții ale celor 6 localități în conținutul vizibil; „Petroșani” doar în `<head>`. Capturi hero la 1440 px și 500 px verificate vizual (la 375 px, Chromium headless nu reduce fereastra sub ~500 px, deci captura nu era concludentă; layout-ul de mobil nu s-a schimbat, doar textul).
+- **Documentare:** decizia în PROJECT_BRIEF, SITE_STRUCTURE și CLAUDE.md (regulă de conținut); BACKLOG: prioritate SEO la B-003 și B-011, noi B-018 (favicon + imagine OG) și B-019 (date structurate).
+- **Următorul pas:** Google Business Profile cu zonele de serviciu; pagini dedicate de servicii și proiecte cu conținut real; logo și fotografii.
+
 ## 2026-09-25 — S08 — Eliminarea testelor E2E
 
 - **Scop / clasificare:** SMALL — la cererea utilizatorului, site-ul nu are teste E2E.

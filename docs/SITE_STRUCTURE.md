@@ -29,8 +29,8 @@ Ruta necunoscută are pagină 404 cu link spre Acasă și Contact. Fără pagini
 ## Acasă — ordinea secțiunilor (implementată)
 
 1. **Header:** denumire/logo, meniu și CTA; fără număr de telefon, conform cererii utilizatorului.
-2. **Hero:** H1 „Construcții în Petroșani. De la structură la cheie.”; text despre clădiri rezidențiale/nerezidențiale și zona de lucru; CTA principal „Cere o ofertă”, link secundar „Vezi proiectele”. Imagine pe întreg fundalul, cu text suprapus și strat albastru pentru contrast. Macheta folosește un concept generat, marcat explicit; fotografia reală rămâne de primit.
-3. **Context factual:** „Din 2019”, „Petroșani · Valea Jiului”, „Lucrări cu contract” (ca în macheta finală). Fără număr de clienți, procente sau promisiuni inventate.
+2. **Hero:** eticheta „Valea Jiului · Județul Hunedoara”, H1 „O construcție bună începe cu o înțelegere clară.” (ales de utilizator, S09); text despre clădiri rezidențiale/nerezidențiale și zona de lucru (regiunea); CTA principal „Cere o ofertă”, link secundar „Vezi proiectele”. Imagine pe întreg fundalul, cu text suprapus și strat albastru pentru contrast. Macheta folosește un concept generat, marcat explicit; fotografia reală rămâne de primit.
+3. **Context factual:** „Din 2019”, „Valea Jiului”, „Lucrări cu contract”. Fără număr de clienți, procente sau promisiuni inventate.
 4. **Servicii:** patru categorii cu explicație, puncte cheie și link spre Contact (paginile dedicate — B-003).
 5. **Proiecte selectate:** maximum trei lucrări reale, fotografii dominante, tip lucrare și localitate; fără proiecte publicabile, stare goală cu link spre Contact (A-002). Numărul total nu se afirmă public înaintea inventarului verificat.
 6. **Despre:** prezentare, viziune și trei principii de lucru, direct pe Acasă. Nu afirmăm existența unor certificări sau a unei echipe interne neverificate.
@@ -62,6 +62,8 @@ Patru câmpuri: „Nume / firmă” (obligatoriu), „E-mail” (obligatoriu), �
 Informare scurtă de confidențialitate lângă formular (A-004); nu adăugăm marketing implicit. Temeiul prelucrării și textul complet al informării se stabilesc pe fluxul real (B-012). Stări: inițial, validare cu erori lângă câmpuri, trimitere în curs, succes, eroare cu datele păstrate și alternativă telefonică. Nu promitem răspuns în 24 de ore fără acordul firmei.
 
 ## SEO local și accesibilitate
+
+**Localități (decizia utilizatorului, S09):** pe pagini nu apar nume de localități (Petroșani, Vulcan, Lupeni, Petrila, Uricani, Aninoasa); zona se exprimă prin „Valea Jiului” și „județul Hunedoara”. „Petroșani” apare doar în titlul și descrierea pentru Google (`<title>`, meta description, Open Graph) și, când va exista, în adresa legală obligatorie de pe pagina de date ale firmei. Fără text ascuns. Acoperirea localităților se completează prin zonele de serviciu din Google Business Profile (B-011). Localitatea unui proiect real, pe fișa lui, rămâne de decis la B-005.
 
 Titlurile sunt propuneri editoriale, nu rezultate de cercetare a volumelor de căutare. Conținutul descrie oferta reală și zona acoperită; datele firmei rămân consecvente. Legături serviciu ↔ proiect, metadata distincte și canonical pentru URL-ul final. Structura urmează principiile de conținut util și linkuri accesibile din [Google Search Essentials](https://developers.google.com/search/docs/essentials).
 
