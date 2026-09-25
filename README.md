@@ -4,7 +4,7 @@ Site de prezentare în limba română pentru MERIDIAN TRANSCONSTRUCT S.R.L., Pet
 
 ## Stadiu
 
-Aplicația Next.js este implementată local după macheta finală: **Acasă** (hero, servicii, portofoliu, despre, CTA) și **Contact** (telefoane, e-mail, formular funcțional prin SMTP), plus 404, sitemap și robots. Nu este publicată: hostingul OVHcloud, domeniul și furnizorul SMTP se configurează la deploy.
+Aplicația Next.js este implementată local după macheta finală: **Acasă** (hero, servicii, portofoliu, despre, CTA) și **Contact** (telefoane, e-mail, formular funcțional prin SMTP), plus 404, `sitemap.xml`, `robots.txt`, manifest, iconițe provizorii, metadate pentru tab/Google/distribuire și date structurate. Nu este publicată: hostingul OVHcloud, domeniul și furnizorul SMTP se configurează la deploy.
 
 Înainte de lansare lipsesc încă: logo-ul, fotografiile reale (hero și portofoliu), paginile legale și furnizorul SMTP. Lista completă este în [BACKLOG.md](BACKLOG.md).
 
@@ -59,13 +59,27 @@ public/images/         imagini servite de site
 
 ### Variabile de mediu
 
-Toate sunt descrise în [.env.example](.env.example). Pe scurt: `SMTP_*` + `CONTACT_MAIL_FROM` / `CONTACT_MAIL_TO` activează formularul (fără ele răspunde 503 cu alternativa telefonică); `TRUST_PROXY=true` doar în spatele nginx; `ALLOW_INDEXING=true` doar la lansare; `SITE_URL` pentru URL-ul canonic.
+Toate sunt descrise în [.env.example](.env.example). Pe scurt: `SMTP_*` + `CONTACT_MAIL_FROM` / `CONTACT_MAIL_TO` activează formularul (fără ele răspunde 503 cu alternativa telefonică); `TRUST_PROXY=true` doar în spatele nginx; `ALLOW_INDEXING=true` doar la lansare; `SITE_URL` pentru URL-ul canonic; `GOOGLE_SITE_VERIFICATION` pentru Search Console.
+
+> `SITE_URL`, `ALLOW_INDEXING` și `GOOGLE_SITE_VERIFICATION` se citesc **la build** (paginile sunt prerandate): după ce le schimbi, rulează din nou `npm run build`. Variabilele SMTP și de limitare se citesc la rulare.
 
 ### Actualizarea conținutului
 
 - Texte și date firmă: `src/content/*.ts`.
 - Proiecte: `src/content/projects.ts` (instrucțiuni în fișier) + fotografii în `public/images/proiecte/<slug>/`. Se publică doar lucrări reale, cu acordul beneficiarului.
 - Imaginea hero: `src/content/home.ts` (`hero.image`); la înlocuirea conceptului cu o fotografie reală, `isConcept: false`.
+
+## Indexare și SEO tehnic
+
+Ce există deja (din `src/app/`): `sitemap.xml` (Acasă, Contact), `robots.txt`, URL canonic și titlu/descriere pe fiecare pagină, Open Graph și Twitter card, iconițe pentru tab/iOS/manifest (monogramă provizorie până la logo), `manifest.webmanifest`, date structurate `GeneralContractor` pe Acasă, `noindex` pe 404.
+
+Până la lansare indexarea e oprită: `robots.txt` blochează tot, iar paginile au `noindex`. Pași la lansare:
+
+1. Pe serverul de producție: `SITE_URL=https://meridian-transconstruct.ro` (sau domeniul final) și `ALLOW_INDEXING=true`, apoi `npm run build`.
+2. Google Search Console: adaugă proprietatea, alege verificarea prin etichetă HTML, pune codul în `GOOGLE_SITE_VERIFICATION`, rebuild, apoi confirmă verificarea.
+3. În Search Console trimite `https://<domeniu>/sitemap.xml` și cere indexarea paginii Acasă.
+4. Verifică datele structurate cu Rich Results Test (Google) și paginile cu PageSpeed Insights.
+5. Google Business Profile cu zonele de serviciu și linkul spre site (B-011).
 
 ## Macheta de referință
 

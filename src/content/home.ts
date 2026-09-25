@@ -1,5 +1,13 @@
 // Textele paginii Acasă, preluate din macheta aprobată (docs/home-preview.html).
 
+// Titlul și descrierea pentru Google și tab-ul browserului. „Petroșani” e permis DOAR aici
+// (decizia utilizatorului, S09), nu în textele vizibile de mai jos.
+export const homeSeo = {
+  title: "Firmă de construcții în Petroșani și Valea Jiului",
+  description:
+    "Construcții de case la roșu, la gri și la cheie, clădiri rezidențiale și nerezidențiale, construcții civile și renovări în Petroșani, Valea Jiului și județul Hunedoara.",
+};
+
 export const hero = {
   eyebrow: "Valea Jiului · Județul Hunedoara",
   titleLead: "O construcție bună",

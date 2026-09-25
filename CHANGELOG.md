@@ -4,6 +4,15 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S10 — Indexare, metadate pentru tab-uri și date structurate
+
+- **Scop / clasificare:** SMALL — metadate și fișiere de indexare; fără schimbări de logică a formularului. Cerut de utilizator: sitemap, robots, ce mai trebuie pentru indexare și metadatele pentru tab-urile din browser.
+- **Existente din S06:** `sitemap.xml`, `robots.txt`, titluri și canonical.
+- **Adăugat:** `src/lib/seo.ts` (metadate complete per pagină: descriere, canonical, Open Graph cu URL, Twitter card); titlul Acasă „Firmă de construcții în Petroșani și Valea Jiului” (permis doar în metadate, S09) mutat în `src/content/home.ts`; iconițe generate la build (`icon` 32/192/512 px, `apple-icon` 180 px) cu monogramă provizorie „M”; `manifest.webmanifest`; JSON-LD `GeneralContractor` pe Acasă, doar cu date vizibile, fără adresă; `googleBot` cu `max-image-preview: large` când indexarea e pornită; verificare Search Console prin `GOOGLE_SITE_VERIFICATION`; sitemap aliniat la forma URL-ului canonic; 404 fără etichete robots contradictorii.
+- **Verificări:** type-check, lint, Vitest 35/35, build — PASS. Pe serverul local: `<head>` pentru `/` și `/contact` (titlu, descriere, canonical, OG, Twitter, iconițe, manifest), JSON-LD pe Acasă, iconițe și manifest răspund 200 cu tipurile corecte. Build separat cu `ALLOW_INDEXING=true` și un cod de test: `robots.txt` permite indexarea (fără `/api/`) și indică sitemap-ul, paginile au `index, follow` + `googlebot`, eticheta de verificare apare; 404 rămâne `noindex`. Build-ul final e cu setările implicite (indexare oprită).
+- **Limite:** schema.org și documentația Google au fost blocate de proxy-ul de rețea al mediului, deci tipul `GeneralContractor` și eligibilitatea pentru rezultate îmbogățite nu au fost reverificate online — de făcut cu Rich Results Test la lansare. Grosimea 700 nu se aplică în iconiță (fontul implicit al generatorului); acceptabil pentru varianta provizorie.
+- **Documentare:** README (secțiunea „Indexare și SEO tehnic” cu pașii de lansare; variabile citite la build), ARCHITECTURE, BACKLOG (B-018, B-019), CLAUDE.md (capcane metadate), `.env.example`.
+
 ## 2026-09-25 — S09 — Hero nou, fără localități pe pagini; analiză SEO
 
 - **Scop / clasificare:** SMALL — conținut; fără schimbări de logică.

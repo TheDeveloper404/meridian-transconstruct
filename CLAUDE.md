@@ -56,5 +56,6 @@ Verifică API-ul în documentația curentă (context7) înainte de a scrie sau d
 - **Nodemailer 10 are tipuri proprii** — nu instala `@types/nodemailer`.
 - **`next/image`: `priority` e depreciat în Next 16** — folosește `preload` pentru imaginea LCP.
 - **`next start` nu funcționează cu `output: "standalone"`** — modul de rulare se alege la deploy (B-002); nu-l reactiva fără să schimbi și scripturile.
+- **Metadate Next:** un `openGraph`/`twitter` definit în pagină înlocuiește complet pe cel din layout — folosește `pageMetadata()` din `src/lib/seo.ts`. `SITE_URL`, `ALLOW_INDEXING`, `GOOGLE_SITE_VERIFICATION` se citesc la build. Pe 404, Next pune singur `noindex`; `robots` din `not-found.tsx` există ca să nu se contrazică cu `index, follow` din layout.
 - **Navigarea Next (`pushState`) nu emite `hashchange`** — starea activă din meniu ascultă și `navigation.currententrychange` (cu rezervă după clic). Orice logică nouă bazată pe `location.hash` trebuie să țină cont de asta.
 - **ESLint `@next/next/no-html-link-for-pages`** respinge `<a href="/#...">` literal în JSX; pe Acasă folosește `#sectiune`, iar pentru ancore spre Acasă din alte pagini folosește datele din `src/content/navigation.ts`.

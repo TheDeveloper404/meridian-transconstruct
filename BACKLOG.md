@@ -21,8 +21,8 @@ Actualizat: 25 septembrie 2026 (S06). Acest document urmărește lucrul rămas �
 | B-014 | Ghid de actualizare, backup și întreținere | Actualizarea conținutului este descrisă pe scurt în README; backup-ul și restore-ul rămân de redactat și verificat înainte de predare. |
 | B-015 | CSP și HSTS | Headerele de bază sunt în `next.config.ts`. CSP (cu nonce pentru scripturile Next sau politică echivalentă) și HSTS se configurează împreună cu nginx/HTTPS la deploy și se verifică pe producție. |
 | B-016 | Limitare formular la mai multe instanțe | Limitarea este în memoria unui singur proces. Dacă deploy-ul folosește mai multe instanțe sau restarturi frecvente, se mută într-un magazin partajat. Necesită `TRUST_PROXY=true` în spatele nginx. |
-| B-018 | Favicon și imagine Open Graph | Lipsesc; se generează din logo (B-004). Imaginea OG apare la distribuirea linkului (WhatsApp, Facebook). |
-| B-019 | Date structurate pentru firmă | JSON-LD de tip firmă de construcții (nume, telefon, URL, adresă) doar din date verificate (B-006); zona de serviciu doar dacă e consecventă cu conținutul vizibil. |
+| B-018 | Iconițe finale și imagine Open Graph | Iconițele există ca monogramă provizorie „M” (`src/components/monogram.tsx`, S10); se înlocuiesc din logo (B-004). Imaginea Open Graph (la distribuirea linkului pe WhatsApp/Facebook) lipsește încă. |
+| B-019 | Date structurate pentru firmă | JSON-LD `GeneralContractor` implementat pe Acasă fără adresă (S10). Rămân: adresa după verificarea sediului (B-012), logo, validare cu Rich Results Test la lansare. Tipul nu a putut fi reverificat pe schema.org din mediul de lucru (acces de rețea blocat). |
 
 ## Idei opționale — neaprobate
 

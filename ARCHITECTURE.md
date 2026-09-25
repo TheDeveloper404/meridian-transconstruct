@@ -83,8 +83,9 @@ Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul aute
 
 ## SEO, accesibilitate și performanță
 
-- HTML semantic prerandat, titluri/descrieri specifice, canonical, sitemap, robots, Open Graph și pagină 404 — implementate; lipsește imaginea Open Graph (după primirea logo-ului/fotografiilor).
-- Date structurate doar din informații reale și aprobate pentru publicare; fără recenzii sau evaluări inventate. Neimplementate încă: se adaugă după verificarea datelor firmei (B-006, B-011).
+- HTML semantic prerandat, titluri/descrieri specifice, canonical, sitemap, robots, Open Graph + Twitter card, manifest, iconițe (tab 32 px, iOS 180 px, manifest 192/512 px — monogramă provizorie) și 404 cu `noindex` — implementate. Metadatele de pagină trec prin `src/lib/seo.ts`, pentru că în Next un `openGraph` definit în pagină înlocuiește complet pe cel din layout. Lipsește imaginea Open Graph (după logo/fotografii, B-018).
+- Date structurate doar din informații reale și aprobate pentru publicare; fără recenzii sau evaluări inventate. Implementat: JSON-LD `GeneralContractor` pe Acasă (nume, denumire legală, URL, telefoane, e-mail, anul înființării, zona: Valea Jiului și județul Hunedoara) — doar date deja vizibile pe site. Fără adresă până la verificarea sediului (B-012), deci fără eligibilitate pentru rezultate îmbogățite de tip firmă locală; de validat cu Rich Results Test la lansare (B-019).
+- Indexare controlată de `ALLOW_INDEXING` (implicit oprită) și verificare Search Console prin `GOOGLE_SITE_VERIFICATION`; ambele citite la build. Pașii de lansare sunt în [README.md](README.md).
 - Pagini utile pentru servicii și proiecte reale, cu context local; fără duplicarea paginilor doar prin schimbarea localității.
 - Imagini dimensionate corespunzător, galerie cu încărcare amânată unde este potrivit și imagine principală tratată prioritar.
 - Navigare cu tastatura, focus vizibil, contrast, etichete de formular și comportament accesibil al galeriei.

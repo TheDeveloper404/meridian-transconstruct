@@ -4,6 +4,8 @@ import { MobileCall } from "@/components/mobile-call";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { company } from "@/content/company";
+import { homeSeo } from "@/content/home";
+import { pageMetadata } from "@/lib/seo";
 import { allowIndexing, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -16,21 +18,24 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  ...pageMetadata({ description: homeSeo.description, path: "/" }),
+  // Titlul din tab-ul browserului: paginile dau doar partea specifică, șablonul adaugă brandul.
   title: {
-    default: `Firmă de construcții în Petroșani — ${company.displayName}`,
+    default: `${homeSeo.title} — ${company.displayName}`,
     template: `%s — ${company.displayName}`,
   },
-  description:
-    "Construcții de case la roșu, la gri și la cheie, clădiri rezidențiale și nerezidențiale, construcții civile și renovări în Petroșani și Valea Jiului.",
   applicationName: company.displayName,
-  openGraph: {
-    type: "website",
-    locale: "ro_RO",
-    siteName: company.displayName,
-  },
-  robots: allowIndexing ? { index: true, follow: true } : { index: false, follow: false },
+  creator: company.legalName,
+  publisher: company.legalName,
+  robots: allowIndexing
+    ? { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } }
+    : { index: false, follow: false },
+  // Codul din Google Search Console (metoda „etichetă HTML”), setat doar pe producție.
+  ...(googleVerification ? { verification: { google: googleVerification } } : {}),
   formatDetection: { telephone: false },
 };
 

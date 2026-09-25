@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+// Next adaugă singur `<meta name="robots" content="noindex">` pe 404, dar layout-ul ar adăuga și
+// `index, follow` când indexarea e pornită — suprascriem ca etichetele să nu se contrazică.
 export const metadata: Metadata = {
   title: "Pagina nu a fost găsită",
+  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {

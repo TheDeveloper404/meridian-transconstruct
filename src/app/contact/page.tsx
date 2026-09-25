@@ -3,13 +3,14 @@ import { ContactForm } from "@/components/contact-form";
 import { PageHeading } from "@/components/page-heading";
 import { company } from "@/content/company";
 import { contactPage } from "@/content/contact";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact și cerere ofertă",
   description:
     "Cere o ofertă pentru construcții, renovări sau lucrări civile în Petroșani și Valea Jiului. Telefon, e-mail și formular de contact.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
