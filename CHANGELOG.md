@@ -4,6 +4,14 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-25 — S15 — Pictograme ANPC și favicon.ico
+
+- **Scop / clasificare:** SMALL.
+- **ANPC:** pictogramele SAL și SOL din snippet-ul utilizatorului, 250 × 50 px, cu `rel="nofollow noopener noreferrer"`. Descărcarea de pe `wpfitness.eu` e blocată de proxy-ul mediului, deci imaginile se încarcă deocamdată de la adresele date de utilizator; dacă există `public/images/anpc/sal.png` / `sol.png`, se folosesc cele locale (recomandat, B-021).
+- **Favicon:** `src/app/favicon.ico` (16/32/48 px) generat din monograma „M” existentă (redimensionată cu `sharp`); se adaugă iconițelor PNG din S10.
+- **Verificări:** type-check, lint, Vitest 38/38, build — PASS. `/favicon.ico` răspunde 200 `image/x-icon` și apare în `<head>`; markup-ul pictogramelor verificat în HTML. Imaginile ANPC nu au putut fi văzute randat din mediul agentului (domeniu blocat).
+- **Documentare:** BACKLOG (B-018, B-021), README.
+
 ## 2026-09-25 — S14 — Tranziții „zid de cărămidă”, „Despre firmă” cu experiență, footer corectat
 
 - **Scop / clasificare:** SMALL/NORMAL — UI și conținut, la cererea utilizatorului.

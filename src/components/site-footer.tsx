@@ -1,7 +1,6 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { Building2, Mail, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { company } from "@/content/company";
@@ -76,23 +75,29 @@ export function SiteFooter() {
               </Link>
             ))}
           </nav>
-          <ul className="flex flex-wrap items-center gap-3">
+          <ul className="flex flex-wrap items-center gap-2">
             {anpcBadges.map((badge) => {
-              const hasImage = existsSync(path.join(process.cwd(), "public", badge.image));
+              const local = existsSync(path.join(process.cwd(), "public", badge.image));
               return (
                 <li key={badge.id}>
                   <a
                     href={badge.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="nofollow noopener noreferrer"
                     aria-label={`${badge.label} (se deschide într-o filă nouă)`}
-                    className="flex h-12 items-center rounded-sm border border-inverse/40 bg-paper px-3 font-bold text-ink no-underline transition hover:border-accent"
+                    className="block rounded-sm transition-opacity hover:opacity-85"
                   >
-                    {hasImage ? (
-                      <Image src={badge.image} alt="" width={200} height={40} className="h-10 w-auto" />
-                    ) : (
-                      badge.short
-                    )}
+                    {/* Imagine statică mică (250 × 50); next/image nu aduce nimic aici, iar varianta
+                        de rezervă e pe alt domeniu. */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={local ? badge.image : badge.remote}
+                      alt={badge.label}
+                      width={250}
+                      height={50}
+                      loading="lazy"
+                      className="h-auto w-[200px] md:w-[250px]"
+                    />
                   </a>
                 </li>
               );
