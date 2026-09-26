@@ -67,4 +67,4 @@ Logo-ul și fotografiile lipsesc; textul este editorial de lucru. În machetă f
 ## Easter eggs (S55)
 
 - Footer: „Toate drepturile rezervate.” e un buton fără indicii vizuale; la clic apare „Realizat de ACL Smart Software” cu link spre https://acl-smartsoftware.ro (`FooterCredit`, textele în `src/content/legal.ts`).
-- Formular: după trimiterea **reușită**, lângă mesajul de succes apare un muncitor de șantier (SVG propriu, `WorkerOk`) care intră animat, ridică brațul și face „OK” cu degetul mare. Nu apare la erori, ca să nu sugereze un succes fals. Decorativ (`aria-hidden`); cu mișcare redusă apare direct în poza finală.
+- Formular (S56, înlocuiește muncitorul „OK” din S55): la „Trimite cererea”, cu formularul valid, un muncitor intră din dreapta, ridică ciocanul și lovește capătul butonului (butonul se turtește scurt), apoi cererea pleacă (~1,3 s; `WorkerHammer`, `HAMMER_MS`, keyframes `hammer-*` și `button-hit`). Fără animație la erori de validare sau cu mișcare redusă (cererea pleacă imediat). Decorativ (`aria-hidden`).

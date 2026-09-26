@@ -54,7 +54,7 @@
   }
 }
 
-/* Easter eggs (S55): creditul din footer și muncitorul „OK” de după trimiterea formularului. */
+/* Easter eggs: creditul din footer (S55) și muncitorul cu ciocanul de pe butonul formularului (S56). */
 @keyframes credit-in {
   from {
     opacity: 0;
@@ -66,10 +66,10 @@
   }
 }
 
-@keyframes worker-in {
+@keyframes hammer-walk {
   0% {
     opacity: 0;
-    transform: translateY(24px) scale(0.9);
+    transform: translateX(48px);
   }
   100% {
     opacity: 1;
@@ -77,31 +77,39 @@
   }
 }
 
-@keyframes worker-arm {
-  0% {
-    transform: rotate(80deg);
+/* Brațul e desenat orizontal spre stânga. În SVG (y în jos) unghiul pozitiv rotește în sensul acelor de
+   ceasornic, deci îl ridică peste umăr; negativ îl coboară. Ridicat cât intră muncitorul, și mai sus,
+   apoi lovitura la −30° (~70% din animație) și un mic recul. */
+@keyframes hammer-swing {
+  0%,
+  38% {
+    transform: rotate(70deg);
   }
-  60% {
-    transform: rotate(-10deg);
+  58% {
+    transform: rotate(95deg);
+  }
+  70% {
+    transform: rotate(-30deg);
   }
   80% {
-    transform: rotate(4deg);
+    transform: rotate(-18deg);
   }
   100% {
-    transform: rotate(0deg);
+    transform: rotate(-24deg);
   }
 }
 
-@keyframes worker-thumb {
+/* Butonul „încasează” lovitura: se turtește scurt. */
+@keyframes button-hit {
   0%,
   100% {
     transform: none;
   }
-  30% {
-    transform: translateY(-4px) rotate(-6deg);
+  35% {
+    transform: translateY(3px) scale(0.96, 0.9);
   }
-  60% {
-    transform: translateY(0) rotate(4deg);
+  65% {
+    transform: translateY(-1px) scale(1.02, 1.03);
   }
 }
 

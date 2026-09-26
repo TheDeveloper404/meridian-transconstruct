@@ -9,7 +9,7 @@ import {
   type ContactField,
   type FieldErrors,
 } from "@/lib/contact/validation";
-import { WorkerOk } from "./worker-ok";
+import { HAMMER_MS, WorkerHammer } from "./worker-hammer";
 
 type Status =
   | { kind: "idle" }
@@ -25,6 +25,7 @@ const FIELD_ORDER: ContactField[] = ["name", "email", "phone", "message"];
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [hammering, setHammering] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
 
   function focusFirstError(fieldErrors: FieldErrors) {
@@ -50,6 +51,14 @@ export function ContactForm() {
 
     setErrors({});
     setStatus({ kind: "submitting" });
+
+    // Easter egg (S56): muncitorul lovește butonul cu ciocanul, apoi pleacă cererea. Doar pentru
+    // formular valid; sărit dacă sistemul cere mișcare redusă.
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setHammering(true);
+      await new Promise((resolve) => window.setTimeout(resolve, HAMMER_MS));
+      setHammering(false);
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -176,17 +185,23 @@ export function ContactForm() {
           <input id={HONEYPOT_FIELD} name={HONEYPOT_FIELD} type="text" tabIndex={-1} autoComplete="off" />
         </div>
 
-        <button type="submit" className="button" disabled={submitting} aria-busy={submitting}>
-          {submitting ? contactForm.submitting : contactForm.submit}
-        </button>
+        {/* Cât lovește muncitorul, butonul rămâne galben (nu în stilul „dezactivat”); dublul clic e
+            blocat oricum de starea „submitting”. Lovitura (button-hit) cade la ~70% din animație. */}
+        <div className="relative inline-flex">
+          <button
+            type="submit"
+            className={`button ${hammering ? "animate-[button-hit_220ms_ease-out_880ms_both]" : ""}`}
+            disabled={submitting && !hammering}
+            aria-busy={submitting}
+          >
+            {submitting ? contactForm.submitting : contactForm.submit}
+          </button>
+          {hammering && <WorkerHammer />}
+        </div>
 
         <div aria-live="polite" role="status" className="mt-6 empty:hidden">
           {status.kind === "success" && (
-            // Easter egg (S55): muncitorul „OK” apare doar la trimiterea reușită, nu la orice apăsare.
-            <div className="flex items-end gap-4">
-              <WorkerOk />
-              <p className="border-l-3 border-success pl-4 font-bold text-success">{contactForm.success}</p>
-            </div>
+            <p className="border-l-3 border-success pl-4 font-bold text-success">{contactForm.success}</p>
           )}
         </div>
         <div aria-live="assertive" role="alert" className="mt-6 empty:hidden">

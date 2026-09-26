@@ -4,6 +4,14 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-26 — S56 — Easter egg nou pe formular: muncitorul cu ciocanul
+
+- **Scop / clasificare:** SMALL — UI, cerut de utilizator: în locul muncitorului „OK” (S55, șters), unul care vine, lovește butonul cu ciocanul, apoi cererea se trimite.
+- **Implementare:** `src/components/worker-hammer.tsx` (SVG propriu, lipit de marginea dreaptă a butonului, ciocanul iese din desen ca să atingă butonul); `HAMMER_MS` = 1300 ms; în `contact-form.tsx`, după validarea locală reușită, animația rulează și abia apoi pleacă `fetch`. Butonul rămâne galben cât e lovit (nu în stilul „dezactivat”), dublul clic e blocat de starea „submitting”; animația `button-hit` la impact (~70%). Sărită cu `prefers-reduced-motion` și la erori de validare. Keyframes `worker-*` înlocuite cu `hammer-walk`, `hammer-swing`, `button-hit`.
+- **Corecturi în timpul lucrului:** prima variantă lovea în sus (sensul rotației în SVG inversat) și stătea prea departe de buton — brațul redesenat orizontal, unghiurile doar din animație (impact −30°), muncitorul apropiat (`-ml-3`).
+- **Verificări:** type-check, lint, build — PASS. În browser (desktop și mobil), cu răspunsul API interceptat, fără e-mail real: cadre la 250/700/920/1150 ms; cererea pleacă la ~1,35 s după clic, mesajul de succes apare, muncitorul dispare.
+- **Documentare:** DESIGN („Easter eggs”).
+
 ## 2026-09-26 — S55 — Două easter eggs
 
 - **Scop / clasificare:** SMALL — UI, cerut de utilizator.
