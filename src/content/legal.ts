@@ -223,3 +223,11 @@ export const termsAndConditions: LegalDocument = {
     },
   ],
 };
+
+// Easter egg în footer (S55): clic pe „Toate drepturile rezervate.” dezvăluie autorul site-ului.
+export const siteCredit = {
+  rights: "Toate drepturile rezervate.",
+  prefix: "Realizat de",
+  name: "ACL Smart Software",
+  href: "https://acl-smartsoftware.ro",
+};

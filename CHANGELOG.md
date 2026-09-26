@@ -4,6 +4,14 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-26 — S55 — Două easter eggs
+
+- **Scop / clasificare:** SMALL — UI, cerut de utilizator.
+- **Footer:** clic pe „Toate drepturile rezervate.” → apare „Realizat de ACL Smart Software”, link spre https://acl-smartsoftware.ro (`src/components/footer-credit.tsx`, date în `src/content/legal.ts`). Buton accesibil din tastatură, `aria-expanded`, fără cursor de link.
+- **Formular:** muncitor de șantier animat (SVG propriu: cască, vestă reflectorizantă, braț care se ridică, degetul mare în sus) lângă mesajul de succes (`src/components/worker-ok.tsx`, keyframes `worker-*` în globals.css). Declanșat la trimiterea **reușită**, nu la orice apăsare pe „Trimite cererea” — altfel „OK” ar apărea și la erori. Prima variantă a mâinii se citea ca deget arătător; redesenată ca pumn cu degetul mare.
+- **Verificări:** type-check, lint, Vitest 41/41, build — PASS. În browser: creditul ascuns inițial, vizibil după clic, link corect; muncitorul capturat în timpul animației și în poza finală (trimitere simulată cu răspuns API interceptat, fără e-mail real). Adresa acl-smartsoftware.ro nu a putut fi accesată din mediul de lucru (rețea restricționată).
+- **Documentare:** DESIGN (secțiunea „Easter eggs”).
+
 ## 2026-09-26 — S54 — Bandă de avertizare de șantier între secțiuni
 
 - **Scop / clasificare:** SMALL — UI, ideea utilizatorului: în locul fâșiei pline de pe marginea oblică, banda galben/negru folosită pe șantiere.

@@ -9,6 +9,7 @@ import {
   type ContactField,
   type FieldErrors,
 } from "@/lib/contact/validation";
+import { WorkerOk } from "./worker-ok";
 
 type Status =
   | { kind: "idle" }
@@ -181,7 +182,11 @@ export function ContactForm() {
 
         <div aria-live="polite" role="status" className="mt-6 empty:hidden">
           {status.kind === "success" && (
-            <p className="border-l-3 border-success pl-4 font-bold text-success">{contactForm.success}</p>
+            // Easter egg (S55): muncitorul „OK” apare doar la trimiterea reușită, nu la orice apăsare.
+            <div className="flex items-end gap-4">
+              <WorkerOk />
+              <p className="border-l-3 border-success pl-4 font-bold text-success">{contactForm.success}</p>
+            </div>
           )}
         </div>
         <div aria-live="assertive" role="alert" className="mt-6 empty:hidden">

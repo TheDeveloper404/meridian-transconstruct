@@ -63,3 +63,8 @@ Macheta nu folosește dependențe, fonturi sau imagini externe; aplicația, de a
 ## Limite și validare
 
 Logo-ul și fotografiile lipsesc; textul este editorial de lucru. În machetă formularul de pe Contact e demonstrativ (dezactivat); în aplicație trimite prin SMTP. CTA-urile navighează către Contact. Serviciul 03 este „Construcții civile”, iar secțiunea 03 / Firma de pe Acasă este păstrată. Copy-ul final și deciziile provizorii A-001…A-006 rămân de aprobat. Dovezile de verificare (machetă și aplicație) se consemnează în [CHANGELOG.md](../CHANGELOG.md).
+
+## Easter eggs (S55)
+
+- Footer: „Toate drepturile rezervate.” e un buton fără indicii vizuale; la clic apare „Realizat de ACL Smart Software” cu link spre https://acl-smartsoftware.ro (`FooterCredit`, textele în `src/content/legal.ts`).
+- Formular: după trimiterea **reușită**, lângă mesajul de succes apare un muncitor de șantier (SVG propriu, `WorkerOk`) care intră animat, ridică brațul și face „OK” cu degetul mare. Nu apare la erori, ca să nu sugereze un succes fals. Decorativ (`aria-hidden`); cu mișcare redusă apare direct în poza finală.

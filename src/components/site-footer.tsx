@@ -7,6 +7,7 @@ import { company } from "@/content/company";
 import { footerTagline } from "@/content/home";
 import { anpcBadges, legalLinks } from "@/content/legal";
 import { Brand } from "./brand";
+import { FooterCredit } from "./footer-credit";
 
 // Footer pe 3 coloane (S26): denumirea, fraza de prezentare și copyright-ul; datele de contact, cu
 // iconițe (regiunea o singură dată); paginile legale și pictogramele ANPC (190 px lățime).
@@ -39,7 +40,7 @@ export function SiteFooter() {
           <Brand />
           <p className="mx-auto mt-2 max-w-105 text-sm text-inverse md:mx-0">{footerTagline}</p>
           <p className="mt-6 text-sm text-inverse">
-            © {year} {company.legalName} Toate drepturile rezervate.
+            © {year} {company.legalName} <FooterCredit />
           </p>
         </div>
 
