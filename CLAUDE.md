@@ -10,7 +10,7 @@ Site de prezentare în română pentru o firmă de construcții din Petroșani: 
 
 ## Unde stă fiecare lucru
 
-- **Fără linii orizontale** între secțiuni sau elemente (cerința utilizatorului). Tranzițiile se fac cu `SectionEdge` (`src/components/section-edge.tsx`, margine oblică cu fâșie portocalie — revenire în S19, după varianta „zid de cărămidă” din S14–S18); spre footer nu există tranziție (S20): ultima secțiune se termină drept.
+- **Fără linii orizontale** între secțiuni sau elemente (cerința utilizatorului). Tranzițiile se fac cu `SectionEdge` (`src/components/section-edge.tsx`: margine oblică + bandă de avertizare galben/negru, S54; nu reveni la SVG întins — deformează dungile); spre footer nu există tranziție (S20): ultima secțiune se termină drept.
 
 - `src/content/` — **toate textele și datele firmei**. Componentele nu conțin copy comercial hardcodat.
 - `src/components/` — prezentare. Client components (`"use client"`) doar unde e nevoie de interacțiune: `navigation.tsx`, `contact-form.tsx`.

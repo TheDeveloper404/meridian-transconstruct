@@ -4,6 +4,13 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-26 — S54 — Bandă de avertizare de șantier între secțiuni
+
+- **Scop / clasificare:** SMALL — UI, ideea utilizatorului: în locul fâșiei pline de pe marginea oblică, banda galben/negru folosită pe șantiere.
+- **Implementare:** `SectionEdge` rescris cu două straturi HTML decupate prin `clip-path` (banda + secțiunea următoare); dungile vin din `.hazard-tape` (`repeating-linear-gradient` la −45°, galben `accent` / `ink-deep`, 12 px). SVG-ul anterior era întins neuniform (`preserveAspectRatio="none"`) și ar fi deformat dungile. Grosime bandă 14 px desktop / 9 px mobil (`--tape`); suprapunere de 1 px contra liniilor de antialiasing. Folosirile existente (hero, Acasă, Contact, proiecte, pagini legale) neschimbate.
+- **Verificări:** type-check, lint, build — PASS. Capturi desktop și mobil pentru cele 4 tranziții de pe Acasă și pagina Contact; fără overflow orizontal.
+- **Documentare:** DESIGN, CLAUDE.md.
+
 ## 2026-09-26 — S53 — Accent galben de șantier în locul portocaliului
 
 - **Scop / clasificare:** SMALL — culoare de accent, la cererea utilizatorului (recomandare: galben de șantier, asociat cu construcțiile și complementar albastrului din logo).

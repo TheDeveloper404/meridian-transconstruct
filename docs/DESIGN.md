@@ -44,7 +44,7 @@ Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1600 px (1200 → 1440 î
 
 ## Tranziții între secțiuni (S13)
 
-Fără linii orizontale între secțiuni sau între elementele unei liste (cerința utilizatorului). Trecerea dintre secțiuni este o margine oblică în culoarea secțiunii următoare, cu o fâșie galbenă subțire pe diagonală (`SectionEdge`, S13); panta alternează (`flip`); spre footer nu există tranziție — secțiunea se termină drept (S20). Varianta „zid de cărămidă” (S14–S18) a fost abandonată în S19 la cererea utilizatorului. Serviciile sunt panouri separate prin spațiu, cu numere mari conturate în galben. Footer-ul este albastru foarte închis (`ink-deep`), ca fiecare pagină să se încheie cu aceeași tranziție.
+Fără linii orizontale între secțiuni sau între elementele unei liste (cerința utilizatorului). Trecerea dintre secțiuni este o margine oblică în culoarea secțiunii următoare, cu o fâșie galbenă subțire pe diagonală (`SectionEdge`, S13); panta alternează (`flip`); spre footer nu există tranziție — secțiunea se termină drept (S20). Varianta „zid de cărămidă” (S14–S18) a fost abandonată în S19 la cererea utilizatorului. Serviciile sunt panouri separate prin spațiu, cu numere mari conturate în galben. Footer-ul este albastru foarte închis (`ink-deep`), ca fiecare pagină să se încheie cu aceeași tranziție. **S54:** pe marginea oblică stă o bandă de avertizare de șantier (dungi galben / aproape negru `ink-deep`, 45°, 12 px), groasă de 14 px pe desktop și 9 px pe mobil (`.hazard-tape`, straturi HTML cu `clip-path` ca dungile să nu se deformeze).
 
 ## Responsive și stări
 

@@ -189,6 +189,16 @@
 }
 
 @layer components {
+  /* Bandă de avertizare de șantier (S54): dungi galben / aproape negru la 45°, folosită pe marginea
+     oblică dintre secțiuni (SectionEdge). */
+  .hazard-tape {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-accent) 0 12px,
+      var(--color-ink-deep) 12px 24px
+    );
+  }
+
   /* Bara de progres la navigarea între pagini (NavigationProgress, S23): crește lent cât se încarcă
      pagina, apoi se completează și dispare. */
   .nav-progress {
