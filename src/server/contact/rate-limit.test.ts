@@ -41,4 +41,18 @@ describe("FixedWindowRateLimiter", () => {
     expect(limiter.consume("a").allowed).toBe(true);
     expect(limiter.consume("c").allowed).toBe(false);
   });
+
+  it("sweepExpired șterge doar cheile cu fereastra expirată", () => {
+    const time = clock();
+    const limiter = new FixedWindowRateLimiter({ limit: 1, windowMs: 60_000, now: time.now });
+    limiter.consume("a");
+    time.advance(30_000);
+    limiter.consume("b");
+    time.advance(30_000);
+    limiter.sweepExpired();
+    expect(limiter.size).toBe(1); // „a” a expirat, „b” mai are 30 s
+    time.advance(30_000);
+    limiter.sweepExpired();
+    expect(limiter.size).toBe(0);
+  });
 });

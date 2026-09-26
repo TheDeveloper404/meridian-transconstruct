@@ -73,16 +73,17 @@ export function createContactService(deps: ContactServiceDeps): ContactService {
       const validation = validateContact(raw);
       if (!validation.ok) return { status: "invalid", errors: validation.errors };
 
-      const decision = deps.limiter.consume(clientKey);
-      if (!decision.allowed) {
-        return { status: "rate_limited", retryAfterSeconds: decision.retryAfterSeconds };
-      }
-
       // Spam: răspundem ca la succes, ca botul să nu afle că a fost filtrat; nu trimitem nimic.
+      // Verificat înaintea limitei, ca trimiterile filtrate să nu consume din cota vizitatorilor reali.
       const honeypot = raw !== null && typeof raw === "object"
         ? (raw as Record<string, unknown>)[HONEYPOT_FIELD]
         : undefined;
       if (typeof honeypot === "string" && honeypot.trim() !== "") return { status: "sent" };
+
+      const decision = deps.limiter.consume(clientKey);
+      if (!decision.allowed) {
+        return { status: "rate_limited", retryAfterSeconds: decision.retryAfterSeconds };
+      }
 
       if (!deps.transport) return { status: "unavailable" };
 

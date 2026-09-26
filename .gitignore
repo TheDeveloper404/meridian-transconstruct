@@ -10,3 +10,8 @@ CHANGELOG.md
 CLAUDE.md
 AGENTS.md
 PROJECTT_BRIEF.md
+
+# Secrete locale (.env.example rămâne versionat, fără valori reale)
+.env
+.env.*
+!.env.example

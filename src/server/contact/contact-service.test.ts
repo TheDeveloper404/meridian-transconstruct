@@ -78,6 +78,14 @@ describe("contact service", () => {
     expect(transport.send).not.toHaveBeenCalled();
   });
 
+  it("honeypot completat nu consumă din limita vizitatorilor reali", async () => {
+    const { transport } = fakeTransport();
+    const svc = service(transport, 1);
+    for (let i = 0; i < 3; i++) await svc.submit({ ...valid, website: "http://spam" }, "global");
+    expect((await svc.submit(valid, "global")).status).toBe("sent");
+    expect(transport.send).toHaveBeenCalledTimes(1);
+  });
+
   it("fără configurație SMTP răspunde „unavailable”", async () => {
     expect(await service(null).submit(valid, "ip")).toEqual({ status: "unavailable" });
   });

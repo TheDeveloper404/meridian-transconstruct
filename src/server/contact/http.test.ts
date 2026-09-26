@@ -78,6 +78,67 @@ describe("POST /api/contact", () => {
     expect(send).not.toHaveBeenCalled();
   });
 
+  it("413 pentru corp chunked, fără să citească tot corpul", async () => {
+    const { send } = setup();
+    const svc = createContactService({
+      transport: { send },
+      limiter: new FixedWindowRateLimiter({ limit: 5, windowMs: 60_000 }),
+      from: "site@example.ro",
+      to: "inbox@example.ro",
+    });
+    // 512 bucăți de 1 KiB, fără Content-Length; numărăm câte sunt cerute efectiv.
+    let pulled = 0;
+    const chunk = new TextEncoder().encode("a".repeat(1024));
+    const stream = new ReadableStream<Uint8Array>({
+      pull(controller) {
+        pulled += 1;
+        if (pulled > 512) controller.close();
+        else controller.enqueue(chunk);
+      },
+    });
+    const request = new Request("http://localhost/api/contact", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: stream,
+      duplex: "half",
+    } as RequestInit);
+    expect(request.headers.get("content-length")).toBeNull();
+
+    const response = await handleContactRequest(request, svc, { trustProxy: false });
+    expect(response.status).toBe(413);
+    expect(pulled).toBeLessThan(40);
+    expect(send).not.toHaveBeenCalled();
+  });
+
+  it("acceptă caractere pe mai mulți octeți împărțite între bucăți", async () => {
+    const { send } = setup();
+    const svc = createContactService({
+      transport: { send },
+      limiter: new FixedWindowRateLimiter({ limit: 5, windowMs: 60_000 }),
+      from: "site@example.ro",
+      to: "inbox@example.ro",
+    });
+    const bytes = new TextEncoder().encode(JSON.stringify({ ...valid, name: "Ștefan Țărână" }));
+    const middle = bytes.indexOf(0xc8) + 1; // taie „Ș” (0xC8 0x98) în două
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(bytes.slice(0, middle));
+        controller.enqueue(bytes.slice(middle));
+        controller.close();
+      },
+    });
+    const request = new Request("http://localhost/api/contact", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: stream,
+      duplex: "half",
+    } as RequestInit);
+
+    const response = await handleContactRequest(request, svc, { trustProxy: false });
+    expect(response.status).toBe(200);
+    expect(send).toHaveBeenCalledWith(expect.objectContaining({ subject: "Cerere ofertă — Ștefan Țărână" }));
+  });
+
   it("429 cu Retry-After după limită", async () => {
     const { call } = setup({ limit: 1 });
     await call({ body: JSON.stringify(valid) });

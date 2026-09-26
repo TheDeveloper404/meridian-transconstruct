@@ -57,7 +57,7 @@ Cerere: `Content-Type: application/json`, maximum 16 KiB. Corp: `{ name, email, 
 |---|---|
 | `200 { ok: true }` | Trimis — sau honeypot completat (răspuns identic, fără trimitere). |
 | `400 VALIDATION_ERROR` | JSON invalid sau câmpuri invalide; `details.fields` conține mesajele pe câmpuri. |
-| `413 PAYLOAD_TOO_LARGE` | Corp peste 16 KiB. |
+| `413 PAYLOAD_TOO_LARGE` | Corp peste 16 KiB (după `Content-Length` sau, fără el, în timpul citirii — corpul se citește pe bucăți și citirea se oprește la limită). |
 | `415 UNSUPPORTED_MEDIA_TYPE` | Alt tip de conținut decât JSON (blochează și formularele HTML trimise de pe alte site-uri). |
 | `429 RATE_LIMITED` + `Retry-After` | Peste limita per client (implicit 5 cereri / 60 minute). |
 | `503 SERVICE_UNAVAILABLE` | SMTP sau destinatarul nu sunt configurați. |
@@ -65,7 +65,7 @@ Cerere: `Content-Type: application/json`, maximum 16 KiB. Corp: `{ name, email, 
 
 Format unic de eroare: `{ "error": { "code", "message", "details?" } }`. Mesajele de eroare 429/503/500 includ alternativa telefonică. Răspunsurile au `Cache-Control: no-store`.
 
-Limitarea este în memoria procesului (un singur proces Node), cu cheia din `X-Real-IP` sau ultimul element din `X-Forwarded-For`, doar cu `TRUST_PROXY=true`. Fără proxy de încredere, toate cererile împart o limită globală. La mai multe instanțe, limitarea trebuie mutată într-un magazin partajat.
+Limitarea este în memoria procesului (un singur proces Node), cu cheia din `X-Real-IP` sau ultimul element din `X-Forwarded-For`, doar cu `TRUST_PROXY=true`. Fără proxy de încredere, toate cererile împart o limită globală, iar în producție serverul avertizează în log — **la deploy `TRUST_PROXY=true` în spatele nginx, cu portul Node inaccesibil din exterior, e obligatoriu**. Trimiterile prinse de honeypot nu consumă din limită. IP-urile cu fereastra expirată se șterg din memorie la fiecare minut (politica de confidențialitate: „aproximativ o oră” cu fereastra implicită). La mai multe instanțe, limitarea trebuie mutată într-un magazin partajat.
 
 ## Securitatea formularului
 
@@ -75,6 +75,7 @@ Cerințele de mai jos sunt implementate și acoperite de teste, cu excepția ult
 - Anti-spam: honeypot + limitare per client în memorie (vezi contractul de mai sus). Se reevaluează după alegerea topologiei de hosting.
 - Destinatarul și expeditorul sunt configurații server-side, nu valori controlate de vizitator. E-mailul vizitatorului se validează și se folosește ca Reply-To.
 - Secretele SMTP rămân în configurația mediului; fără credențiale în cod, browser sau loguri.
+- Conexiunea SMTP e criptată obligatoriu: TLS implicit pe 465, STARTTLS impus (`requireTLS`) pe 587, minim TLS 1.2.
 - Mesaje de eroare utile, fără stack trace sau detalii de infrastructură expuse. Fără logarea implicită a conținutului cererilor.
 - Stări UI pentru trimitere, succes și eșec; succesul nu se afișează când transportul a eșuat. Acceptarea SMTP nu dovedește primirea în inbox.
 - Înainte de lansare se verifică expedierea și primirea reală, inclusiv comportamentul în caz de eroare.

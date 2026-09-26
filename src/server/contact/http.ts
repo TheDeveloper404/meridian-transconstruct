@@ -38,6 +38,33 @@ export function clientKey(request: Request, trustProxy: boolean): string {
   return forwarded || "global";
 }
 
+/** Citește corpul pe bucăți și se oprește imediat ce depășește limita: fără Content-Length
+ * (transfer chunked), `request.text()` ar citi tot în memorie înainte de verificare.
+ * `null` = prea mare. */
+async function readBodyWithLimit(request: Request, limit: number): Promise<string | null> {
+  if (!request.body) return "";
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > limit) {
+      await reader.cancel().catch(() => {});
+      return null;
+    }
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
+}
+
 export function toResponse(result: ContactResult): Response {
   switch (result.status) {
     case "sent":
@@ -85,8 +112,8 @@ export async function handleContactRequest(
     return errorResponse(413, "PAYLOAD_TOO_LARGE", "Cererea este prea mare.");
   }
 
-  const body = await request.text();
-  if (new TextEncoder().encode(body).byteLength > MAX_BODY_BYTES) {
+  const body = await readBodyWithLimit(request, MAX_BODY_BYTES);
+  if (body === null) {
     return errorResponse(413, "PAYLOAD_TOO_LARGE", "Cererea este prea mare.");
   }
 

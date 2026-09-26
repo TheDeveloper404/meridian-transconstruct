@@ -47,6 +47,19 @@ export class FixedWindowRateLimiter {
     return { allowed: true };
   }
 
+  /** Șterge cheile (adresele IP) a căror fereastră a expirat. Apelată periodic din `index.ts`,
+   * ca IP-urile să nu rămână în memorie după fereastră (politica de confidențialitate). */
+  sweepExpired() {
+    const now = this.now();
+    for (const [key, bucket] of this.buckets) {
+      if (now - bucket.windowStart >= this.windowMs) this.buckets.delete(key);
+    }
+  }
+
+  get size(): number {
+    return this.buckets.size;
+  }
+
   private makeRoom(now: number) {
     if (this.buckets.size < this.maxKeys) return;
     for (const [key, bucket] of this.buckets) {

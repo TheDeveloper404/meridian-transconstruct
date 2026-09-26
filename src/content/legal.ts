@@ -72,7 +72,7 @@ export const privacyPolicy: LegalDocument = {
       items: [
         "Datele din formularul de contact: numele sau denumirea firmei, adresa de e-mail, numărul de telefon (opțional) și mesajul despre lucrare, împreună cu data trimiterii.",
         "Datele pe care ni le transmiți direct, prin e-mail, telefon sau WhatsApp: numele, datele de contact și informațiile despre lucrare.",
-        "Date tehnice: adresa IP, folosită doar în memoria serverului, pentru cel mult o oră, ca să limităm trimiterile repetate ale formularului; jurnalele tehnice ale serverului (adresa IP, data și pagina accesată), păstrate pe termen scurt pentru securitate.",
+        "Date tehnice: adresa IP, folosită doar în memoria serverului, ca să limităm trimiterile repetate ale formularului, și ștearsă automat după aproximativ o oră; jurnalele tehnice ale serverului (adresa IP, data și pagina accesată), păstrate pe termen scurt pentru securitate.",
       ],
       paragraphs: [
         "Nu îți cerem date sensibile. Te rugăm să nu incluzi în mesaj informații care nu sunt necesare pentru ofertă.",
