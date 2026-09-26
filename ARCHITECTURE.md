@@ -79,7 +79,7 @@ Cerințele de mai jos sunt implementate și acoperite de teste, cu excepția ult
 - Stări UI pentru trimitere, succes și eșec; succesul nu se afișează când transportul a eșuat. Acceptarea SMTP nu dovedește primirea în inbox.
 - Înainte de lansare se verifică expedierea și primirea reală, inclusiv comportamentul în caz de eroare.
 
-Yahoo este destinatarul temporar confirmat. Furnizorul SMTP și expeditorul autentificat rămân de ales. Nu presupunem că adresa destinatarului oferă și serviciul de expediere.
+Yahoo este destinatarul temporar confirmat. Furnizor de expediere ales: Maileroo (2026-09-26, B-007); adresa publică de pe site va fi pe domeniu, redirecționată prin Cloudflare Email Routing (B-009). Nu presupunem că adresa destinatarului oferă și serviciul de expediere.
 
 ## SEO, accesibilitate și performanță
 

@@ -1,28 +1,12 @@
 # Dependențe
 node_modules/
-
+.claude
 # Next.js / build
 .next/
 out/
-build/
-*.tsbuildinfo
-next-env.d.ts
 
-# Teste
-coverage/
-
-# Mediu — niciodată în git; șablonul este .env.example
-.env
-.env.*
-!.env.example
-
-# Sisteme / editoare
-.DS_Store
-Thumbs.db
-*.log
-.vscode/*
-!.vscode/extensions.json
-.idea/
-
-# Unelte locale de agent
-.claude/settings.local.json
+BACKLOG.md
+CHANGELOG.md
+CLAUDE.md
+AGENTS.md
+PROJECTT_BRIEF.md

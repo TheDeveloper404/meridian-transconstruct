@@ -4,6 +4,18 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-26 — S17 — Site mai lat
+
+- **Scop / clasificare:** SMALL — cerința utilizatorului „site-ul mai wide”.
+- **Implementare:** containerul comun `.wrap` (`src/app/globals.css`) trece de la maximum 1200 px la 1440 px; marginile laterale rămân 16 px pe mobil și 32 px de la 768 px. Toate secțiunile, header-ul și footer-ul folosesc `.wrap`, deci se lărgesc împreună; blocurile îngustate intenționat (textele, apelul de contact, paginile legale) își păstrează `max-w`. `sizes` din galerie ajustat la noile lățimi ale tile-urilor (840 / 600 px), ca imaginile să nu fie încărcate prea mici.
+- **Verificări:** type-check, lint, Vitest 38/38, build — PASS. Verificat static; aspectul pe ecrane late nu a fost văzut în browser (nu s-a cerut).
+- **Documentare:** DESIGN (containerul).
+- **Decizii de lansare (utilizator):**
+  - De cumpărat: **domeniul** (apoi pus pe **Cloudflare** — DNS, proxy, SSL) și **VPS-ul** (B-010, B-002).
+  - Formularul trimite prin **Maileroo**, ca la Filadelfia (verificat în acel proiect: `maileroo-sdk`, domeniu verificat cu SPF/DKIM/DMARC prin DNS-ul Cloudflare). Resend (folosit la ACL) exclus: planul gratuit are deja un domeniu ocupat (B-007).
+  - Adresa Yahoo nu mai apare pe site: o adresă pe domeniu, redirecționată prin **Cloudflare Email Routing** către inboxul real (B-009). Email Routing doar primește; trimiterea rămâne pe Maileroo.
+  - Nimic implementat în cod încă — toate depind de domeniu.
+
 ## 2026-09-25 — S16 — Închiderea zilei: documentație și punct de reluare
 
 - **Scop / clasificare:** SMALL — doar documentație, la cererea utilizatorului („închidem aici”).

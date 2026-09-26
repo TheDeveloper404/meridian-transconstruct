@@ -23,7 +23,7 @@ Aspect sobru, clar și vizual: fundaluri albastru închis și alb cald, accent p
 
 O familie sans-serif: fonturile sistemului în machetă; în aplicație Inter găzduit local prin `next/font` (A-003). Maximum trei greutăți (400, 500, 700). Scară: 14/16/20/28/40/64 px; titlul mare se adaptează până la 40 px pe mobil. Text curent 16 px, line-height 1.6; titluri 1.1–1.2.
 
-Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1200 px. Butoane minimum 48 px înălțime (52 px în machetă), în formă de capsulă conform machetei finale; câmpurile de formular au colțuri de 14 px. Fără carduri rotunjite. Focus vizibil cu contur dublu sau culoare contrastantă cu suprafața.
+Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1440 px (lărgit de la 1200 px la cererea utilizatorului, S17). Butoane minimum 48 px înălțime (52 px în machetă), în formă de capsulă conform machetei finale; câmpurile de formular au colțuri de 14 px. Fără carduri rotunjite. Focus vizibil cu contur dublu sau culoare contrastantă cu suprafața.
 
 ## Componente
 
