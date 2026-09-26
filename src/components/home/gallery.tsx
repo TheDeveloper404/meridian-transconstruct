@@ -1,24 +1,38 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GalleryItem } from "@/content/projects";
 
-export type GalleryTile = GalleryItem & { available: boolean };
+// `hideCaption`: fără categorie/titlu pe tile (în albume doar prima fotografie le are, S31).
+// `href`: tile-ul e link (pe Acasă, spre album — S45) în loc să deschidă vizualizarea mărită.
+export type GalleryTile = GalleryItem & { available: boolean; hideCaption?: boolean; href?: string };
 
-// Așezare „bento” pe 12 coloane, repetată la fiecare 6 elemente: o fotografie mare + cinci mai mici
-// în ritmuri diferite. Pe tabletă 2 coloane (prima pe toată lățimea), pe telefon o coloană.
-const LAYOUT = [
-  "md:col-span-2 md:row-span-2 lg:col-span-7 lg:row-span-2",
-  "lg:col-span-5",
-  "lg:col-span-5",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-];
+// Așezare „bento” pe 12 coloane: o fotografie mare (7) cu două mai mici alături (5), apoi rânduri de
+// câte trei (4 + 4 + 4). Rândurile se umplu complet oricâte fotografii ar fi (S34): la sfârșit, două
+// rămase merg 6 + 6, iar una rămasă transformă ultimele patru în două rânduri 6 + 6; cu 4 fotografii,
+// cea mare ocupă trei rânduri lângă celelalte trei. Pe tabletă 2 coloane (prima pe toată lățimea,
+// ultima la fel dacă ar rămâne singură pe rând), pe telefon o coloană.
+function tileLayout(index: number, count: number) {
+  const md =
+    index === 0 ? "md:col-span-2 md:row-span-2" : index === count - 1 && count % 2 === 0 ? "md:col-span-2" : "";
+  let lg: string;
+  if (count === 1) lg = "lg:col-span-12 lg:row-span-2";
+  else if (count === 2) lg = index === 0 ? "lg:col-span-7 lg:row-span-2" : "lg:col-span-5 lg:row-span-2";
+  else if (count === 4) lg = index === 0 ? "lg:col-span-7 lg:row-span-3" : "lg:col-span-5";
+  else if (index === 0) lg = "lg:col-span-7 lg:row-span-2";
+  else if (index < 3) lg = "lg:col-span-5";
+  else {
+    const rest = count - 3;
+    const wide = [0, 4, 2][rest % 3]; // câte dintre ultimele merg pe jumătate de rând
+    lg = index - 3 >= rest - wide ? "lg:col-span-6" : "lg:col-span-4";
+  }
+  return `${md} ${lg}`;
+}
 
 function tileSizes(index: number) {
-  return index % 6 === 0
+  return index === 0
     ? "(min-width: 1024px) 940px, 100vw"
     : "(min-width: 1024px) 680px, (min-width: 768px) 50vw, 100vw";
 }
@@ -78,9 +92,30 @@ export function Gallery({ tiles, placeholderLabel }: { tiles: GalleryTile[]; pla
                 else refs.current.delete(tile.id);
               }}
               style={{ transitionDelay: `${(index % 6) * 90}ms` }}
-              className={`${LAYOUT[index % 6]} transition-[opacity,transform] duration-700 ease-out data-[reveal=hidden]:translate-y-8 data-[reveal=hidden]:opacity-0`}
+              className={`${tileLayout(index, tiles.length)} transition-[opacity,transform] duration-700 ease-out data-[reveal=hidden]:translate-y-8 data-[reveal=hidden]:opacity-0`}
             >
-              {tile.available ? (
+              {tile.available && tile.href ? (
+                <Link
+                  href={tile.href}
+                  aria-label={`Vezi albumul: ${tile.title ?? tile.category}`}
+                  className="group relative block size-full overflow-hidden rounded-sm bg-ink no-underline"
+                >
+                  <Image
+                    src={tile.image.src}
+                    alt={tile.image.alt}
+                    fill
+                    sizes={tileSizes(index)}
+                    className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06] group-focus-visible:scale-[1.06]"
+                  />
+                  <TileCaption tile={tile} />
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-4 bottom-4 flex size-11 translate-y-2 items-center justify-center rounded-full bg-accent text-lg font-bold text-ink opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+                  >
+                    ↗
+                  </span>
+                </Link>
+              ) : tile.available ? (
                 <button
                   type="button"
                   onClick={(event) => open(tile.id, event.currentTarget)}
@@ -126,20 +161,24 @@ export function Gallery({ tiles, placeholderLabel }: { tiles: GalleryTile[]; pla
 function TileCaption({ tile, note }: { tile: GalleryTile; note?: string }) {
   return (
     <>
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_22_47/0.9)_0%,rgb(8_22_47/0.35)_45%,transparent_75%)] transition-opacity duration-500 group-hover:opacity-100 md:opacity-80"
-      />
+      {!tile.hideCaption && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_22_47/0.9)_0%,rgb(8_22_47/0.35)_45%,transparent_75%)] transition-opacity duration-500 group-hover:opacity-100 md:opacity-80"
+        />
+      )}
       {tile.illustrative && (
         <span className="absolute top-4 left-4 bg-ink/80 px-2 py-1 text-xs font-bold tracking-[1px] text-inverse uppercase backdrop-blur-sm">
           Ilustrativ
         </span>
       )}
-      <span className="absolute inset-x-5 bottom-5 block pr-14 transition-transform duration-500 ease-out md:translate-y-1 md:group-hover:translate-y-0">
-        <span className="block text-xs font-bold tracking-[2px] text-accent uppercase">{tile.category}</span>
-        {tile.title && <span className="mt-1 block text-xl leading-tight font-bold text-paper">{tile.title}</span>}
-        {note && <span className="mt-1 block text-sm text-inverse">{note}</span>}
-      </span>
+      {!tile.hideCaption && (
+        <span className="absolute inset-x-5 bottom-5 block pr-14 transition-transform duration-500 ease-out md:translate-y-1 md:group-hover:translate-y-0">
+          <span className="block text-xs font-bold tracking-[2px] text-accent uppercase">{tile.category}</span>
+          {tile.title && <span className="mt-1 block text-xl leading-tight font-bold text-paper">{tile.title}</span>}
+          {note && <span className="mt-1 block text-sm text-inverse">{note}</span>}
+        </span>
+      )}
     </>
   );
 }

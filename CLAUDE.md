@@ -25,8 +25,8 @@ Nu adăuga straturi (repository, DI, ORM, API separat) fără o cerință concre
 - Nu inventa lucrări, recenzii, certificări, cifre, termene de răspuns sau date ale firmei. Lipsa unei informații → stare goală sau placeholder marcat, plus întrebare către utilizator.
 - Proiectele se publică doar reale, cu acord (`src/content/projects.ts`). Adresa sediului apare doar în paginile legale și în footer, la datele de identificare (`company.registeredOffice`, deciziile utilizatorului S24/S27), nu în conținutul comercial.
 - **Fără nume de localități pe pagini** (Petroșani, Vulcan, Lupeni, Petrila, Uricani, Aninoasa) — decizia utilizatorului. Zona se scrie „Valea Jiului” / „județul Hunedoara” (`company.region`, `company.county`). „Petroșani” e permis doar în `<title>`, meta description și Open Graph și în adresa legală obligatorie. Nu folosi text ascuns pentru SEO.
-- Galeria (`src/content/projects.ts`): imaginile generate au `illustrative: true` (etichetă „Ilustrativ”), fără titlu, localitate sau detalii — nu le prezenta ca lucrări ale firmei. Fișierele lipsă se afișează ca bloc de rezervă (verificare la build); nu adăuga imagini stock ca portofoliu.
-- Imaginea hero e un concept generat; eticheta rămâne cât timp `hero.image.isConcept` e `true`.
+- Albumele (`src/content/projects.ts`): fotografii reale ale firmei (confirmat S42), originalele în `docs/assets/originale/<slug>/`, pe site WebP fără metadate. Acasă › 02 arată coperțile albumelor din `homeAlbums`. Imagini generate sau stock nu intră în portofoliu; dacă ar fi vreodată necesare, au `illustrative: true` (etichetă „Ilustrativ”), fără titlu, localitate sau detalii.
+- Imaginea hero e o fotografie reală a firmei (S46–S47). `hero.image.isConcept: true` afișează eticheta de vizual generat — doar pentru imagini care nu sunt lucrări ale firmei.
 - Decizie structurală/vizuală luată fără aprobare → rând `ASSUMED — needs ratification` în BACKLOG. La ajustări vizuale nu adăuga elemente noi „ca să arate complet”; propune și întreabă.
 
 ## Securitate (formularul e singura suprafață server)

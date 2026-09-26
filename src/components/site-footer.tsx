@@ -11,6 +11,7 @@ import { Brand } from "./brand";
 // Footer pe 3 coloane (S26): denumirea, fraza de prezentare și copyright-ul; datele de contact, cu
 // iconițe (regiunea o singură dată); paginile legale și pictogramele ANPC (190 px lățime).
 // Fundal închis; fără tranziție oblică deasupra (S20) — secțiunea anterioară se termină drept.
+// Pe telefon (sub 768 px) totul e centrat (S49); de la tabletă, aliniat la stânga.
 
 function ContactItem({ icon, children }: { icon: ReactNode; children: ReactNode }) {
   return (
@@ -33,10 +34,10 @@ export function SiteFooter() {
 
   return (
     <footer className="dark bg-ink-deep pt-8 pb-6 md:pt-10">
-      <div className="wrap grid gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-[1.1fr_1.3fr_auto] lg:gap-16">
+      <div className="wrap grid gap-8 text-center md:grid-cols-2 md:text-left md:gap-10 lg:grid-cols-[1.1fr_1.3fr_auto] lg:gap-16">
         <div>
           <Brand />
-          <p className="mt-2 max-w-105 text-sm text-inverse">{footerTagline}</p>
+          <p className="mx-auto mt-2 max-w-105 text-sm text-inverse md:mx-0">{footerTagline}</p>
           <p className="mt-6 text-sm text-inverse">
             © {year} {company.legalName} Toate drepturile rezervate.
           </p>
@@ -44,7 +45,7 @@ export function SiteFooter() {
 
         <div>
           <h2 className={headingClass}>Contact</h2>
-          <ul className="flex flex-col text-sm">
+          <ul className="flex flex-col items-center text-sm md:items-start">
             <ContactItem icon={<Mail {...iconProps} />}>
               <a className={`${linkClass} [overflow-wrap:anywhere]`} href={`mailto:${company.email}`}>
                 {company.email}
@@ -76,14 +77,14 @@ export function SiteFooter() {
           <h2 id="footer-legal-title" className={headingClass}>
             Informații legale
           </h2>
-          <nav aria-labelledby="footer-legal-title" className="flex flex-col">
+          <nav aria-labelledby="footer-legal-title" className="flex flex-col items-center md:items-start">
             {legalLinks.map((item) => (
               <Link key={item.href} href={item.href} className={`${linkClass} flex min-h-9 items-center`}>
                 {item.label}
               </Link>
             ))}
           </nav>
-          <ul className="mt-4 flex flex-col gap-2">
+          <ul className="mt-4 flex flex-col items-center gap-2 md:items-start">
             {anpcBadges.map((badge) => {
               const local = existsSync(path.join(process.cwd(), "public", badge.image));
               return (

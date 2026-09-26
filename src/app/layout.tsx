@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import { MobileCall } from "@/components/mobile-call";
+import { Inter, Saira } from "next/font/google";
 import { NavigationProgress } from "@/components/navigation-progress";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -18,6 +17,14 @@ const inter = Inter({
   weight: ["400", "500", "700"],
   display: "swap",
   variable: "--font-inter",
+});
+
+// Saira pentru titluri, meniu și butoane (S28): forme pătrățoase, rotunjite, apropiate de logo.
+// Font variabil (toate grosimile), deci fără `weight`.
+const saira = Saira({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-saira",
 });
 
 const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
@@ -48,8 +55,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ro" className={inter.variable} data-scroll-behavior="smooth">
-      <body className="flex min-h-svh flex-col pb-[calc(64px+env(safe-area-inset-bottom))] font-sans md:pb-0">
+    <html lang="ro" className={`${inter.variable} ${saira.variable}`} data-scroll-behavior="smooth">
+      <body className="flex min-h-svh flex-col font-sans">
         <a
           href="#continut"
           className="absolute -top-25 left-4 z-50 bg-paper px-4 py-3 focus:top-3"
@@ -64,7 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <SiteFooter />
         <WhatsAppButton />
-        <MobileCall />
       </body>
     </html>
   );

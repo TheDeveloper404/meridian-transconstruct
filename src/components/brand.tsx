@@ -1,31 +1,23 @@
+import Image from "next/image";
 import { company } from "@/content/company";
 import { HomeLink } from "./navigation";
 
-// Denumire în text până la primirea logo-ului (B-004). „MERIDIAN” se întinde exact pe lățimea
-// lui „TRANSCONSTRUCT” (cerința utilizatorului, S12): containerul ia lățimea rândului de jos, iar
-// literele rândului de sus sunt distribuite pe toată lățimea lui. Mărimile sunt alese ca „MERIDIAN”
-// să aibă natural ~92% din lățime, deci spațierea rămâne mică (măsurat: 170/185 px și 140/153 px).
-const TOP = "MERIDIAN";
-const BOTTOM = "TRANSCONSTRUCT";
-
+// Logo-ul firmei (B-004), în header și footer. `public/images/logo-inverse.png` e derivat din logo-ul
+// primit: fundal alb eliminat (transparent), „M”-ul din casă rămâne alb, textul recolorat în alb
+// pentru fundalurile închise (S28); decupat la conținut.
 export function Brand({ className = "" }: { className?: string }) {
   return (
-    <HomeLink
-      aria-label={`${company.displayName} — Acasă`}
-      className={`inline-flex w-max flex-col leading-none no-underline ${className}`}
-    >
-      <span aria-hidden="true" className="flex justify-between text-[28px] font-bold md:text-[34px]">
-        {[...TOP].map((letter, index) => (
-          <span key={index}>{letter}</span>
-        ))}
-      </span>
-      {/* Marginea negativă anulează spațierea de după ultima literă, ca marginile să coincidă exact. */}
-      <span
-        aria-hidden="true"
-        className="mt-1.5 -mr-[2px] text-[13px] font-medium tracking-[2px] md:-mr-[3px] md:text-[15px] md:tracking-[3px]"
-      >
-        {BOTTOM}
-      </span>
+    <HomeLink aria-label={`${company.displayName} — Acasă`} className={`inline-flex shrink-0 ${className}`}>
+      {/* Dimensiunile reale ale fișierului; mărimea afișată vine din CSS (48/56 px înălțime). Cu 200 × 56
+          declarate, la 56 px doar lățimea diferea (199 px) și Next avertiza în consolă (S52). */}
+      <Image
+        src="/images/logo-inverse.png"
+        alt=""
+        width={854}
+        height={240}
+        sizes="200px"
+        className="h-12 w-auto md:h-14"
+      />
     </HomeLink>
   );
 }

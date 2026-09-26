@@ -32,10 +32,11 @@ export const company = {
   email: "office@meridian-transconstruct.ro",
 } as const;
 
-export const primaryPhone = company.phones[0];
-
 /** Numărul cu WhatsApp, ales de utilizator (S18). */
 export const whatsapp = {
   display: "0726 379 408",
   href: "https://wa.me/40726379408",
+  /** Mesajul din bula de lângă buton, pe desktop, la 10 secunde după intrarea pe site (S51). */
+  greeting: "Bună! Ai un proiect de construcție în minte? Scrie-ne pe WhatsApp.",
+  greetingClose: "Închide mesajul",
 } as const;

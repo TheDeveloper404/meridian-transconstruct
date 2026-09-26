@@ -1,21 +1,27 @@
-import { existsSync } from "node:fs";
-import path from "node:path";
 import Link from "next/link";
-import { gallery, projectsIntro } from "@/content/projects";
+import { homeAlbums, projectAlbums, projectsIntro } from "@/content/projects";
 import { Gallery, type GalleryTile } from "./gallery";
 import { SectionHead } from "./section-head";
 
-// Server component: verifică la build ce imagini există în public/, ca un fișier lipsă să afișeze
-// blocul de rezervă, nu o imagine spartă.
-function withAvailability(): GalleryTile[] {
-  return gallery.map((item) => ({
-    ...item,
-    available: existsSync(path.join(process.cwd(), "public", item.image.src)),
-  }));
+// Coperțile albumelor alese pentru Acasă (S45); un clic duce în album. Existența fișierelor e
+// verificată de testul din src/content/projects.test.ts.
+function albumTiles(): GalleryTile[] {
+  return projectAlbums
+    .filter((album) => homeAlbums.includes(album.slug))
+    .sort((a, b) => homeAlbums.indexOf(a.slug) - homeAlbums.indexOf(b.slug))
+    .map((album) => ({
+      id: album.slug,
+      category: album.category,
+      title: album.title,
+      image: album.photos[0],
+      illustrative: album.illustrative ?? false,
+      available: true,
+      href: `/proiecte/${album.slug}`,
+    }));
 }
 
 export function ProjectsSection() {
-  const tiles = withAvailability();
+  const tiles = albumTiles();
   const hasIllustrative = tiles.some((tile) => tile.illustrative);
 
   return (

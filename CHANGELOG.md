@@ -4,6 +4,144 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-26 — S52 — Închiderea sesiunii (S28–S51)
+
+- **Scop / clasificare:** SMALL — documentare la închidere.
+- **Rezumat:** logo și fonturi (S28), imaginile de test scoase și folderul de originale (S29), 9 albume reale (S30–S44), grila care umple rândurile (S34), favicon din emblemă (S36), Acasă › 02 cu coperțile albumelor (S45), hero cu fotografie reală (S46–S48), footer centrat pe mobil (S49), meniu cu iconiță (S50), fără bara „Sună” și bulă WhatsApp pe desktop (S51). S32, S40 și S43 sunt ajustări mici consemnate în intrarea următoare.
+- **Decizii:** A-003 (Saira + Inter) și A-011 (hero, albumele de pe Acasă) închise ca ratificate de utilizator; fotografiile sunt reale, editate (S42).
+- **Corecție:** avertismentul din consola browserului pentru logo („width or height modified, but not the other”) — `Brand` declară acum dimensiunile reale ale fișierului (854 × 240) cu `sizes="200px"`; mărimea afișată e neschimbată.
+- **Verificări (după corecție):** type-check, lint (0 erori, avertismentul preexistent din `.remember/tmp`), Vitest 41/41, build — PASS. **Nimic din S28–S52 nu a fost verificat în browser** (avertismentul logo-ului a fost raportat de utilizator din consolă).
+- **Blocaje / următorul pas:** verificare vizuală în browser a sesiunii; acordul beneficiarilor (B-005); domeniu, VPS, Maileroo (secțiunea 4 din BACKLOG). Modificările sunt necomise — utilizatorul comite.
+
+## 2026-09-26 — S51 — Fără bara „Sună” pe mobil; bulă de mesaj WhatsApp pe desktop
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** bara fixă „Sună: …” de jos, pe mobil, a fost scoasă (`mobile-call.tsx` și padding-ul inferior al paginii; `primaryPhone` nu mai era folosit). Butonul WhatsApp rămâne flotant, acum în colțul de jos (16 px de margine pe mobil). Pe desktop (de la 768 px), la 10 secunde după încărcarea paginii apare o bulă albă deasupra butonului: „Bună! Ai un proiect de construcție în minte? Scrie-ne pe WhatsApp.” (text în `whatsapp.greeting`, redactat de agent); clic pe bulă → WhatsApp, „×” o închide până la următoarea încărcare. Componenta devine client (`useState` + temporizator). Telefonul rămâne în pagina Contact și în footer.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 41/41, build — PASS. Apariția bulei și închiderea — NU verificate în browser.
+
+## 2026-09-26 — S50 — Meniul compact: doar iconiță
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** butonul „Meniu” (cu chenar) din meniul compact (sub 1280 px) devine doar o iconiță: trei linii de meniu împărțite ca rândurile unui zid de cărămidă (SVG inline, albă, portocalie la hover), zonă de atingere 48 × 48 px; textul „Meniu” rămâne pentru cititoarele de ecran. Alegerea formei e a agentului (o iconiță pur de construcții, ex. cască, nu s-ar recunoaște ca meniu).
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 41/41, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S49 — Footer centrat pe telefon
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** sub 768 px, tot conținutul footer-ului e centrat (logo, fraza de prezentare, copyright, titlurile, datele de contact cu iconițe, linkurile legale, pictogramele ANPC); de la tabletă rămâne aliniat la stânga, ca înainte.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 41/41, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S48 — Hero: structura halei, varianta luminată de utilizator
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** hero-ul folosește varianta mai clară, editată de utilizator, a fotografiei cu structura metalică a halei (`docs/assets/originale/hala-industriala/1-hero.png` → `public/images/hero-hala-structura.webp`, 1732 × 908, fără metadate; nume nou ca să nu fie servită varianta veche din cache). `hero-hala.webp` (S47) șters. Albumul halei păstrează fotografia 01 originală. Tot în S48: `01.webp` din album lipsea (cauză necunoscută) și a fost regenerat din original.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 41/41, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S47 — Hero: altă fotografie, mai clară
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului (fotografia din S46 nu i-a plăcut; vrea una mai clară).
+- **Implementare:** hero-ul folosește fotografia halei finalizate pe cer senin (`hala-industriala/0.png` → `public/images/hero-hala.webp`, 1672 × 941, fără metadate), aleasă de agent dintre alte 6 candidate simulate cu degradeul hero-ului: cea mai luminoasă și mai curată compoziție. Alternativa apropiată: casa P+1 la gri.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 41/41, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S46 — Hero cu fotografie reală
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului (vizualul generat nu-i plăcea; vrea ceva legat de construcții).
+- **Implementare:** hero-ul folosește fotografia halei industriale în execuție (structura metalică, zidăria, echipa) — `public/images/hero.webp` (1733 × 908, fără mărire, fără metadate) din `docs/assets/originale/hala-industriala/1.png`; eticheta „Vizual de concept generat” dispare (`isConcept: false`). Aleasă de agent dintre 4 candidate simulate cu degradeul hero-ului: textul rămâne lizibil, iar alternativele aveau fie mărci vizibile pe plase, fie fundal prea încărcat. `public/images/hero-concept.webp` șters (nu mai era folosit); originalul generat rămâne în `docs/assets/`.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 41/41, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S45 — Acasă › 02: coperțile albumelor
+
+- **Scop / clasificare:** SMALL — propunere a agentului, aprobată de utilizator.
+- **Implementare:** secțiunea 02 „Lucrări realizate” arăta starea „Portofoliul este în pregătire” (galeria separată `gallery` era goală din S29), deși `/proiecte` avea 9 albume. Acum arată coperțile a 6 albume din `homeAlbums` (`src/content/projects.ts`), în grila existentă, cu categoria și titlul; clic → pagina albumului (`GalleryTile.href`, link în loc de vizualizarea mărită). Selecția: hală industrială (mare), lot de blocuri, casă P+1, bloc P+4, clădire cu arcade, spațiu comercial. `gallery`, verificarea `existsSync` și folderul gol `public/images/galerie/` au fost scoase. Test Vitest nou: `homeAlbums` trimite doar la albume existente, fără dubluri.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 41/41, build — PASS; HTML-ul Acasă din build conține cele 6 linkuri. Aspectul și clicul — NU verificate în browser.
+
+## 2026-09-26 — S44 — Albumul „Reabilitare bloc de locuințe P+3”
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** `reabilitare-bloc-p3` — 2 fotografii (ordinea utilizatorului), „Renovări și reabilitări”; regimul de înălțime în titlu îl distinge de celelalte albume de blocuri. Originalele în `docs/assets/originale/reabilitare-bloc-p3/`, WebP fără metadate în `public/images/proiecte/reabilitare-bloc-p3/`. (S43: fotografia 10 — coperta lotului de blocuri.)
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S42 — Albumul „Reabilitare lot de blocuri”; fotografiile confirmate reale
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** `reabilitare-lot-blocuri` — 12 fotografii JPG de telefon (ordinea utilizatorului: schele, acoperiș, finisaje, rezultat; la cererea utilizatorului, fotografia 10 e coperta), „Renovări și reabilitări”. Rotite după orientarea EXIF și convertite în WebP (maximum 1600 px) **fără metadate**; originalele (EXIF fără GPS) în `docs/assets/originale/reabilitare-lot-blocuri/`.
+- **Decizie (utilizator):** toate fotografiile albumelor sunt reale, doar editate — închide întrebarea din S30/S33; albumele rămân fără eticheta „Ilustrativ”. Acordul beneficiarilor rămâne de confirmat (B-005).
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S41 — Albumul „Reabilitare clădire cu arcade, în execuție”
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** `reabilitare-cladire` — 2 fotografii (singurele existente, după utilizator), „Renovări și reabilitări”; lucrarea e în execuție (schelă, termoizolație în montaj), iar titlul o spune. Mărcile vizibile pe plase nu sunt menționate în text. Originalele în `docs/assets/originale/reabilitare-cladire/`, WebP fără metadate în `public/images/proiecte/reabilitare-cladire/`. (S40: coperta albumului casei — structura P+1.)
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S39 — Casa: fotografia structurii P+1
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** a patra fotografie în `casa-in-constructie` (structura cu parter și etaj, pereții ridicați). Titlul devine „Casă P+1 în construcție” — „fundație și placă” nu mai descria albumul. La cererea utilizatorului, fotografia structurii e coperta albumului (prima).
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S38 — Albumul „Casă în construcție: fundație și placă”
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** `casa-in-constructie` — 3 fotografii (ordinea utilizatorului), „Construcții de case”; lucrarea e în curs (doar fundația), iar titlul o spune. Când vin fotografiile casei finalizate se adaugă în același album și se actualizează titlul. Originalele în `docs/assets/originale/casa-in-constructie/`, WebP fără metadate în `public/images/proiecte/casa-in-constructie/`.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S37 — Albumul „Reabilitare bloc de locuințe P+4”
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** `reabilitare-bloc-p4` — 3 fotografii (ordinea utilizatorului), „Renovări și reabilitări”; titlul distinge blocul de celelalte două albume de reabilitare (regimul de înălțime vizibil în fotografii). Originalele în `docs/assets/originale/reabilitare-bloc-p4/`, WebP fără mărire și fără metadate în `public/images/proiecte/reabilitare-bloc-p4/`.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S36 — Favicon și iconițe din logo
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** iconițele folosesc emblema logo-ului (casa cu „M” și arcele, fără text — textul nu se citește la 16–32 px), cu fundal transparent: `src/app/favicon.ico` (16/32/48 px, PNG încapsulat), `src/app/icon.png` (192), `src/app/apple-icon.png` (180, pe alb — iOS nu acceptă transparență), `public/icon-192.png` și `public/icon-512.png` pentru manifest. Monograma provizorie (`monogram.tsx`, `icon.tsx`, `apple-icon.tsx`, generate cu `next/og`) a fost scoasă.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Afișarea în tab — NU verificată în browser.
+
+## 2026-09-26 — S35 — Albumele „Termoizolație bloc de locuințe” și „Renovare spațiu comercial”
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** `termoizolatie-bloc` (2 fotografii, alt bloc decât `bloc-reabilitat`) și `spatiu-comercial` (1 fotografie, lucrare pentru un C.A.R., după utilizator), ambele la „Renovări și reabilitări”. Numele beneficiarului nu apare pe site (fără acordul lui confirmat); titlurile nu afirmă lucrări neconfirmate (ex. panourile fotovoltaice apar doar în textul alternativ, ca descriere a imaginii). Originalele în `docs/assets/originale/<slug>/`, WebP fără mărire și fără metadate în `public/images/proiecte/<slug>/`.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S34 — Galeria umple rândurile oricâte fotografii ar fi
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** așezarea fixă pe 6 elemente (`LAYOUT[index % 6]`) înlocuită cu `tileLayout(index, count)` în `gallery.tsx`: fotografia mare + două alături, apoi rânduri de câte trei; la final două rămase → 6 + 6, una rămasă → ultimele patru în două rânduri 6 + 6; cu 4 fotografii, cea mare ocupă trei rânduri lângă celelalte trei; 1 și 2 fotografii au variante proprii. Pe tabletă, ultima fotografie rămasă singură ia tot rândul. Cu 6 fotografii rezultatul e identic cu cel de înainte. Se aplică și albumelor, și galeriei de pe Acasă.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Fără test nou (logică de prezentare, verificată de mână pentru 1–11 fotografii). Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S33 — Al doilea album: bloc de locuințe reabilitat
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** 4 fotografii (ordinea utilizatorului; prima e coperta). Originalele în `docs/assets/originale/bloc-reabilitat/`; pe site WebP (maximum 1600 px, fără mărire, fără metadate) în `public/images/proiecte/bloc-reabilitat/`. Albumul `/proiecte/bloc-reabilitat`, „Bloc de locuințe reabilitat”, categoria „Renovări și reabilitări” (aleasă de agent după serviciile de pe site). Tot PNG-uri fără EXIF — acordul și proveniența rămân de confirmat, ca la hală.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S31 — Album: text doar pe fotografia mare, coperta = hala finalizată
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** în albume, categoria și titlul apar doar pe prima fotografie (cea mare); celelalte tile-uri nu au text (câmp `hideCaption` pe `GalleryTile`, galeria de pe Acasă neschimbată; vizualizarea mărită păstrează textul). Albumul halei începe cu o fotografie nouă a halei finalizate (`0.png` → `00.webp`, copertă), apoi cealaltă fotografie a halei finalizate (05) și etapele în ordinea execuției (01–04).
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S30 — Primul album: hală industrială
+
+- **Scop / clasificare:** SMALL — conținut primit de la utilizator.
+- **Implementare:** 5 fotografii ale unei hale industriale, în ordinea execuției (utilizator). Originalele în `docs/assets/originale/hala-industriala/`; pe site WebP 1600 px, fără metadate, în `public/images/proiecte/hala-industriala/`. Albumul `/proiecte/hala-industriala` („Hală industrială cu structură metalică”, categoria „Hale industriale”), fără an și descriere până la confirmarea utilizatorului. Galeria de pe Acasă rămâne goală (nesolicitat).
+- **De confirmat:** originalele sunt PNG fără EXIF, 4 din 5 la 1672 × 941 px — aceeași rezoluție ca vizualul generat din hero; utilizatorul confirmă dacă sunt fotografii reale ale lucrării și acordul beneficiarului.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S29 — Imaginile de test scoase; folder pentru originale
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** șterse pozele Unsplash (5 din galeria de pe Acasă, 3 albume `demo-*` × 6 din `/proiecte`); `gallery` și `projectAlbums` sunt goale, deci ambele afișează starea „Portofoliul este în pregătire”. Tile-ul din galerie cu vizualul hero a fost scos odată cu galeria; vizualul rămâne în hero până la o fotografie reală. Originalele primite se păstrează în `docs/assets/originale/` (logo-ul mutat din rădăcina proiectului), nu în `public/` — detalii în `docs/assets/README.md`.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S28 — Logo-ul firmei; fonturile Saira + Inter
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** logo-ul primit (`logo.PNG`) înlocuiește denumirea în text din header și footer (`Brand`). Varianta web `public/images/logo-inverse.png` (854×240): fundal alb eliminat (transparent, margini netede), „M”-ul din casă păstrat alb, textul „MERIDIAN TRANSCONSTRUCT” recolorat în alb (header și footer sunt închise; emblema rămâne albastră), decupat la conținut; afișat la 48 px înălțime pe telefon, 56 px de la 768 px. Fișierul are nume nou față de prima variantă, ca browserul și optimizatorul de imagini să nu servească varianta veche din cache.
+- **Fonturi (decizia utilizatorului):** două familii — Saira (titluri h1–h4, `.eyebrow`, `.kicker`, meniu, butoane) și Inter (restul). Fontul din logo nu e Montserrat, ci unul pătrățos de tip Eurostile; Saira e varianta lizibilă apropiată ca formă.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
 ## 2026-09-26 — S27 — Domeniul confirmat, sediul în footer, textele aprobate
 
 - **Scop / clasificare:** SMALL — decizii ale utilizatorului.

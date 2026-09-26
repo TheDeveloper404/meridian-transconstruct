@@ -1,13 +1,7 @@
-// Galeria de pe Acasă. Se publică lucrări reale, cu fotografii proprii și acord (PROJECT_BRIEF.md ›
-// Portofoliu, B-005). Până la primirea lor, galeria folosește imagini ILUSTRATIVE generate, cerute
-// de utilizator (S12): marcate vizibil „Ilustrativ”, fără titluri, localități sau detalii inventate.
-//
-// Imaginile stau în public/images/galerie/. Dacă un fișier lipsește, tile-ul afișează un bloc de
-// rezervă în același loc; când pui fișierul, apare automat (fără alte modificări de cod).
-// Prompturile pentru imaginile ilustrative: docs/assets/README.md.
-//
-// Pentru o lucrare reală: `illustrative: false`, `title` factual, fotografie proprie. Ordinea
-// contează: primul element e fotografia mare din galerie.
+// Lucrări reale, cu fotografii proprii și acord (PROJECT_BRIEF.md › Portofoliu, B-005). Pe Acasă,
+// secțiunea 02 arată coperțile albumelor din `homeAlbums` (S45); fără albume, starea „în pregătire”.
+// Imaginile ILUSTRATIVE (dacă ar fi vreodată) sunt marcate vizibil „Ilustrativ”, fără titluri,
+// localități sau detalii inventate. Originalele fotografiilor: docs/assets/originale/.
 
 type Photo = {
   src: string;
@@ -16,6 +10,7 @@ type Photo = {
   height: number;
 };
 
+// Un element din grila de fotografii (`Gallery`): pe Acasă coperta unui album, în album o fotografie.
 export type GalleryItem = {
   id: string;
   /** Tipul lucrării, afișat deasupra titlului. */
@@ -45,10 +40,6 @@ export const projectsIntro = {
 // lucrări reale, cu fotografii proprii și acordul beneficiarului. Lista goală afișează starea
 // „în pregătire” (textele de mai sus).
 //
-// TEMPORAR (S20, cerut de utilizator „ca să văd cum arată”): trei albume DEMONSTRATIVE cu fotografii
-// Unsplash, marcate „Ilustrativ” — se șterg (împreună cu public/images/proiecte/demo-*) înainte de
-// lansare sau la primul album real (B-005). Surse: docs/assets/README.md.
-//
 // Fotografiile stau în public/images/proiecte/<slug>/; prima e coperta albumului.
 export type ProjectAlbum = {
   /** Adresa paginii: /proiecte/<slug> — litere mici, cifre și cratime. */
@@ -72,100 +63,122 @@ export const projectsPage = {
 
 export const projectAlbums: ProjectAlbum[] = [
   {
-    slug: "demo-cladire-rezidentiala",
-    title: "Album demonstrativ — Clădire rezidențială",
-    category: "Clădiri rezidențiale",
-    summary: "Imagini ilustrative, provizorii — nu reprezintă o lucrare a firmei.",
-    illustrative: true,
-    photos: [
-      { src: "/images/proiecte/demo-cladire-rezidentiala/01.webp", alt: "Imagine ilustrativă: clădire rezidențială în construcție (1)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-cladire-rezidentiala/02.webp", alt: "Imagine ilustrativă: clădire rezidențială în construcție (2)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-cladire-rezidentiala/03.webp", alt: "Imagine ilustrativă: clădire rezidențială în construcție (3)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-cladire-rezidentiala/04.webp", alt: "Imagine ilustrativă: clădire rezidențială în construcție (4)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-cladire-rezidentiala/05.webp", alt: "Imagine ilustrativă: clădire rezidențială în construcție (5)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-cladire-rezidentiala/06.webp", alt: "Imagine ilustrativă: clădire rezidențială în construcție (6)", width: 1600, height: 1200 },
-    ],
-  },
-  {
-    slug: "demo-hala-industriala",
-    title: "Album demonstrativ — Hală industrială",
+    // Hala finalizată (00 copertă, 05), apoi etapele în ordinea execuției (01–04); originalele în docs/assets/originale/hala-industriala/.
+    slug: "hala-industriala",
+    title: "Hală industrială cu structură metalică",
     category: "Hale industriale",
-    summary: "Imagini ilustrative, provizorii — nu reprezintă o lucrare a firmei.",
-    illustrative: true,
     photos: [
-      { src: "/images/proiecte/demo-hala-industriala/01.webp", alt: "Imagine ilustrativă: hală industrială (1)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-hala-industriala/02.webp", alt: "Imagine ilustrativă: hală industrială (2)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-hala-industriala/03.webp", alt: "Imagine ilustrativă: hală industrială (3)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-hala-industriala/04.webp", alt: "Imagine ilustrativă: hală industrială (4)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-hala-industriala/05.webp", alt: "Imagine ilustrativă: hală industrială (5)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-hala-industriala/06.webp", alt: "Imagine ilustrativă: hală industrială (6)", width: 1600, height: 1200 },
+      { src: "/images/proiecte/hala-industriala/00.webp", alt: "Hala finalizată, cu fațada din panouri verzi și ușile de acces", width: 1600, height: 900 },
+      { src: "/images/proiecte/hala-industriala/05.webp", alt: "Hala finalizată, văzută din colț, cu fațada din panouri verzi", width: 1600, height: 900 },
+      { src: "/images/proiecte/hala-industriala/01.webp", alt: "Structura metalică a halei montată, cu zidăria de cărămidă în execuție", width: 1600, height: 838 },
+      { src: "/images/proiecte/hala-industriala/02.webp", alt: "Montarea panourilor de fațadă verzi pe structura halei", width: 1600, height: 900 },
+      { src: "/images/proiecte/hala-industriala/03.webp", alt: "Turnarea pardoselii de beton în interiorul halei", width: 1600, height: 900 },
+      { src: "/images/proiecte/hala-industriala/04.webp", alt: "Interiorul halei finalizat, cu pardoseala de beton finisată", width: 1600, height: 900 },
     ],
   },
   {
-    slug: "demo-casa",
-    title: "Album demonstrativ — Casă",
-    category: "Construcții de case",
-    summary: "Imagini ilustrative, provizorii — nu reprezintă o lucrare a firmei.",
-    illustrative: true,
+    // Originalele în docs/assets/originale/bloc-reabilitat/ (S33).
+    slug: "bloc-reabilitat",
+    title: "Bloc de locuințe reabilitat",
+    category: "Renovări și reabilitări",
     photos: [
-      { src: "/images/proiecte/demo-casa/01.webp", alt: "Imagine ilustrativă: casă în construcție (1)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-casa/02.webp", alt: "Imagine ilustrativă: casă în construcție (2)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-casa/03.webp", alt: "Imagine ilustrativă: casă în construcție (3)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-casa/04.webp", alt: "Imagine ilustrativă: casă în construcție (4)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-casa/05.webp", alt: "Imagine ilustrativă: casă în construcție (5)", width: 1600, height: 1200 },
-      { src: "/images/proiecte/demo-casa/06.webp", alt: "Imagine ilustrativă: casă în construcție (6)", width: 1600, height: 1200 },
+      { src: "/images/proiecte/bloc-reabilitat/01.webp", alt: "Bloc de locuințe cu fațada reabilitată, văzut dinspre intrare", width: 1489, height: 1056 },
+      { src: "/images/proiecte/bloc-reabilitat/02.webp", alt: "Fațada reabilitată a blocului, cu intrarea și copertina refăcute", width: 1341, height: 1173 },
+      { src: "/images/proiecte/bloc-reabilitat/03.webp", alt: "Colțul blocului, cu balcoanele închise și fațada finisată", width: 1368, height: 849 },
+      { src: "/images/proiecte/bloc-reabilitat/04.webp", alt: "Detaliu de fațadă: balcoane închise, finisate în roșu cărămiziu", width: 900, height: 1600 },
+    ],
+  },
+  {
+    // Originalele în docs/assets/originale/termoizolatie-bloc/ (S35).
+    slug: "termoizolatie-bloc",
+    title: "Termoizolație bloc de locuințe",
+    category: "Renovări și reabilitări",
+    photos: [
+      { src: "/images/proiecte/termoizolatie-bloc/01.webp", alt: "Fațada principală a blocului după termoizolare, finisată în galben și cărămiziu", width: 1049, height: 1499 },
+      { src: "/images/proiecte/termoizolatie-bloc/02.webp", alt: "Fațada laterală a blocului termoizolat, cu o bandă verticală cărămizie", width: 1000, height: 1573 },
+    ],
+  },
+  {
+    // Originalul în docs/assets/originale/spatiu-comercial/ (S35).
+    slug: "spatiu-comercial",
+    title: "Renovare spațiu comercial",
+    category: "Renovări și reabilitări",
+    photos: [
+      { src: "/images/proiecte/spatiu-comercial/01.webp", alt: "Spațiu comercial la parterul unui bloc, cu fațada finisată în gri și panouri fotovoltaice pe perete", width: 1342, height: 1172 },
+    ],
+  },
+  {
+    // Originalele în docs/assets/originale/reabilitare-bloc-p4/ (S37).
+    slug: "reabilitare-bloc-p4",
+    title: "Reabilitare bloc de locuințe P+4",
+    category: "Renovări și reabilitări",
+    photos: [
+      { src: "/images/proiecte/reabilitare-bloc-p4/01.webp", alt: "Bloc de locuințe P+4 reabilitat, cu fațadă gri deschis și balcoane închise, finisate în galben", width: 1197, height: 1314 },
+      { src: "/images/proiecte/reabilitare-bloc-p4/02.webp", alt: "Fațada lungă a blocului reabilitat, cu soclul închis la culoare", width: 1465, height: 1073 },
+      { src: "/images/proiecte/reabilitare-bloc-p4/03.webp", alt: "Lucrări de amenajare în fața blocului, după finalizarea fațadei", width: 1086, height: 1448 },
+    ],
+  },
+  {
+    // Lucrare în curs: fundația și structura P+1 (S38–S39); coperta e structura (S40). Originalele în docs/assets/originale/casa-in-constructie/.
+    slug: "casa-in-constructie",
+    title: "Casă P+1 în construcție",
+    category: "Construcții de case",
+    photos: [
+      { src: "/images/proiecte/casa-in-constructie/04.webp", alt: "Structura casei cu parter și etaj, cu pereții din blocuri de zidărie ridicați", width: 1600, height: 900 },
+      { src: "/images/proiecte/casa-in-constructie/01.webp", alt: "Placa de beton a casei turnată peste fundație, cu mustățile de armătură pentru stâlpi", width: 1600, height: 720 },
+      { src: "/images/proiecte/casa-in-constructie/02.webp", alt: "Armătura fundației montată în săpătură, cu autobetoniera pregătită pentru turnare", width: 1600, height: 719 },
+      { src: "/images/proiecte/casa-in-constructie/03.webp", alt: "Plasa de armătură a plăcii, montată înainte de turnarea betonului", width: 1600, height: 667 },
+    ],
+  },
+  {
+    // Lucrare în execuție; doar două fotografii (S41). Originalele în docs/assets/originale/reabilitare-cladire/.
+    slug: "reabilitare-cladire",
+    title: "Reabilitare clădire cu arcade, în execuție",
+    category: "Renovări și reabilitări",
+    photos: [
+      { src: "/images/proiecte/reabilitare-cladire/01.webp", alt: "Clădire cu arcade în reabilitare: schelă pe fațadă și termoizolație din vată minerală în montaj", width: 1600, height: 900 },
+      { src: "/images/proiecte/reabilitare-cladire/02.webp", alt: "Clădirea în reabilitare văzută din stradă, cu schela și macaraua mobilă", width: 1600, height: 900 },
+    ],
+  },
+  {
+    // Coperta: fotografia 10 (S43); apoi celelalte în ordinea utilizatorului, de la schele la final (S42). Originalele (JPG de
+    // telefon, cu EXIF fără GPS) în docs/assets/originale/reabilitare-lot-blocuri/; pe site fără metadate.
+    slug: "reabilitare-lot-blocuri",
+    title: "Reabilitare lot de blocuri",
+    category: "Renovări și reabilitări",
+    photos: [
+      { src: "/images/proiecte/reabilitare-lot-blocuri/10.webp", alt: "Fațada laterală a blocurilor reabilitate", width: 1600, height: 900 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/01.webp", alt: "Blocurile lotului cu schele pe fațade, la începutul lucrărilor", width: 1600, height: 1200 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/02.webp", alt: "Fațada unui bloc pe schelă, cu termoizolația montată", width: 1600, height: 1200 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/03.webp", alt: "Lucru la fațadă de pe schelă, văzut de la nivelul acoperișului", width: 1200, height: 1600 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/04.webp", alt: "Acoperișul nou din țiglă, cu șarpanta din lemn în montaj", width: 1600, height: 900 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/05.webp", alt: "Fațade cu finisajul aplicat, încă pe schelă", width: 1600, height: 758 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/06.webp", alt: "Bloc cu fațada finisată în galben și brâuri cărămizii, cu ultimele schele", width: 1600, height: 1200 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/07.webp", alt: "Ultimele porțiuni de fațadă finisate de pe schelă", width: 1200, height: 1600 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/08.webp", alt: "Intrarea unui bloc după reabilitare, cu fațada finisată", width: 1200, height: 1600 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/09.webp", alt: "Bloc reabilitat, cu acoperișul nou și fațada finisată", width: 1600, height: 1200 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/11.webp", alt: "Lotul de blocuri după reabilitare", width: 1600, height: 900 },
+      { src: "/images/proiecte/reabilitare-lot-blocuri/12.webp", alt: "Blocurile reabilitate, cu frontoane din lemn și fațade galbene", width: 1600, height: 900 },
+    ],
+  },
+  {
+    // Originalele în docs/assets/originale/reabilitare-bloc-p3/ (S44).
+    slug: "reabilitare-bloc-p3",
+    title: "Reabilitare bloc de locuințe P+3",
+    category: "Renovări și reabilitări",
+    photos: [
+      { src: "/images/proiecte/reabilitare-bloc-p3/01.webp", alt: "Bloc de locuințe P+3 după reabilitare, cu fațada finisată în galben", width: 1440, height: 1092 },
+      { src: "/images/proiecte/reabilitare-bloc-p3/02.webp", alt: "Fațada principală a blocului reabilitat, cu intrarea și balconul central", width: 1369, height: 911 },
     ],
   },
 ];
 
-const illustrative = (
-  id: string,
-  category: string,
-  file: string,
-  alt: string,
-): GalleryItem => ({
-  id,
-  category,
-  image: { src: `/images/galerie/${file}`, alt, width: 1600, height: 1200 },
-  illustrative: true,
-});
-
-export const gallery: GalleryItem[] = [
-  illustrative(
-    "bloc-locuinte",
-    "Clădiri rezidențiale",
-    "bloc-locuinte.webp",
-    "Imagine ilustrativă: bloc de locuințe nou, cu fațadă finisată",
-  ),
-  {
-    id: "structura-beton",
-    category: "Construcții civile",
-    // Vizualul generat folosit și în hero (docs/assets/README.md).
-    image: {
-      src: "/images/hero-concept.webp",
-      alt: "Imagine ilustrativă: structură din beton armat în execuție",
-      width: 1672,
-      height: 941,
-    },
-    illustrative: true,
-  },
-  illustrative(
-    "hala-industriala",
-    "Hale industriale",
-    "hala-industriala.webp",
-    "Imagine ilustrativă: hală industrială cu structură metalică",
-  ),
-  illustrative("casa", "Case la cheie", "casa.webp", "Imagine ilustrativă: casă nouă, finisată"),
-  illustrative(
-    "renovare-fatada",
-    "Renovări și reabilitări",
-    "renovare-fatada.webp",
-    "Imagine ilustrativă: fațadă reabilitată, cu termoizolație",
-  ),
-  illustrative(
-    "interior-finisaje",
-    "Finisaje interioare",
-    "interior-finisaje.webp",
-    "Imagine ilustrativă: interior finisat, luminos",
-  ),
+// Albumele de pe Acasă (secțiunea 02), în ordine: primul e fotografia mare. Alese de utilizator (S45).
+export const homeAlbums = [
+  "hala-industriala",
+  "reabilitare-lot-blocuri",
+  "casa-in-constructie",
+  "reabilitare-bloc-p4",
+  "reabilitare-cladire",
+  "spatiu-comercial",
 ];

@@ -41,6 +41,7 @@ export default async function AlbumPage({ params }: Props) {
     image: photo,
     illustrative: album.illustrative ?? false,
     available: true,
+    hideCaption: index > 0,
   }));
 
   return (

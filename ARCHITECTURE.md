@@ -20,7 +20,7 @@ Site de prezentare, doar în română, cu aproximativ 20 de proiecte declarate �
 | Hosting | OVHcloud; server compatibil Node.js, HTTPS, reverse proxy | Furnizor confirmat; serviciul concret, dimensionarea și configurarea se stabilesc la deploy. |
 | Persistență | Fără DB și fără repository de solicitări | Cererile ajung în căsuța de e-mail; inboxul are propriile reguli de acces și retenție. |
 
-Versiuni la scaffold (2026-09-25): Next.js 16.3.6, React 19.3.0, Nodemailer 10.0.10, lucide-react 1.48.0 (iconițe, adăugat în S13), Tailwind CSS 4.3, TypeScript 6 (TypeScript 7 nu este încă suportat de typescript-eslint), ESLint 9, Vitest 4. Package manager: npm; lockfile generat cu npm 11. Font: Inter prin `next/font`, găzduit local la build.
+Versiuni la scaffold (2026-09-25): Next.js 16.3.6, React 19.3.0, Nodemailer 10.0.10, lucide-react 1.48.0 (iconițe, adăugat în S13), Tailwind CSS 4.3, TypeScript 6 (TypeScript 7 nu este încă suportat de typescript-eslint), ESLint 9, Vitest 4. Package manager: npm; lockfile generat cu npm 11. Fonturi: Inter (text) și Saira (titluri, din S28) prin `next/font`, găzduite local la build.
 
 ## Alternative evaluate
 
@@ -83,7 +83,7 @@ Yahoo este destinatarul temporar confirmat. Furnizor de expediere ales: Maileroo
 
 ## SEO, accesibilitate și performanță
 
-- HTML semantic prerandat, titluri/descrieri specifice, canonical, sitemap, robots, Open Graph + Twitter card, manifest, iconițe (tab 32 px, iOS 180 px, manifest 192/512 px — monogramă provizorie) și 404 cu `noindex` — implementate. Metadatele de pagină trec prin `src/lib/seo.ts`, pentru că în Next un `openGraph` definit în pagină înlocuiește complet pe cel din layout. Lipsește imaginea Open Graph (după logo/fotografii, B-018).
+- HTML semantic prerandat, titluri/descrieri specifice, canonical, sitemap, robots, Open Graph + Twitter card, manifest, iconițe din emblema logo-ului (`src/app/favicon.ico` 16/32/48, `src/app/icon.png` 192, `src/app/apple-icon.png` 180 pe alb, `public/icon-192.png`/`icon-512.png` pentru manifest) și 404 cu `noindex` — implementate. Metadatele de pagină trec prin `src/lib/seo.ts`, pentru că în Next un `openGraph` definit în pagină înlocuiește complet pe cel din layout. Lipsește imaginea Open Graph (B-018).
 - Date structurate doar din informații reale și aprobate pentru publicare; fără recenzii sau evaluări inventate. Implementat: JSON-LD `GeneralContractor` pe Acasă (nume, denumire legală, URL, telefoane, e-mail, anul înființării, zona: Valea Jiului și județul Hunedoara) — doar date deja vizibile pe site. Fără adresă până la verificarea sediului (B-012), deci fără eligibilitate pentru rezultate îmbogățite de tip firmă locală; de validat cu Rich Results Test la lansare (B-019).
 - Indexare controlată de `ALLOW_INDEXING` (implicit oprită) și verificare Search Console prin `GOOGLE_SITE_VERIFICATION`; ambele citite la build. Pașii de lansare sunt în [README.md](README.md).
 - Pagini utile pentru servicii și proiecte reale, cu context local; fără duplicarea paginilor doar prin schimbarea localității.

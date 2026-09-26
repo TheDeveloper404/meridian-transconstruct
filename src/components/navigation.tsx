@@ -121,8 +121,18 @@ export function MobileNav() {
         }
       }}
     >
-      <summary className="flex min-h-12 cursor-pointer items-center rounded-(--radius-field) border border-inverse px-4 py-3">
-        Meniu
+      {/* Doar iconiță (S50): trei linii de meniu împărțite ca rândurile unui zid de cărămidă —
+          se citește ca meniu, cu o trimitere discretă la construcții. Zona de atingere rămâne 48 px. */}
+      <summary className="flex size-12 cursor-pointer list-none items-center justify-center rounded-(--radius-field) text-paper transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
+        <span className="sr-only">Meniu</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="size-7 fill-current">
+          <rect x="2" y="5" width="11" height="3" rx="1" />
+          <rect x="15" y="5" width="7" height="3" rx="1" />
+          <rect x="2" y="10.5" width="5" height="3" rx="1" />
+          <rect x="9" y="10.5" width="13" height="3" rx="1" />
+          <rect x="2" y="16" width="11" height="3" rx="1" />
+          <rect x="15" y="16" width="7" height="3" rx="1" />
+        </svg>
       </summary>
       <nav
         aria-label="Navigare mobilă"

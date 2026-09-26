@@ -22,12 +22,13 @@ export const hero = {
   primaryCta: "Cere o ofertă",
   secondaryCta: "Vezi proiectele",
   image: {
-    src: "/images/hero-concept.webp",
-    width: 1672,
-    height: 941,
-    // Vizual generat, provizoriu (docs/assets/README.md). Se înlocuiește cu o fotografie reală;
-    // atunci `isConcept` devine false și eticheta dispare.
-    isConcept: true,
+    // Fotografie reală (S48): hala industrială în execuție, varianta luminată de utilizator
+    // (original: docs/assets/originale/hala-industriala/1-hero.png). `isConcept: true` ar afișa eticheta
+    // de vizual generat — doar pentru imagini care nu sunt lucrări ale firmei.
+    src: "/images/hero-hala-structura.webp",
+    width: 1732,
+    height: 908,
+    isConcept: false,
     conceptCredit: "Vizual de concept generat · nu reprezintă o lucrare a firmei",
   },
 };

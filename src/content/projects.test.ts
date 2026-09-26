@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { projectAlbums } from "./projects";
+import { homeAlbums, projectAlbums } from "./projects";
 
 // Albumele se completează de mână; testul prinde greșelile care ar strica pagina sau build-ul.
 describe("projectAlbums", () => {
@@ -18,5 +18,13 @@ describe("projectAlbums", () => {
         expect(existsSync(path.join(process.cwd(), "public", photo.src)), photo.src).toBe(true);
       });
     });
+  });
+});
+
+describe("homeAlbums", () => {
+  it("trimite doar la albume existente, fără dubluri", () => {
+    const slugs = new Set(projectAlbums.map((album) => album.slug));
+    expect(new Set(homeAlbums).size).toBe(homeAlbums.length);
+    homeAlbums.forEach((slug) => expect(slugs.has(slug), slug).toBe(true));
   });
 });

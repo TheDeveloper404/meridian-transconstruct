@@ -71,7 +71,7 @@ Toate sunt descrise în [.env.example](.env.example). Pe scurt: `SMTP_*` + `CONT
 
 ## Indexare și SEO tehnic
 
-Ce există deja (din `src/app/`): `sitemap.xml` (Acasă, Contact), `robots.txt`, URL canonic și titlu/descriere pe fiecare pagină, Open Graph și Twitter card, `favicon.ico` și iconițe pentru tab/iOS/manifest (monogramă provizorie „M” până la logo), `manifest.webmanifest`, date structurate `GeneralContractor` pe Acasă, `noindex` pe 404.
+Ce există deja (din `src/app/`): `sitemap.xml` (Acasă, Contact), `robots.txt`, URL canonic și titlu/descriere pe fiecare pagină, Open Graph și Twitter card, `favicon.ico` și iconițe pentru tab/iOS/manifest (emblema din logo, fișiere statice), `manifest.webmanifest`, date structurate `GeneralContractor` pe Acasă, `noindex` pe 404.
 
 Până la lansare indexarea e oprită: `robots.txt` blochează tot, iar paginile au `noindex`. Pași la lansare:
 
