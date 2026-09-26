@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { MobileCall } from "@/components/mobile-call";
+import { NavigationProgress } from "@/components/navigation-progress";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { company } from "@/content/company";
 import { homeSeo } from "@/content/home";
 import { pageMetadata } from "@/lib/seo";
@@ -23,9 +25,10 @@ const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   ...pageMetadata({ description: homeSeo.description, path: "/" }),
-  // Titlul din tab-ul browserului: paginile dau doar partea specifică, șablonul adaugă brandul.
+  // Titlul din tab-ul browserului: pe Acasă numele firmei primul (cerința utilizatorului, S18);
+  // celelalte pagini dau doar partea specifică, șablonul adaugă brandul.
   title: {
-    default: `${homeSeo.title} — ${company.displayName}`,
+    default: `${company.displayName} — ${homeSeo.title}`,
     template: `%s — ${company.displayName}`,
   },
   applicationName: company.displayName,
@@ -45,17 +48,22 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ro" className={inter.variable}>
-      <body className="pb-[calc(64px+env(safe-area-inset-bottom))] font-sans md:pb-0">
+    <html lang="ro" className={inter.variable} data-scroll-behavior="smooth">
+      <body className="flex min-h-svh flex-col pb-[calc(64px+env(safe-area-inset-bottom))] font-sans md:pb-0">
         <a
           href="#continut"
           className="absolute -top-25 left-4 z-50 bg-paper px-4 py-3 focus:top-3"
         >
           Sari la conținut
         </a>
+        <NavigationProgress />
         <SiteHeader />
-        <main id="continut">{children}</main>
+        {/* flex-1: pe paginile scurte footer-ul coboară până jos, fără fundal deschis sub el (S20). */}
+        <main id="continut" className="flex-1">
+          {children}
+        </main>
         <SiteFooter />
+        <WhatsAppButton />
         <MobileCall />
       </body>
     </html>

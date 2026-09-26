@@ -3,6 +3,7 @@
 // lui e o redactare de lucru, de confirmat cu firma (BACKLOG A-007).
 
 export type Service = {
+  /** Ancora serviciului pe Acasă (deschide și panoul lui). */
   id: string;
   title: string;
   /** Titlul poate avea o rupere de rând intenționată pe desktop. */
@@ -10,6 +11,10 @@ export type Service = {
   subtitle: string;
   paragraphs: string[];
   highlights: string[];
+  /** Lucrările concrete din panoul deschis (S20). */
+  works: string[];
+  /** Cui se adresează serviciul (S20). */
+  audience: string;
   ctaLabel: string;
 };
 
@@ -18,6 +23,14 @@ export const servicesIntro = {
   titleLines: ["De la hale industriale", "la case la cheie."],
   intro:
     "Lucrări noi sau preluarea unui șantier început. Pentru fiecare proiect stabilim de la început ce se execută, în ce etape și în ce termen — totul prin contract.",
+};
+
+// Blocurile „Ce executăm” și „Pentru cine” (S20, cerute de utilizator: „prea vag”) descriu tipul de
+// lucrare după cum își prezintă serviciile firmele de construcții similare; fără cifre, instalații,
+// proiectare sau autorizații (excluse în brief). De confirmat cu firma (BACKLOG A-010).
+export const servicesLabels = {
+  works: "Ce executăm",
+  audience: "Pentru cine",
 };
 
 export const services: Service[] = [
@@ -34,6 +47,13 @@ export const services: Service[] = [
       "Execuție pe etape sau continuări de șantier",
       "Scop clar al intervenției, înainte de contractare",
     ],
+    works: [
+      "Fundații și infrastructură",
+      "Structuri din beton armat: stâlpi, grinzi, planșee",
+      "Zidărie de rezistență și de compartimentare",
+      "Continuarea unui șantier început, după evaluarea lucrărilor existente",
+    ],
+    audience: "Firme, instituții publice și beneficiari privați, cu un proiect nou sau cu un șantier deja început.",
     ctaLabel: "Discută etapele proiectului",
   },
   {
@@ -50,6 +70,13 @@ export const services: Service[] = [
       "Anexe, garaje și spații utilitare",
       "Execuție adaptată destinației clădirii",
     ],
+    works: [
+      "Clădiri de locuit și extinderi",
+      "Spații comerciale, de birouri și de servicii",
+      "Anexe, garaje și spații utilitare",
+      "Execuție la roșu sau până la finisaje, după contract",
+    ],
+    audience: "Firme, instituții și beneficiari privați care au nevoie de un executant pentru un proiect bine definit.",
     ctaLabel: "Spune-ne despre clădirea ta",
   },
   {
@@ -65,6 +92,13 @@ export const services: Service[] = [
       "Anvelopare și lucrări de finisare",
       "Etapizare în funcție de starea existentă",
     ],
+    works: [
+      "Reabilitarea fațadelor și termoizolație (anvelopare)",
+      "Refacerea tencuielilor, a pardoselilor și a finisajelor",
+      "Modernizarea spațiilor interioare",
+      "Evaluarea stării existente înainte de ofertă",
+    ],
+    audience: "Proprietari de case, clădiri sau spații comerciale care vor să readucă o clădire existentă în stare bună.",
     ctaLabel: "Discută renovarea",
   },
   {
@@ -80,6 +114,13 @@ export const services: Service[] = [
       "Materiale și soluții conform proiectului",
       "Lucrări și termene stabilite prin contract",
     ],
+    works: [
+      "La roșu: fundații, structură, zidărie și acoperiș",
+      "La gri: tencuieli, șape și închiderea casei",
+      "La cheie: finisaje interioare și exterioare, conform ofertei",
+      "Cărămidă, BCA, beton, lemn sau structură metalică",
+    ],
+    audience: "Familii și beneficiari privați care își construiesc o casă nouă, pe etape sau la cheie.",
     ctaLabel: "Discută construcția unei case",
   },
   {
@@ -95,6 +136,13 @@ export const services: Service[] = [
       "Structură metalică sau din beton, conform proiectului",
       "Etape și termene stabilite prin contract",
     ],
+    works: [
+      "Fundații și platforme betonate",
+      "Structură metalică sau din beton armat, conform proiectului",
+      "Închideri de fațadă și acoperiș",
+      "Pardoseli și finisaje, după destinația halei",
+    ],
+    audience: "Firme care au nevoie de spații de producție, depozitare sau activități comerciale.",
     ctaLabel: "Discută proiectul halei",
   },
 ];

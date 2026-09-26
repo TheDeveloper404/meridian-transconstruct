@@ -2,11 +2,11 @@
 
 25 septembrie 2026. Documentul a pornit ca propunere (Faza 1); secțiunile marcate mai jos arată ce e implementat și ce rămâne propunere.
 
-**Implementat (S06):** `/` (Acasă cu secțiunile Servicii, Proiecte, Despre, ancorate), `/contact`, pagina 404, `sitemap.xml` și `robots.txt`, conform machetei finale (A-001 în [BACKLOG](../BACKLOG.md)). Paginile dedicate de servicii, `/proiecte`, `/proiecte/[slug]` și paginile legale din tabelul de mai jos rămân propuneri (B-003, B-012).
+**Implementat (S06):** `/` (Acasă cu secțiunile Servicii, Proiecte, Despre, ancorate), `/contact`, pagina 404, `sitemap.xml` și `robots.txt`, conform machetei finale (A-001 în [BACKLOG](../BACKLOG.md)). **S18:** `/proiecte` (lista albumelor) și `/proiecte/[slug]` (albumul unei lucrări: galeria „bento” + vizualizare mărită), din `projectAlbums` în `src/content/projects.ts`; fără lucrări reale, `/proiecte` afișează starea „în pregătire”, iar Acasă păstrează galeria cu link „Vezi toate proiectele”. Paginile `/servicii` (S18) au fost eliminate în S19 la cererea utilizatorului; serviciile stau pe Acasă, ca panouri care se deschid.
 
 ## Navigare și pagini
 
-Meniu principal: Acasă, Servicii, Proiecte, Despre, Contact; CTA „Cere o ofertă”. În macheta finală și în aplicație, Servicii / Proiecte / Despre sunt ancore pe Acasă (A-001); varianta cu pagini separate de mai jos rămâne propunere pentru extinderea SEO (B-003). Paginile interioare au breadcrumb spre Acasă.
+Meniu principal (S19): Acasă, Ce construim, Lucrări realizate, Despre firmă, Contact; CTA „Cere o ofertă”. „Ce construim” și „Despre firmă” sunt ancore pe Acasă (A-001); „Lucrări realizate” duce la `/proiecte` (S18); varianta cu pagini separate de mai jos rămâne propunere pentru extinderea SEO (B-003). Paginile interioare au breadcrumb spre Acasă.
 
 | URL propus | Rol și conținut | Titlu SEO de lucru |
 |---|---|---|
@@ -22,7 +22,7 @@ Meniu principal: Acasă, Servicii, Proiecte, Despre, Contact; CTA „Cere o ofer
 | `/despre` | Firma din 2019, aria de lucru, abordare și dovezi disponibile. | Despre Meridian Transconstruct — firmă din Petroșani |
 | `/contact` | Ambele telefoane, e-mail, formular scurt și zona de lucru. | Contact și cerere ofertă — Meridian Transconstruct |
 | `/date-firma` | Identificarea legală și datele de contact verificate. | Date firmă — Meridian Transconstruct |
-| `/confidentialitate` | Informarea despre datele personale, completată după alegerea furnizorilor. | Confidențialitate — Meridian Transconstruct |
+| `/confidentialitate` | Informarea despre datele personale (S24: text complet, de validat juridic). | Confidențialitate — Meridian Transconstruct |
 | `/cookies` | Tehnologiile efectiv folosite și preferințe, dacă sunt necesare. | Cookies — Meridian Transconstruct |
 
 Ruta necunoscută are pagină 404 cu link spre Acasă și Contact. Fără pagini separate pentru fiecare material de construcție sau oraș. Casele apar în pagina dedicată; pagina de clădiri se concentrează pe celelalte tipuri de lucrări pentru a evita repetarea textelor.
@@ -32,7 +32,7 @@ Ruta necunoscută are pagină 404 cu link spre Acasă și Contact. Fără pagini
 1. **Header:** denumire/logo, meniu și CTA; fără număr de telefon, conform cererii utilizatorului. Lipit sus; la scroll devine semi-transparent (S11).
 2. **Hero:** eticheta „Valea Jiului · Județul Hunedoara”, H1 „O construcție bună începe cu o înțelegere clară.” (ales de utilizator, S09); text despre clădiri rezidențiale/nerezidențiale și zona de lucru (regiunea); CTA principal „Cere o ofertă”, link secundar „Vezi proiectele”. Imagine pe întreg fundalul, cu text suprapus și strat albastru pentru contrast. Macheta folosește un concept generat, marcat explicit; fotografia reală rămâne de primit.
 3. ~~**Context factual**~~ — fâșia „Din 2019 / Valea Jiului / Lucrări cu contract” a fost eliminată la cererea utilizatorului (S11).
-4. **Servicii:** titlul „De la hale industriale la case la cheie.”; cinci categorii în ordinea cerută de utilizator (S12) — Construcții civile, Clădiri rezidențiale și nerezidențiale, Renovări și reabilitări, Construcții de case, Hale industriale — fiecare cu explicație, puncte cheie și link spre Contact (paginile dedicate — B-003).
+4. **Servicii:** titlul „De la hale industriale la case la cheie.”; cinci categorii în ordinea cerută de utilizator (S12) — Construcții civile, Clădiri rezidențiale și nerezidențiale, Renovări și reabilitări, Construcții de case, Hale industriale — fiecare ca panou care se deschide la clic (S19), cu explicație, puncte cheie și link spre Contact; plachetele din hero deschid panoul serviciului.
 5. **Proiecte realizate (galerie, S12):** așezare „bento” (o imagine mare + cinci mai mici, repetat la fiecare 6), intrare la scroll, zoom și legendă la hover, vizualizare pe tot ecranul cu săgeți/tastatură/Esc. Până la fotografiile reale: imagini ilustrative generate, marcate „Ilustrativ”, fără titluri sau localități; fișierele lipsă apar ca blocuri „Fotografie în curând”. Fără nicio imagine, stare goală cu link spre Contact.
 6. **Despre firmă (S13, revizuită S14):** titlul „Construim de la structură până la ultimul finisaj.”; introducere cu anii de experiență (calculați din data înființării, 26.07.2019) și „lucrul bine făcut”; blocul „Ce ne recomandă” (experiență, lucrul bine făcut, șantiere noi sau începute, soluția din proiect), apoi „Viziunea noastră” și cele trei principii, neschimbate. Nu afirmăm existența unor certificări sau a unei echipe interne neverificate.
 7. **CTA către Contact:** invitație scurtă la discutarea lucrării și buton către pagina Contact. Blocul mare numerotat 04, cu date de contact, a fost eliminat de pe Acasă.

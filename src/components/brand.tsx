@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { company } from "@/content/company";
+import { HomeLink } from "./navigation";
 
 // Denumire în text până la primirea logo-ului (B-004). „MERIDIAN” se întinde exact pe lățimea
 // lui „TRANSCONSTRUCT” (cerința utilizatorului, S12): containerul ia lățimea rândului de jos, iar
@@ -10,8 +10,7 @@ const BOTTOM = "TRANSCONSTRUCT";
 
 export function Brand({ className = "" }: { className?: string }) {
   return (
-    <Link
-      href="/"
+    <HomeLink
       aria-label={`${company.displayName} — Acasă`}
       className={`inline-flex w-max flex-col leading-none no-underline ${className}`}
     >
@@ -27,6 +26,6 @@ export function Brand({ className = "" }: { className?: string }) {
       >
         {BOTTOM}
       </span>
-    </Link>
+    </HomeLink>
   );
 }

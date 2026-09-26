@@ -19,8 +19,8 @@ const LAYOUT = [
 
 function tileSizes(index: number) {
   return index % 6 === 0
-    ? "(min-width: 1024px) 840px, 100vw"
-    : "(min-width: 1024px) 600px, (min-width: 768px) 50vw, 100vw";
+    ? "(min-width: 1024px) 940px, 100vw"
+    : "(min-width: 1024px) 680px, (min-width: 768px) 50vw, 100vw";
 }
 
 export function Gallery({ tiles, placeholderLabel }: { tiles: GalleryTile[]; placeholderLabel: string }) {

@@ -84,7 +84,7 @@ export function ContactForm() {
 
   return (
     <div className="w-full rounded-sm bg-surface p-6 md:p-10">
-      <h2 className="mb-4 text-[28px]">{contactForm.title}</h2>
+      <h2 className="mb-4 text-[30px]">{contactForm.title}</h2>
       <p id="form-privacy" className="note mb-6">
         {contactForm.privacy}
       </p>

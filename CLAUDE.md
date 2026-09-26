@@ -10,7 +10,7 @@ Site de prezentare în română pentru o firmă de construcții din Petroșani: 
 
 ## Unde stă fiecare lucru
 
-- **Fără linii orizontale** între secțiuni sau elemente (cerința utilizatorului). Tranzițiile se fac cu `SectionEdge` (`src/components/section-edge.tsx`, zid de cărămidă fără rosturi orizontale); fiecare pagină își randează ultima tranziție spre footer (`to="deep"`), pentru că depinde de culoarea secțiunii anterioare.
+- **Fără linii orizontale** între secțiuni sau elemente (cerința utilizatorului). Tranzițiile se fac cu `SectionEdge` (`src/components/section-edge.tsx`, margine oblică cu fâșie portocalie — revenire în S19, după varianta „zid de cărămidă” din S14–S18); spre footer nu există tranziție (S20): ultima secțiune se termină drept.
 
 - `src/content/` — **toate textele și datele firmei**. Componentele nu conțin copy comercial hardcodat.
 - `src/components/` — prezentare. Client components (`"use client"`) doar unde e nevoie de interacțiune: `navigation.tsx`, `contact-form.tsx`.
@@ -23,7 +23,7 @@ Nu adăuga straturi (repository, DI, ORM, API separat) fără o cerință concre
 ## Reguli de conținut
 
 - Nu inventa lucrări, recenzii, certificări, cifre, termene de răspuns sau date ale firmei. Lipsa unei informații → stare goală sau placeholder marcat, plus întrebare către utilizator.
-- Proiectele se publică doar reale, cu acord (`src/content/projects.ts`). Adresa completă a sediului nu se publică până la verificare (B-012).
+- Proiectele se publică doar reale, cu acord (`src/content/projects.ts`). Adresa sediului apare doar în paginile legale și în footer, la datele de identificare (`company.registeredOffice`, deciziile utilizatorului S24/S27), nu în conținutul comercial.
 - **Fără nume de localități pe pagini** (Petroșani, Vulcan, Lupeni, Petrila, Uricani, Aninoasa) — decizia utilizatorului. Zona se scrie „Valea Jiului” / „județul Hunedoara” (`company.region`, `company.county`). „Petroșani” e permis doar în `<title>`, meta description și Open Graph și în adresa legală obligatorie. Nu folosi text ascuns pentru SEO.
 - Galeria (`src/content/projects.ts`): imaginile generate au `illustrative: true` (etichetă „Ilustrativ”), fără titlu, localitate sau detalii — nu le prezenta ca lucrări ale firmei. Fișierele lipsă se afișează ca bloc de rezervă (verificare la build); nu adăuga imagini stock ca portofoliu.
 - Imaginea hero e un concept generat; eticheta rămâne cât timp `hero.image.isConcept` e `true`.

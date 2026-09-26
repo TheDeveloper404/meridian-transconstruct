@@ -14,14 +14,14 @@ export function AboutSection() {
     <section id="despre" aria-labelledby="about-title" className="py-12 md:py-20">
       <div className="wrap">
         <div className="grid gap-8 md:grid-cols-2 md:gap-16">
-          <div className="md:sticky md:top-32 md:self-start">
+          <div>
             <p className="kicker">{about.kicker}</p>
             <h2 id="about-title">
               <Lines lines={about.titleLines} />
             </h2>
           </div>
           <div>
-            <p className="mb-6 text-[26px] leading-[1.3] text-ink md:text-[28px]">{about.lead}</p>
+            <p className="mb-6 text-[28px] leading-[1.3] text-ink md:text-[30px]">{about.lead}</p>
             <h3 className="mt-10 mb-6 text-sm tracking-[2px] text-muted uppercase">{about.recommendsTitle}</h3>
             <ul className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
               {about.recommends.map((item) => {

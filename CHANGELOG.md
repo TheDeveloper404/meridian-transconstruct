@@ -4,6 +4,96 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-26 — S27 — Domeniul confirmat, sediul în footer, textele aprobate
+
+- **Scop / clasificare:** SMALL — decizii ale utilizatorului.
+- **Decizii (utilizator):** domeniul este `meridian-transconstruct.ro` (cu cratimă); adresa sediului se publică și în footer; textele redactate de agent sunt aprobate (A-004, A-005, A-007, A-008, A-010 închise). Urmează: utilizatorul trimite fotografiile și cumpără domeniul; configurarea de lansare se face împreună.
+- **Implementare:** e-mailul de pe site `office@meridian-transconstruct.ro`; în footer, sub denumire · CUI · nr. registru, „Sediul: Mun. Petroșani, Jud. Hunedoara” (varianta scurtă, cerută de utilizator; adresa completă rămâne în paginile legale).
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S26 — Footer pe 3 coloane
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** footer pe 3 coloane de la 1024 px, cu titluri vizibile „Contact” și „Informații legale” (text mic, majuscule, portocaliu); coloana de contact mai mică (text 16 px, iconițe 16 px, rânduri de 36 px) (2 pe tabletă, una pe telefon): denumirea + fraza de prezentare + copyright; datele de contact una sub alta; Politica de confidențialitate, Termeni și condiții și pictogramele ANPC una sub alta, mai înguste (190 px, erau 250). O încercare de a pune „Să discutăm proiectul” pe un rând a fost anulată la cererea utilizatorului — secțiunea rămâne centrată.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S25 — Container 1600 px
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** `.wrap` maximum 1600 px (era 1680; încercate 1500 și 1550, utilizatorul a ales 1600); `sizes` din galerie ajustat (940 / 680 px).
+- **Verificări:** type-check, lint, Vitest, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S24 — „Lucrări realizate” pe Acasă; paginile legale complete
+
+- **Scop / clasificare:** NORMAL — conținut legal și UI, la cererea utilizatorului.
+- **Implementare:**
+  - Secțiunea 02 și pagina `/proiecte` se numesc „Lucrări realizate”, ca în meniu; în dreapta titlului: „Câteva dintre lucrările noastre: …”.
+  - Politica de confidențialitate și Termenii și condițiile, cu text complet (`src/content/legal.ts`, afișat de `LegalDocumentPage`); `LegalPending` eliminat. Textul descrie ce face site-ul în realitate (verificat în cod: formularul trimite doar nume/firmă, e-mail, telefon opțional, mesaj, ca e-mail text simplu, fără stocare; IP doar în memorie pentru limitarea de 5 cereri/oră; fără cookie-uri proprii) și furnizorii deciși pentru lansare. Adresa sediului publicată în paginile legale (decizia utilizatorului); `company.registeredOffice`.
+  - Paginile legale nu mai au `noindex` propriu; urmează setarea generală a site-ului (A-006).
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Server temporar: ambele pagini 200, titluri, secțiuni și adresa în HTML; titlul și textul noi ale secțiunii 02 pe Acasă. Aspectul — NU verificat în browser. Textele juridice — NU validate de un jurist.
+
+## 2026-09-26 — S23 — Bară de progres la navigare; Contact: umbră și aliniere
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului (varianta 1 din ideile de efecte).
+- **Implementare:** `NavigationProgress` (client, în layout): bară portocalie de 3 px sus, pornită la clic pe un link intern spre altă pagină (nu la ancore pe aceeași pagină, clic cu modificatori, `target` extern sau „Acasă” pe Acasă) și încheiată la schimbarea adresei; plasă de siguranță 10 s. Fără dependențe noi (`useLinkStatus` din Next e doar per link — verificat în documentație). Contact: containerul are o umbră moale mai vizibilă; telefoanele și e-mailul încep cu un rând mai jos decât titlul.
+- **Verificări:** type-check, lint (avertismentul preexistent din `.remember/`), Vitest 40/40, build — PASS. Bara și aspectul — NU verificate în browser.
+
+## 2026-09-26 — S22 — Contact direct compact; tranziția copertei scoasă
+
+- **Scop / clasificare:** SMALL — la cererea utilizatorului.
+- **Implementare:** „Contact direct” fără zonă (locație), elemente mai mici (titlu 26 px, telefoane 18 px, iconițe 32 px, spațieri reduse). Tranziția cu element comun din S21 scoasă complet (nu i-a plăcut utilizatorului; a raportat și o pâlpâire a imaginilor pe „Lucrări realizate”, necorelată încă cu o cauză — de urmărit după scoaterea efectului).
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Aspectul — NU verificat în browser.
+
+## 2026-09-26 — S21 — Tranziție cu element comun: coperta albumului
+
+- **Scop / clasificare:** SMALL/NORMAL — efect de navigare cerut de utilizator („shared element transition”).
+- **Implementare:** coperta fiecărui album din `/proiecte` și prima imagine din pagina albumului poartă același `<ViewTransition name="album-<slug>">` (React 19.3; în Next 16 nu e nevoie de configurare — verificat în documentație). La navigare, imaginea își schimbă lin poziția și mărimea (550 ms, decupată, nu deformată), iar la întoarcere invers; restul paginii se schimbă instant (fade-ul general a fost respins în S20). `Gallery` primește opțional `firstTransitionName`. Alte locuri nu au un element comun real între pagini, deci nu au efectul.
+- **Verificări:** type-check, lint (avertismentul preexistent), Vitest 40/40, build — PASS. Animația în sine — NU verificată în browser (necesită Chromium 125+ / Safari / Firefox recente).
+
+## 2026-09-26 — S20 — Panouri de servicii mai bogate, Contact într-un container, poze demonstrative
+
+- **Scop / clasificare:** NORMAL — UI și conținut, la cererea utilizatorului.
+- **Implementare:**
+  - Servicii: efect de deschidere nou (bară portocalie pe margine, numărul se umple, umbră, înălțime animată, conținut care intră pe rând) și două blocuri noi per serviciu, „Ce executăm” (4 lucrări) și „Pentru cine” — redactate după exemple de firme de construcții similare (căutare web), fără cifre, instalații, proiectare sau autorizații (A-010).
+  - Spre footer: fără tranziție (nici fâșie, nici înclinare) pe toate paginile.
+  - Contact: un singur container, o coloană (maximum 960 px) — formularul sus, contactul direct dedesubt (precizarea utilizatorului); telefoane 22 px (erau 28).
+  - Poze demonstrative Unsplash (doar gratuite, fără Unsplash+), marcate „Ilustrativ”: cele 5 lipsă din galeria de pe Acasă și 3 albume × 6 poze pe `/proiecte`; 4 poze nepotrivite înlocuite după o verificare vizuală a planșei. Sursele: docs/assets/README.md. De șters înainte de lansare (B-020).
+  - Efectul de navigare între pagini scos (nu i-a plăcut utilizatorului).
+  - Dunga deschisă sub footer pe paginile scurte: corpul paginii are minimum înălțimea ecranului, iar `main` se întinde (`flex-1`).
+  - Meniu: întâi secțiunile de pe Acasă, apoi paginile — Acasă · Ce construim · Despre firmă · Lucrări realizate · Contact.
+- **Verificări:** type-check, lint (avertismentul preexistent din `.remember/`), Vitest 40/40 (testul albumelor verifică și fișierele noi), build — PASS. Aspectul, efectele și pozele în pagină — verificate static, NU în browser.
+
+## 2026-09-26 — S19 — Tranziții oblice înapoi, servicii ca panouri, meniu redenumit, e-mail pe domeniu
+
+- **Scop / clasificare:** NORMAL — UI, navigare și conținut, la cererea utilizatorului.
+- **Implementare:**
+  - Tranzițiile revin la marginea oblică cu fâșie portocalie din S13 (`section-edge.tsx` readus din commitul 0285b81); zidul de cărămidă eliminat. Corectat după captura utilizatorului: linia deschisă la culoare de sub diagonală (suprapunere de 1 px, `-mb-px`) și fără fâșie portocalie spre footer.
+  - Paginile `/servicii` și `/servicii/[id]` din S18 șterse (plus conținutul lor și intrările din sitemap). Serviciile de pe Acasă: aceleași texte, întregi, ca panouri `<details>` care se deschid și se închid la clic; plachetele din hero duc la ancora serviciului și îi deschid panoul (`OpenOnAnchor`, și la clic repetat).
+  - Efect la navigarea între pagini: `app/template.tsx` + animația `page-in` (verificat în documentație: template-ul se remontează la fiecare navigare).
+  - Denumirea firmei din header/footer, apăsată pe Acasă, urcă în capul paginii ca „Acasă” (`HomeLink`, logică comună).
+  - Meniu: Acasă · Ce construim · Lucrări realizate · Despre firmă · Contact (varianta aleasă de utilizator). Meniul complet de la 1280 px (sub, meniul compact): cu textul de 21 px și denumirile noi nu încape lângă logo și CTA la 1024 px (estimare, nemăsurată în browser).
+  - Titlul din tab pe Acasă: „Meridian Transconstruct — Firmă de construcții în Petroșani și Valea Jiului”.
+  - E-mailul afișat: `office@meridiantransconstruct.ro` (redirecționare spre Yahoo prin Cloudflare Email Routing, de configurat după domeniu — B-009).
+- **Verificări:** type-check, lint (avertismentul preexistent din `.remember/`), Vitest 40/40, build — PASS. Server de producție temporar: `/` 200, `/servicii` și `/servicii/renovari` 404, 5 panouri și 5 ancore din hero, meniul cu noile denumiri, tranziția și animația de pagină prezente în HTML. Aspectul, animațiile, panourile și clicurile — verificate static, NU în browser.
+- **De confirmat:** domeniul — cu sau fără cratimă (B-009).
+
+## 2026-09-26 — S18 — Lățime 1680, font +2, WhatsApp, hero nou, paginile Servicii și Proiecte
+
+- **Scop / clasificare:** NORMAL — mai multe ajustări de UI cerute de utilizator + o rută nouă (`/proiecte`).
+- **Implementare:**
+  - Container `.wrap` 1680 px; `sizes` din galerie ajustat (980 / 700 px). Butoanele (`.button`) mai mici: 48 px, text 15→17 px după creșterea generală a fontului.
+  - Toate dimensiunile de text +2 px: corp 18 px, titluri, clase proprii și utilitarele Tailwind `text-xs…2xl` redefinite în `@theme`; logo-ul neschimbat.
+  - Zidul de cărămidă mai mic: cărămizi 50 × 14, înălțime 20 / 28 px.
+  - Buton WhatsApp flotant, jos-dreapta, pe toate paginile (`wa.me/40726379408`, numărul ales de utilizator), deasupra barei „Sună” pe mobil.
+  - Footer mai puțin înalt (spațieri reduse). Panoul de contact și titlul „Despre firmă” nu mai coboară la scroll (fără `sticky`); panoul de contact păstrat (decizia utilizatorului).
+  - `/proiecte` (lista albumelor) și `/proiecte/[slug]` (galeria unei lucrări, aceeași componentă ca pe Acasă); `projectAlbums` e gol → stare „în pregătire”, fără albume ilustrative (decizia utilizatorului). Meniul „Proiecte” duce la pagină; linkul „Vezi toate proiectele” sub galeria de pe Acasă; sitemap cu albumele.
+  - „Acasă” apăsat pe Acasă urcă în capul paginii și scoate ancora din adresă.
+  - Hero (varianta aleasă de utilizator dintre 3): pe aproape tot ecranul, titlu mai mare, iar jos cele 5 servicii ca plachete (număr, iconiță, titlu) spre paginile lor.
+  - `/servicii` (5 carduri numerotate cu etichete) și `/servicii/[id]` (descriere, card lateral „Cere o ofertă” cu telefoane + WhatsApp în locul prețului, „Ce include”, „Cum lucrăm” în 4 etape, „Alte servicii”) — după conceptul ACL, fără prețuri și fără FAQ (decizia utilizatorului: răspunsurile vin de la firmă). Textele serviciilor sunt cele existente; etapele „Cum lucrăm” reiau doar afirmații din brief (A-009). Meniul „Servicii” duce la pagină; sitemap cu cele 5 servicii. Iconițele serviciilor: `ServiceIcon` (hero + index).
+  - Consolă: `data-scroll-behavior="smooth"` pe `<html>` (Next 16, verificat în documentație); avertismentul „useInsertionEffect must not schedule updates” — cauza verificată în sursa Next (`HistoryUpdater` apelează `pushState`/`replaceState` în `useInsertionEffect`, iar `currententrychange` e sincron): actualizarea meniului e amânată cu `queueMicrotask`.
+- **Verificări:** type-check, lint (singurul avertisment e într-un fișier temporar `.remember/`, preexistent), Vitest 40/40 (2 teste noi pentru albume), build — PASS. Server de producție temporar: cu un album de probă (scos apoi), `/proiecte` și albumul 200, slug inexistent 404, sitemap cu albumul; `/servicii` și cele 5 pagini 200, slug inexistent 404, hero cu cele 5 linkuri, meniul marcat pe pagina curentă, WhatsApp prezent, sitemap cu 9 adrese. Aspectul (hero, font mărit, meniul la 1024 px, zid, footer, WhatsApp, paginile noi) și clicul pe „Acasă” — verificate static, NU în browser.
+- **De decis:** secțiunea „Servicii” de pe Acasă repetă textele complete ale paginilor de servicii — de scurtat sau legat spre pagini (întrebare către utilizator).
+
 ## 2026-09-26 — S17 — Site mai lat
 
 - **Scop / clasificare:** SMALL — cerința utilizatorului „site-ul mai wide”.

@@ -43,6 +43,12 @@ export function ProjectsSection() {
           <>
             <Gallery tiles={tiles} placeholderLabel={projectsIntro.placeholder} />
             {hasIllustrative && <p className="note mt-6 max-w-170">{projectsIntro.illustrativeNote}</p>}
+            <Link href="/proiecte" className="text-link mt-6 text-ink">
+              {projectsIntro.allCta}
+              <span aria-hidden="true" className="arrow">
+                ↗
+              </span>
+            </Link>
           </>
         )}
       </div>

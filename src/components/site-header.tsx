@@ -11,7 +11,7 @@ export function SiteHeader() {
       <div className="wrap flex items-center justify-between gap-4 py-6 md:gap-6">
         <Brand />
         <DesktopNav />
-        <Link href="/contact" className="button hidden lg:inline-flex xl:px-7 max-xl:px-4">
+        <Link href="/contact" className="button hidden xl:inline-flex">
           Cere o ofertă
         </Link>
         <MobileNav />

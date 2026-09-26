@@ -33,3 +33,33 @@ Fișier: `public/images/hero-blocuri.webp`, 16:9, minimum 1920 × 1080. După ad
 | `interior-finisaje.webp` | Finisaje interioare | Bright finished interior of a new home, living area with large windows, light walls, wooden floor, minimal furniture, natural daylight. |
 
 Imaginea „Construcții civile” din galerie folosește deja `hero-concept.webp`. Pentru fotografiile reale ale firmei: aceleași fișiere pot fi înlocuite, iar în `src/content/projects.ts` elementul primește `illustrative: false` și un titlu factual.
+
+## Fotografii demonstrative Unsplash (S20, temporare)
+
+Cerute de utilizator ca să vadă cum arată galeria și albumele. Licența Unsplash permite folosirea gratuită, fără atribuire obligatorie; lista de mai jos e pentru trasabilitate. Pe site sunt marcate „Ilustrativ”. **Se șterg înainte de lansare** (albumele `demo-*` din `src/content/projects.ts` și folderele lor), iar imaginile din `galerie/` se înlocuiesc cu cele generate (B-020) sau cu fotografii reale (B-005). Descărcate la 1600 × 1200, webp; doar fotografii gratuite (fără Unsplash+).
+
+| Fișier | Autor | Sursă |
+|---|---|---|
+| `public/images/galerie/bloc-locuinte.webp` | Brandon Griggs | https://unsplash.com/photos/wR11KBaB86U |
+| `public/images/galerie/hala-industriala.webp` | Alberto Rodríguez | https://unsplash.com/photos/-aCrA9FmT8Y |
+| `public/images/galerie/casa.webp` | Dillon Kydd | https://unsplash.com/photos/XGvwt544g8k |
+| `public/images/galerie/renovare-fatada.webp` | Hernan Lucio | https://unsplash.com/photos/gJFvHkUHdSI |
+| `public/images/galerie/interior-finisaje.webp` | immo RENOVATION | https://unsplash.com/photos/UqNEbyRQ660 |
+| `public/images/proiecte/demo-cladire-rezidentiala/01.webp` | Design Hills | https://unsplash.com/photos/hfI0pr6g4yw |
+| `public/images/proiecte/demo-cladire-rezidentiala/02.webp` | Ivan Bandura | https://unsplash.com/photos/0-no6ywKMPY |
+| `public/images/proiecte/demo-cladire-rezidentiala/03.webp` | Marek Minor | https://unsplash.com/photos/jutV-62S_tQ |
+| `public/images/proiecte/demo-cladire-rezidentiala/04.webp` | Ivan Henao | https://unsplash.com/photos/04rZ7R1fKhY |
+| `public/images/proiecte/demo-cladire-rezidentiala/05.webp` | Minh | https://unsplash.com/photos/doEfe6C3F-A |
+| `public/images/proiecte/demo-cladire-rezidentiala/06.webp` | Mark Potterton | https://unsplash.com/photos/sNVkn3507Oo |
+| `public/images/proiecte/demo-hala-industriala/01.webp` | Arum Visuals | https://unsplash.com/photos/VnMbc9Szs-E |
+| `public/images/proiecte/demo-hala-industriala/02.webp` | Lance Chang | https://unsplash.com/photos/h3pVxOIpnzk |
+| `public/images/proiecte/demo-hala-industriala/03.webp` | AFINIS Group ® - AFINIS GASKET® Production | https://unsplash.com/photos/OnbSOhz0oig |
+| `public/images/proiecte/demo-hala-industriala/04.webp` | Rack Manufacturing Expert | https://unsplash.com/photos/wHfvgx506PM |
+| `public/images/proiecte/demo-hala-industriala/05.webp` | Etienne Girardet | https://unsplash.com/photos/sgYamIzhAhg |
+| `public/images/proiecte/demo-hala-industriala/06.webp` | Frames For Your Heart | https://unsplash.com/photos/VoI2jd75M6Q |
+| `public/images/proiecte/demo-casa/01.webp` | Brett Jordan | https://unsplash.com/photos/jEP4vsHrSM8 |
+| `public/images/proiecte/demo-casa/02.webp` | Avel Chuklanov | https://unsplash.com/photos/IB0VA6VdqBw |
+| `public/images/proiecte/demo-casa/03.webp` | Troy Mortier | https://unsplash.com/photos/kkdfOe0iRu8 |
+| `public/images/proiecte/demo-casa/04.webp` | Ernie Journeys | https://unsplash.com/photos/r5WU0B6OUws |
+| `public/images/proiecte/demo-casa/05.webp` | Elite prop | https://unsplash.com/photos/hmlP-v0vJ5o |
+| `public/images/proiecte/demo-casa/06.webp` | Brett Jordan | https://unsplash.com/photos/PFr50OBMowU |

@@ -24,7 +24,6 @@ export default function HomePage() {
       <AboutSection />
       <SectionEdge from="paper" to="ink" flip />
       <ContactTeaser />
-      <SectionEdge from="ink" to="deep" />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SectionEdge } from "@/components/section-edge";
 
 // Next adaugă singur `<meta name="robots" content="noindex">` pe 404, dar layout-ul ar adăuga și
 // `index, follow` când indexarea e pornită — suprascriem ca etichetele să nu se contrazică.
@@ -30,7 +29,6 @@ export default function NotFound() {
           </div>
         </div>
       </section>
-      <SectionEdge from="ink" to="deep" />
     </>
   );
 }
