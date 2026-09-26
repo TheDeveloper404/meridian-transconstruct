@@ -24,7 +24,7 @@ export function LegalDocumentPage({ document }: { document: LegalDocument }) {
                   {section.items.map((item) => (
                     <li
                       key={item.slice(0, 40)}
-                      className="relative pl-5 text-ink before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-accent"
+                      className="relative pl-5 text-ink before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-accent-strong"
                     >
                       {item}
                     </li>

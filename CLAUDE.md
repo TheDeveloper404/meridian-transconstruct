@@ -17,6 +17,7 @@ Site de prezentare în română pentru o firmă de construcții din Petroșani: 
 - `src/lib/contact/validation.ts` — validare pură, importată și de server, și de formular. Nimic din `src/server/` nu se importă în componente client (ar trage Nodemailer în bundle).
 - `src/server/contact/` — `http.ts` (HTTP) → `contact-service.ts` (reguli) → `smtp-transport.ts` (singurul loc cu Nodemailer); `config.ts` citește mediul. `src/app/api/contact/route.ts` rămâne un apel de o linie.
 - Token-uri vizuale: `src/app/globals.css` (`@theme`, Tailwind 4). Culori noi doar prin paletă (docs/DESIGN.md), nu hex-uri locale.
+- Accent (S53): galben de șantier `accent` pe fundaluri închise și ca fundal de buton; pe fundal deschis (alb/crem), textul și iconițele în accent folosesc `accent-strong` (ocru) — galbenul acolo nu e lizibil.
 
 Nu adăuga straturi (repository, DI, ORM, API separat) fără o cerință concretă.
 

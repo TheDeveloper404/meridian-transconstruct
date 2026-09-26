@@ -58,10 +58,10 @@ export default function ProjectsPage() {
                           className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                         />
                       </span>
-                      <span className="mt-4 block text-xs font-bold tracking-[2px] text-accent uppercase">
+                      <span className="mt-4 block text-xs font-bold tracking-[2px] text-accent-strong uppercase">
                         {album.category}
                       </span>
-                      <span className="mt-1 block text-xl leading-tight font-bold transition-colors group-hover:text-accent">
+                      <span className="mt-1 block text-xl leading-tight font-bold transition-colors group-hover:text-accent-strong">
                         {album.title}
                       </span>
                       <span className="mt-1 block text-sm text-muted">

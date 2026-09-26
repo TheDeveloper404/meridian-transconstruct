@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-// Bara de progres portocalie din capul paginii la navigarea între pagini (S23). Pornește la clic pe
+// Bara de progres galbenă din capul paginii la navigarea între pagini (S23). Pornește la clic pe
 // un link intern spre altă pagină și se termină când se schimbă adresa. Starea stă într-un atribut
 // DOM (`data-state`), animația în CSS (`.nav-progress`, globals.css).
 export function NavigationProgress() {

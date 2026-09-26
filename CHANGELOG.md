@@ -4,6 +4,14 @@ Istoric al activităților și deciziilor proiectului, inclusiv discovery și do
 
 Fiecare sesiune nouă primește data și un număr în cadrul zilei, apoi consemnează: scop și clasificare, activități, decizii/aprobări, verificări reale, blocaje și următorul pas. Nu înregistrăm parole, conținutul cererilor clienților sau transcrieri brute. Nu marcăm planurile drept funcționalități livrate.
 
+## 2026-09-26 — S53 — Accent galben de șantier în locul portocaliului
+
+- **Scop / clasificare:** SMALL — culoare de accent, la cererea utilizatorului (recomandare: galben de șantier, asociat cu construcțiile și complementar albastrului din logo).
+- **Implementare:** `--color-accent` `#F8A046` → `#F5B82E`, hover `#FFB568` → `#FFC94D`, valorile `rgb(248 160 70 / …)` (strălucirea barei de progres, fundalul de hover din meniu) → `rgb(245 184 46 / …)`. Token nou `--color-accent-strong` `#946200` (ocru) pentru text și iconițe pe fundal deschis, unde galbenul ar avea ~1,7:1: numerele, iconițele și bifele din panourile de servicii, eticheta și titlul la hover pe `/proiecte`, bulinele din paginile legale. Comentariile „portocaliu” actualizate.
+- **Contrast (calculat):** text închis pe galben 9,2:1 (față de 7,9:1 la portocaliu); galben pe fundal închis 9,2:1; ocru 5,2:1 pe alb și 4,7:1 pe crem.
+- **Verificări:** type-check, lint, Vitest 41/41, build — PASS. Capturi desktop: hero, servicii (panou deschis), despre, final + footer, `/proiecte`, Contact.
+- **Documentare:** DESIGN (paletă), CLAUDE.md (regula accent/accent-strong).
+
 ## 2026-09-26 — S52 — Închiderea sesiunii (S28–S51)
 
 - **Scop / clasificare:** SMALL — documentare la închidere.

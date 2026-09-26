@@ -12,7 +12,7 @@ const step = (index: number) => ({ "--i": index }) as CSSProperties;
 // Serviciile ca panouri care se deschid și se închid la clic (S19: textele rămân întregi, dar
 // secțiunea nu mai cere atâta scroll). `<details>` nativ: funcționează și fără JS, cu tastatura și
 // cu cititoarele de ecran. Id-ul fiecărui serviciu e ancora din hero; OpenOnAnchor deschide panoul.
-// Efectul de deschidere (S20): bară portocalie pe margine, numărul se umple, conținutul intră pe rând.
+// Efectul de deschidere (S20): bară galbenă pe margine, numărul se umple, conținutul intră pe rând.
 export function ServicesSection() {
   return (
     <section id="servicii" aria-labelledby="services-title" className="py-12 md:py-16">
@@ -34,7 +34,7 @@ export function ServicesSection() {
               <summary className="flex cursor-pointer list-none items-center gap-4 p-5 md:gap-8 md:px-8 md:py-6 [&::-webkit-details-marker]:hidden">
                 <span
                   aria-hidden="true"
-                  className="w-12 shrink-0 text-[40px] leading-none font-bold text-transparent transition-colors duration-500 [-webkit-text-stroke:1.5px_var(--color-accent)] group-open:text-accent md:w-20 md:text-[58px]"
+                  className="w-12 shrink-0 text-[40px] leading-none font-bold text-transparent transition-colors duration-500 [-webkit-text-stroke:1.5px_var(--color-accent-strong)] group-open:text-accent-strong md:w-20 md:text-[58px]"
                 >
                   {String(index + 1).padStart(2, "0")}
                 </span>
@@ -42,7 +42,7 @@ export function ServicesSection() {
                   id={service.id}
                   size={28}
                   strokeWidth={1.75}
-                  className="hidden shrink-0 text-accent md:block"
+                  className="hidden shrink-0 text-accent-strong md:block"
                 />
                 <span className="flex-1">
                   <h3 className="text-xl text-ink md:text-[30px]">{service.title}</h3>
@@ -83,7 +83,7 @@ export function ServicesSection() {
                             aria-hidden="true"
                             size={20}
                             strokeWidth={2}
-                            className="mt-1 shrink-0 text-accent"
+                            className="mt-1 shrink-0 text-accent-strong"
                           />
                           {work}
                         </li>

@@ -1,5 +1,5 @@
 // Tranziție între secțiuni (S12b, readusă în S19): margine oblică în culoarea secțiunii următoare,
-// cu o fâșie portocalie subțire pe diagonală — în locul liniilor orizontale. `flip` inversează panta,
+// cu o fâșie galbenă subțire pe diagonală — în locul liniilor orizontale. `flip` inversează panta,
 // ca tranzițiile succesive să alterneze. Spre footer nu se folosește (S20): secțiunea se termină drept.
 
 type Tone = "ink" | "paper" | "surface";
@@ -20,7 +20,7 @@ type SectionEdgeProps = {
 };
 
 export function SectionEdge({ from, to, flip = false, className = "" }: SectionEdgeProps) {
-  // viewBox 100×10: secțiunea următoare ocupă triunghiul de sub diagonală; fâșia portocalie (grosime
+  // viewBox 100×10: secțiunea următoare ocupă triunghiul de sub diagonală; fâșia galbenă (grosime
   // B) stă chiar deasupra diagonalei. `flip` oglindește orizontal.
   const B = 1.1;
   const x = (value: number) => (flip ? 100 - value : value);

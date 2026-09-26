@@ -4,8 +4,12 @@
 @theme {
   --color-ink: #101f3c;
   --color-ink-deep: #08162f;
-  --color-accent: #f8a046;
-  --color-accent-hover: #ffb568;
+  /* Accent: galben de șantier (S53, înlocuiește portocaliul #f8a046). Pe fundaluri închise și ca fundal
+     de buton (text închis pe galben: 9,2:1). Pentru TEXT și iconițe pe fundal deschis se folosește
+     `accent-strong` (ocru, 5,2:1 pe alb / 4,7:1 pe crem) — galbenul acolo ar avea doar ~1,7:1. */
+  --color-accent: #f5b82e;
+  --color-accent-hover: #ffc94d;
+  --color-accent-strong: #946200;
   --color-paper: #f5f3ed;
   --color-surface: #ffffff;
   --color-muted: #526077;
@@ -193,7 +197,7 @@
     z-index: 50;
     height: 3px;
     background: var(--color-accent);
-    box-shadow: 0 0 10px rgb(248 160 70 / 0.6);
+    box-shadow: 0 0 10px rgb(245 184 46 / 0.6);
     transform: scaleX(0);
     transform-origin: left;
     opacity: 0;
@@ -248,7 +252,7 @@
     font-weight: 700;
   }
 
-  /* Buton principal: capsulă portocalie, conform machetei finale. */
+  /* Buton principal: capsulă galbenă (galben de șantier). */
   .button {
     display: inline-flex;
     align-items: center;
@@ -313,7 +317,7 @@
     transform: translate(2px, -2px);
   }
 
-  /* Link de meniu: la hover capătă fundal portocaliu discret, text portocaliu și o subliniere
+  /* Link de meniu: la hover capătă fundal galben discret, text galben și o subliniere
      care crește din centru; activ = aria-current (subliniere permanentă). */
   .nav-link {
     position: relative;
@@ -345,7 +349,7 @@
 
   .nav-link:is(:hover, :focus-visible) {
     color: var(--color-accent);
-    background: rgb(248 160 70 / 0.14);
+    background: rgb(245 184 46 / 0.14);
     transform: translateY(-2px);
   }
 

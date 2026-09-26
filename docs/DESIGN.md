@@ -4,14 +4,15 @@
 
 ## Concept
 
-Aspect sobru, clar și vizual: fundaluri albastru închis și alb cald, accent portocaliu, titluri mari, fotografii reale dominante și delimitări simple între secțiuni. O singură direcție propusă. Scopul este ca un beneficiar să înțeleagă rapid ce execută firma, unde lucrează și cum o contactează.
+Aspect sobru, clar și vizual: fundaluri albastru închis și alb cald, accent galben de șantier (S53; anterior galben), titluri mari, fotografii reale dominante și delimitări simple între secțiuni. O singură direcție propusă. Scopul este ca un beneficiar să înțeleagă rapid ce execută firma, unde lucrează și cum o contactează.
 
 ## Token-uri
 
 | Rol | Valoare |
 |---|---|
 | Primar / cerneală | `#101F3C` |
-| Accent / CTA | `#F8A046`, cu text albastru închis |
+| Accent / CTA | `#F5B82E` galben de șantier (S53, înlocuiește `#F8A046`), cu text albastru închis; hover `#FFC94D` |
+| Accent pe fundal deschis | `#946200` ocru (`accent-strong`) — doar pentru text și iconițe pe alb/crem (5,2:1 / 4,7:1); galbenul acolo ar avea ~1,7:1 |
 | Fundal | `#F5F3ED` |
 | Suprafață | `#FFFFFF` |
 | Text secundar | `#526077` pe fundal deschis |
@@ -30,12 +31,12 @@ Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1600 px (1200 → 1440 î
 - Header: lipit sus; la scroll fundalul devine albastru închis semi-transparent (~75%) cu estompare, ca meniul alb să rămână lizibil peste secțiunile deschise (S11). Logo (imagine, S28), meniu cu cinci intrări — Acasă, Ce construim (ancoră), Despre firmă (ancoră), Lucrări realizate (`/proiecte`), Contact (denumiri alese de utilizator în S19; ordinea din S20: întâi secțiunile de pe Acasă, apoi paginile) — și CTA, afișate complet de la 1280 px (sub acest prag, meniul compact); „Acasă” și denumirea firmei, apăsate pe Acasă, urcă în capul paginii; fără număr de telefon, conform cererii utilizatorului. Ambele numere rămân în Contact și în footer. Meniul compact se deschide dintr-o iconiță (trei linii ca rândurile unui zid, S50).
 - Hero: imagine pe întreg fundalul, cu strat albastru închis pentru lizibilitate și text suprapus; un singur buton principal și un link secundar. Vizualul generat este provizoriu și marcat explicit; vezi [proveniența](assets/README.md).
 - Servicii: rânduri numerotate; fiecare serviciu are un link spre Contact (pagini dedicate de servicii — B-003).
-- Hero (S18): pe aproape tot ecranul (`100svh` minus header, pe desktop); imaginea pe tot fundalul, titlu până la 84 px, două CTA-uri; jos, cele 5 servicii ca plachete semi-transparente (număr, iconiță Lucide, titlu, săgeată) care devin portocalii la hover și duc la serviciul de pe Acasă, deschizându-i panoul (S19). Pe mobil 2 coloane, pe tabletă 3, pe desktop 5.
-- Servicii pe Acasă (S19): panouri albe `<details>` — număr conturat, iconiță, titlu și subtitlu, buton rotund „+” care se rotește în „×” la deschidere; în panou, textele complete, punctele cheie și linkul spre Contact. La deschidere (S20): bară portocalie pe marginea stângă, numărul se umple cu portocaliu, umbră, înălțimea crește lin (`::details-content`, unde browserul permite), iar conținutul intră pe rând — etichetele, textul, apoi „Ce executăm” (bife) și „Pentru cine”. Paginile `/servicii` din S18 au fost eliminate. Efectul de navigare între pagini (S19) a fost scos în S20.
-- Efecte la navigarea între pagini: încercate și scoase — apariție cu fade (S19–S20), tranziție cu element comun a copertei de album (S21–S22). Din S23: bară de progres portocalie de 3 px în capul paginii — crește cât se încarcă pagina nouă, apoi se completează și dispare; conținutul nu se mișcă.
-- Proiecte (galerie, S12): grilă „bento” pe 12 coloane (tile mare 7×2 rânduri, apoi 5, 5, 4, 4, 4), 2 coloane pe tabletă, una pe telefon; colțuri de 2 px; la hover zoom lent pe imagine, gradient mai intens, legenda urcă și apare butonul portocaliu de mărire; clic → dialog pe tot ecranul (săgeți, ←/→, Esc, focus returnat). Eticheta „Ilustrativ” pe imaginile generate. Fără badge-uri „premium” sau indicatori inventați.
+- Hero (S18): pe aproape tot ecranul (`100svh` minus header, pe desktop); imaginea pe tot fundalul, titlu până la 84 px, două CTA-uri; jos, cele 5 servicii ca plachete semi-transparente (număr, iconiță Lucide, titlu, săgeată) care devin galbeni la hover și duc la serviciul de pe Acasă, deschizându-i panoul (S19). Pe mobil 2 coloane, pe tabletă 3, pe desktop 5.
+- Servicii pe Acasă (S19): panouri albe `<details>` — număr conturat, iconiță, titlu și subtitlu, buton rotund „+” care se rotește în „×” la deschidere; în panou, textele complete, punctele cheie și linkul spre Contact. La deschidere (S20): bară galbenă pe marginea stângă, numărul se umple cu galben, umbră, înălțimea crește lin (`::details-content`, unde browserul permite), iar conținutul intră pe rând — etichetele, textul, apoi „Ce executăm” (bife) și „Pentru cine”. Paginile `/servicii` din S18 au fost eliminate. Efectul de navigare între pagini (S19) a fost scos în S20.
+- Efecte la navigarea între pagini: încercate și scoase — apariție cu fade (S19–S20), tranziție cu element comun a copertei de album (S21–S22). Din S23: bară de progres galbenă de 3 px în capul paginii — crește cât se încarcă pagina nouă, apoi se completează și dispare; conținutul nu se mișcă.
+- Proiecte (galerie, S12): grilă „bento” pe 12 coloane (tile mare 7×2 rânduri, apoi 5, 5, 4, 4, 4), 2 coloane pe tabletă, una pe telefon; colțuri de 2 px; la hover zoom lent pe imagine, gradient mai intens, legenda urcă și apare butonul galben de mărire; clic → dialog pe tot ecranul (săgeți, ←/→, Esc, focus returnat). Eticheta „Ilustrativ” pe imaginile generate. Fără badge-uri „premium” sau indicatori inventați.
 - Denumire (S12): „MERIDIAN” are exact lățimea lui „TRANSCONSTRUCT” (34/15 px desktop, 28/13 px mobil), literele distribuite pe lățime.
-- Meniu (S12): 19 px; la hover fundal portocaliu discret, text portocaliu și subliniere care crește din centru.
+- Meniu (S12): 19 px; la hover fundal galben discret, text galben și subliniere care crește din centru.
 - Acasă: secțiunea finală este un CTA scurt către Contact, fără repetarea telefoanelor și formularului. Pagina Contact are ambele telefoane, e-mailul și formularul (în machetă dezactivat, în aplicație funcțional).
 - Footer (S13/S14/S18, 3 coloane din S26): fundal închis; (1) denumirea, fraza scurtă și copyright-ul; (2) „Contact” — datele de contact una sub alta, text 16 px, cu iconițe Lucide (e-mail, telefoane, zonă, date firmă cu sediul pe scurt: municipiul și județul — regiunea o singură dată); (3) „Informații legale” — Politica de confidențialitate, Termeni și condiții și butoanele ANPC (SAL, SOL) de 190 px, una sub alta. 2 coloane pe tabletă, una pe telefon. Adresa completă rămâne pentru pagina de identificare legală, după validare.
 - WhatsApp (S18): buton rotund flotant, jos-dreapta, pe toate paginile, în verdele mărcii (`--color-whatsapp`, singura culoare din afara paletei); deschide conversația cu 0726 379 408. Pe desktop, după 10 secunde, o bulă albă cu un mesaj scurt în română, care se poate închide (S51).
@@ -43,7 +44,7 @@ Spațiere: 4/8/12/16/24/32/48/64 px. Container maximum 1600 px (1200 → 1440 î
 
 ## Tranziții între secțiuni (S13)
 
-Fără linii orizontale între secțiuni sau între elementele unei liste (cerința utilizatorului). Trecerea dintre secțiuni este o margine oblică în culoarea secțiunii următoare, cu o fâșie portocalie subțire pe diagonală (`SectionEdge`, S13); panta alternează (`flip`); spre footer nu există tranziție — secțiunea se termină drept (S20). Varianta „zid de cărămidă” (S14–S18) a fost abandonată în S19 la cererea utilizatorului. Serviciile sunt panouri separate prin spațiu, cu numere mari conturate în portocaliu. Footer-ul este albastru foarte închis (`ink-deep`), ca fiecare pagină să se încheie cu aceeași tranziție.
+Fără linii orizontale între secțiuni sau între elementele unei liste (cerința utilizatorului). Trecerea dintre secțiuni este o margine oblică în culoarea secțiunii următoare, cu o fâșie galbenă subțire pe diagonală (`SectionEdge`, S13); panta alternează (`flip`); spre footer nu există tranziție — secțiunea se termină drept (S20). Varianta „zid de cărămidă” (S14–S18) a fost abandonată în S19 la cererea utilizatorului. Serviciile sunt panouri separate prin spațiu, cu numere mari conturate în galben. Footer-ul este albastru foarte închis (`ink-deep`), ca fiecare pagină să se încheie cu aceeași tranziție.
 
 ## Responsive și stări
 
